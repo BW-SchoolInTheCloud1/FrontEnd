@@ -33,34 +33,29 @@ const Login = props => {
             <Col sm="12" md={{ size: 6, offset: 3 }}>
                <h3>Log in below</h3>
                <AvForm onSubmit={handleSubmit} style={{marginTop: '20px'}}>
-                  <AvGroup>
-                     <AvField 
-                        label='Email'
-                        type='email' 
-                        name='email' 
-                        id='email' 
-                        placeholder='Please enter you email here' 
-                        value={credentials.email}
-                        onChange={handleChange}
-                        validate={{
-                           required: {value: true, errorMessage: 'A valid email is required for log in'},
-                        }}
-                        
-                     />
-                  </AvGroup>
-                  <AvGroup>
-                     <AvField 
-                        label='Password'
-                        type='password' 
-                        name='password' id='password' 
-                        placeholder='Please enter you password here' 
-                        value={credentials.password}
-                        onChange={handleChange}
-                        validate={{
-                           required: {value: true, errorMessage: 'A valid password is required for log in'}
-                        }}
-                     />
-                  </AvGroup>
+                  <AvField 
+                     label='Email'
+                     type='email' 
+                     name='email' 
+                     id='email' 
+                     placeholder='Please enter you email here' 
+                     value={credentials.email}
+                     onChange={handleChange}
+                     validate={{
+                        required: {value: true, errorMessage: 'A valid email is required for log in'},
+                     }}
+                  />
+                  <AvField 
+                     label='Password'
+                     type='password' 
+                     name='password' id='password' 
+                     placeholder='Please enter you password here' 
+                     value={credentials.password}
+                     onChange={handleChange}
+                     validate={{
+                        required: {value: true, errorMessage: 'A valid password is required for log in'}
+                     }}
+                  />
                   <Button color='primary'>Log In</Button>
                </AvForm>
             </Col>
