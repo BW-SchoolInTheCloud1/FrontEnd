@@ -28,10 +28,11 @@ const Login = props => {
    }
 
    return (
-      <Container>
+      <Container style={{marginTop: '50px'}}>
          <Row>
             <Col sm="12" md={{ size: 6, offset: 3 }}>
-               <AvForm onSubmit={handleSubmit}>
+               <h3>Log in below</h3>
+               <AvForm onSubmit={handleSubmit} style={{marginTop: '20px'}}>
                   <AvGroup>
                      <AvField 
                         label='Email'
