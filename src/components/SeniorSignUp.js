@@ -8,7 +8,7 @@ const BackgroundDiv = styled.div`
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    // background-color: #fcb97d;
+    background-color: #fcb97d;
     background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
 `
 
@@ -33,7 +33,7 @@ const SeniorSignUp = () => {
         <BackgroundDiv>
             <Container>
                 <Row>
-                    <Col sm='12' md={{ size: 6, offset: 3 }}>
+                    <Col sm={{ size: 6, order: 2, offset: 1 }}>
                         <h1>Volunteer Sign Up</h1>
                         <AvForm>
                             <AvField
@@ -82,19 +82,17 @@ const SeniorSignUp = () => {
                             />
                             <AvField
                                 label='Country'
-                                type='text'
+                                type='select'
                                 name='country'
-                                placeholder='Please select from the following options'
                                 value={seniors.country}
                                 onChange={handleChange}
-                                validate={{
-                                    required: {
-                                        value: true,
-                                        errorMessage:
-                                            "A valid country is required",
-                                    },
-                                }}
-                            />
+                                helpMessage='Please select a country from the following'>
+                                <option>USA</option>
+                                <option>Canada</option>
+                                <option>Mexico</option>
+                                <option>England</option>
+                                <option>France</option>
+                            </AvField>
                             <AvField
                                 label='Availability'
                                 type='text'
