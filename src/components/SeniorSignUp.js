@@ -85,7 +85,7 @@ const SeniorSignUp = () => {
 								value={seniors.country}
 								onChange={handleChange}
 								placeholder='Please select a country'>
-								<option disabled selected hidden>Please select a country</option>
+								<option disabled selected>Please select a country</option>
 								{/* write map function to return more options the one above is a placeholder */}
 							</AvField>
 							<AvField
