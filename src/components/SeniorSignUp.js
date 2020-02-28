@@ -86,8 +86,8 @@ const SeniorSignUp = () => {
                                 name='country'
                                 value={seniors.country}
                                 onChange={handleChange}
-                                helpMessage='Please select a country from the following'>
-                                <option>Country</option>
+                                >
+                                <option>Please select a country</option>
                                 {/* write map function to return more options the one above is a placeholder */}
                             </AvField>
                             <AvField
