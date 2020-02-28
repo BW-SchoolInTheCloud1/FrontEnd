@@ -38,7 +38,7 @@ const Login = props => {
                      type='email' 
                      name='email' 
                      id='email' 
-                     placeholder='Please enter you email here' 
+                     placeholder='Please enter your email here' 
                      value={credentials.email}
                      onChange={handleChange}
                      validate={{
@@ -49,7 +49,7 @@ const Login = props => {
                      label='Password'
                      type='password' 
                      name='password' id='password' 
-                     placeholder='Please enter you password here' 
+                     placeholder='Please enter your password here' 
                      value={credentials.password}
                      onChange={handleChange}
                      validate={{
