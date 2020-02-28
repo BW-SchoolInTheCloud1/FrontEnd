@@ -33,7 +33,7 @@ const SeniorSignUp = () => {
         <BackgroundDiv>
             <Container>
                 <Row>
-                    <Col sm={{ size: 6, order: 2, offset: 1 }}>
+                    <Col sm={{ size: 6, order: 2, offset: 3 }}>
                         <h1>Volunteer Sign Up</h1>
                         <AvForm>
                             <AvField
@@ -87,11 +87,8 @@ const SeniorSignUp = () => {
                                 value={seniors.country}
                                 onChange={handleChange}
                                 helpMessage='Please select a country from the following'>
-                                <option>USA</option>
-                                <option>Canada</option>
-                                <option>Mexico</option>
-                                <option>England</option>
-                                <option>France</option>
+                                <option>Country</option>
+                                {/* write map function to return more options the one above is a placeholder */}
                             </AvField>
                             <AvField
                                 label='Availability'
