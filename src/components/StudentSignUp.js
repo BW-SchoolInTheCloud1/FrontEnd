@@ -64,7 +64,7 @@ const StudentSignUp = () => {
                                 }}
                             />
                             <AvField
-                                label='email'
+                                label='Email'
                                 type='text'
                                 name='email'
                                 placeholder='Please enter a valid email here'
