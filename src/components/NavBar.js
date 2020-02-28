@@ -32,7 +32,7 @@ const NavBar = () => {
 							<Collapse isOpen={!collapsed} navbar>
 								<Nav navbar>
 									<NavItem>
-										<Link to='/login' className='navLink'>
+										<Link to='/' className='navLink'>
 											Log In
 										</Link>
 									</NavItem>
