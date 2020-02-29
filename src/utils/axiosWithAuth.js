@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-//Refigure After BackEnd Discussion
+
 
 export const axiosWithAuth = () => {
 	const token = localStorage.getItem('token');
@@ -9,6 +9,6 @@ export const axiosWithAuth = () => {
 		headers: {
 			Authorization: token,
 		},
-		baseURL: '',
+		baseURL: 'https://school-in-cloud-api.herokuapp.com/api',
 	});
 };

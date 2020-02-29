@@ -6,7 +6,6 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
 		<Route
 			{...props}
 			render={() => {
-				//Relook after BackEnd Discussion
 				if (localStorage.getItem('token')) {
 					return <Component />;
 				} else {

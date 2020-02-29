@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { postNewStudent } from '../redux/actions'
 import { Button, Container, Row, Col } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
 import styled from "styled-components"
@@ -13,19 +16,36 @@ const BackgroundDiv = styled.div`
 `
 
 const StudentSignUp = () => {
-    const [students, setStudents] = useState({
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const [studentToPost, setStudentToPost] = useState({
         firstName: "",
         lastName: "",
         email: "",
         password: "",
+        role: 'student'
     })
 
     const handleChange = e => {
-        setStudents({
-            ...students,
+        setStudentToPost({
+            ...studentToPost,
             [e.target.name]: e.target.value,
         })
     }
+
+    const handleSubmit = e => {
+		e.preventDefault();
+		dispatch(postNewStudent(studentToPost));
+		setStudentToPost({
+			firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            role: 'student'
+        });
+        history.push('/student-dash')
+	};
 
     return (
         <BackgroundDiv>
@@ -33,13 +53,13 @@ const StudentSignUp = () => {
                 <Row>
                     <Col sm='12' md={{ size: 6, offset: 3 }}>
                         <h1>Student Sign Up</h1>
-                        <AvForm className='StudentSignUp-form'>
+                        <AvForm className='StudentSignUp-form' onSubmit={handleSubmit}>
                             <AvField
                                 label='First Name'
                                 type='text'
                                 name='firstName'
                                 placeholder='Please enter your first name here'
-                                value={students.firstName}
+                                value={studentToPost.firstName}
                                 onChange={handleChange}
                                 validate={{
                                     required: {
@@ -54,7 +74,7 @@ const StudentSignUp = () => {
                                 type='text'
                                 name='lastName'
                                 placeholder='Please enter your last name here'
-                                value={students.lastName}
+                                value={studentToPost.lastName}
                                 onChange={handleChange}
                                 validate={{
                                     required: {
@@ -65,10 +85,10 @@ const StudentSignUp = () => {
                             />
                             <AvField
                                 label='Email'
-                                type='text'
+                                type='email'
                                 name='email'
                                 placeholder='Please enter a valid email here'
-                                value={students.email}
+                                value={studentToPost.email}
                                 onChange={handleChange}
                                 validate={{
                                     required: {
@@ -80,10 +100,10 @@ const StudentSignUp = () => {
                             />
                             <AvField
                                 label='Password'
-                                type='text'
+                                type='password'
                                 name='password'
                                 placeholder='Please enter an awesome password here'
-                                value={students.password}
+                                value={studentToPost.password}
                                 onChange={handleChange}
                                 validate={{
                                     required: {

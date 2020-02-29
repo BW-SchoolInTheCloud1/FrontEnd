@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .registerButton{
   margin: 5%;
@@ -15,6 +15,7 @@
   text-decoration: none;
   color: whitesmoke;
   font-size: 20px;
+  text-align: center;
 }
 .logo{
   width: 7rem;
