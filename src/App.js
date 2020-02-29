@@ -5,7 +5,7 @@ import NavBar from './components/NavBar'
 import Login from './components/Login'
 import StudentSignUp from './components/StudentSignUp'
 import SeniorSignUp from './components/SeniorSignUp'
-import AdminSignUp from './components/SeniorSignUp'
+import AdminSignUp from './components/AdminSignUp'
 import Register from './components/Register'
 
 function App() {

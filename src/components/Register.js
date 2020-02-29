@@ -27,6 +27,11 @@ const Register = () => {
 						Volunteers
 					</Link>
 				</Button>
+				<Button size='lg' className='registerButton'>
+					<Link to='/admin-signup' className='registerLink'>
+						Admin
+					</Link>
+				</Button>
 			</BackgroundDiv>
 		);
 }
