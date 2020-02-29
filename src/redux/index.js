@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { 
-   LOGIN, 
+import {
    GET_SENIORS_LIST, 
    POST_NEW_SENIOR, 
    POST_NEW_STUDENT, 
@@ -14,10 +13,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
    switch(action.type) {
-      case LOGIN:
-         return {
-            ...state,
-         }
       case GET_SENIORS_LIST:
          return {
             ...state
