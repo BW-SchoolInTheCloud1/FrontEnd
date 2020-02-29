@@ -1,72 +1,105 @@
 import React, { useState, useEffect } from "react"
-import { withFormik, Form, Field } from "formik"
-import * as Yup from "yup"
-// import axios from "axios"
+import { Button, Container, Row, Col } from "reactstrap"
+import { AvForm, AvField } from "availity-reactstrap-validation"
+import styled from "styled-components"
 
-const StudentSignUp = ({ touched, errors, status }) => {
-    const [student, setStudent] = useState([])
+const BackgroundDiv = styled.div`
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    // background-color: #fcb97d;
+    background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
+`
 
-    useEffect(() => {
-        status && setStudent(student => [...student, status])
-    }, [status])
+const StudentSignUp = () => {
+    const [students, setStudents] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+    })
+
+    const handleChange = e => {
+        setStudents({
+            ...students,
+            [e.target.name]: e.target.value,
+        })
+    }
 
     return (
-        <div>
-            <h1>Student Sign Up</h1>
-            <Form className='StudentSignUp-form'>
-                <Field type='text' name='firstname' placeholder='first name' />
-                {touched.firstname && errors.firstname && (
-                    <p className='errors'>{errors.firstname}</p>
-                )}
-                <Field type='text' name='lastname' placeholder='last name' />
-                <Field type='text' name='email' placeholder='email' />
-                <Field type='text' name='password' placeholder='password' />
-
-                <button type='submit'>Submit</button>
-            </Form>
-            {student.map(student => (
-                <ul key={student.id}>
-                    <li>First Name: {student.firstname}</li>
-                    <li>Last Name: {student.lastname}</li>
-                    <li>Email: {student.email}</li>
-                    <li>Password: {student.password}</li>
-                </ul>
-            ))}
-        </div>
+        <BackgroundDiv>
+            <Container>
+                <Row>
+                    <Col sm='12' md={{ size: 6, offset: 3 }}>
+                        <h1>Student Sign Up</h1>
+                        <AvForm className='StudentSignUp-form'>
+                            <AvField
+                                label='First Name'
+                                type='text'
+                                name='firstName'
+                                placeholder='Please enter your first name here'
+                                value={students.firstName}
+                                onChange={handleChange}
+                                validate={{
+                                    required: {
+                                        value: true,
+                                        errorMessage:
+                                            "A first name is required",
+                                    },
+                                }}
+                            />
+                            <AvField
+                                label='Last Name'
+                                type='text'
+                                name='lastName'
+                                placeholder='Please enter your last name here'
+                                value={students.lastName}
+                                onChange={handleChange}
+                                validate={{
+                                    required: {
+                                        value: true,
+                                        errorMessage: "A last name is required",
+                                    },
+                                }}
+                            />
+                            <AvField
+                                label='Email'
+                                type='text'
+                                name='email'
+                                placeholder='Please enter a valid email here'
+                                value={students.email}
+                                onChange={handleChange}
+                                validate={{
+                                    required: {
+                                        value: true,
+                                        errorMessage:
+                                            "A valid email is required for sign up",
+                                    },
+                                }}
+                            />
+                            <AvField
+                                label='Password'
+                                type='text'
+                                name='password'
+                                placeholder='Please enter an awesome password here'
+                                value={students.password}
+                                onChange={handleChange}
+                                validate={{
+                                    required: {
+                                        value: true,
+                                        errorMessage:
+                                            "Password must be 8 characters long",
+                                    },
+                                }}
+                            />
+                            <Button type='submit'>Submit</Button>
+                        </AvForm>
+                    </Col>
+                </Row>
+            </Container>
+        </BackgroundDiv>
     )
 }
 
-const FormikStudentSignUp = withFormik({
-    mapPropsToValues({ firstname, lastname, email, password }) {
-        return {
-            firstname: firstname || "",
-            lastname: lastname || "",
-            email: email || "",
-            password: password || "",
-        }
-    },
-
-    validationSchema: Yup.object().shape({
-        firstname: Yup.string().required(),
-        lastname: Yup.string().required(),
-        email: Yup.string()
-            .email("Email not valid")
-            .required("Email is required"),
-        password: Yup.string()
-            .min(6, "Password must be 6 characters or more")
-            .required("Password is required"),
-    }),
-
-    // handleSubmit(values, { setStatus }) {
-    //     // values is our object with all our data on it
-    //     axios
-    //         .post("https://reqres.in/api/users/", values)
-    //         .then(res => {
-    //             setStatus(res.data)
-    //             console.log(res)
-    //         })
-    //         .catch(err => console.log(err.response))
-    // },
-})(StudentSignUp)
-
-export default FormikStudentSignUp
+export default StudentSignUp
