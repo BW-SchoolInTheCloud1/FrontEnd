@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { postNewStudent } from '../redux/actions'
+import { postNewAdmin } from '../redux/actions'
 import { Button, Container, Row, Col } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
 import styled from "styled-components"
@@ -15,36 +15,36 @@ const BackgroundDiv = styled.div`
     background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
 `
 
-const StudentSignUp = () => {
+const AdminSignUp = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const [studentToPost, setStudentToPost] = useState({
+    const [adminToPost, setAdminToPost] = useState({
         firstName: "",
         lastName: "",
         email: "",
         password: "",
-        role: 'student'
+        role: 'admin'
     })
 
     const handleChange = e => {
-        setStudentToPost({
-            ...studentToPost,
+        setAdminToPost({
+            ...adminToPost,
             [e.target.name]: e.target.value,
         })
     }
 
     const handleSubmit = e => {
 		e.preventDefault();
-		dispatch(postNewStudent(studentToPost));
-		setStudentToPost({
+		dispatch(postNewAdmin(adminToPost));
+		setAdminToPost({
 			firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            role: 'student'
+         lastName: "",
+         email: "",
+         password: "",
+         role: 'student'
         });
-        history.push('/student-dash')
+      history.push('/student-dash')
 	};
 
     return (
@@ -52,14 +52,14 @@ const StudentSignUp = () => {
             <Container>
                 <Row>
                     <Col sm='12' md={{ size: 6, offset: 3 }}>
-                        <h1>Student Sign Up</h1>
+                        <h1>Admin Sign Up</h1>
                         <AvForm className='StudentSignUp-form' onSubmit={handleSubmit}>
                             <AvField
                                 label='First Name'
                                 type='text'
                                 name='firstName'
                                 placeholder='Please enter your first name here'
-                                value={studentToPost.firstName}
+                                value={adminToPost.firstName}
                                 onChange={handleChange}
                                 validate={{
                                     required: {
@@ -74,7 +74,7 @@ const StudentSignUp = () => {
                                 type='text'
                                 name='lastName'
                                 placeholder='Please enter your last name here'
-                                value={studentToPost.lastName}
+                                value={adminToPost.lastName}
                                 onChange={handleChange}
                                 validate={{
                                     required: {
@@ -88,7 +88,7 @@ const StudentSignUp = () => {
                                 type='email'
                                 name='email'
                                 placeholder='Please enter a valid email here'
-                                value={studentToPost.email}
+                                value={adminToPost.email}
                                 onChange={handleChange}
                                 validate={{
                                     required: {
@@ -103,7 +103,7 @@ const StudentSignUp = () => {
                                 type='password'
                                 name='password'
                                 placeholder='Please enter an awesome password here'
-                                value={studentToPost.password}
+                                value={adminToPost.password}
                                 onChange={handleChange}
                                 validate={{
                                     required: {
@@ -122,4 +122,4 @@ const StudentSignUp = () => {
     )
 }
 
-export default StudentSignUp
+export default AdminSignUp
