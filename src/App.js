@@ -10,6 +10,7 @@ import AdminSignUp from './components/AdminSignUp'
 import Register from './components/Register'
 import StudentDash from './components/StudentDash'
 import DashBoards from './components/DashBoards'
+import SeniorDash from './components/SeniorDash'
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 			<Route path='/volunteer' component={SeniorSignUp} />
             <Route path='/admin-signup' component={AdminSignUp} />
             <Route path='/dashboards' component={DashBoards}/>
+            <Route path='/volunteer-dash' component={SeniorDash}/>
 		</div>
 	);
 }
