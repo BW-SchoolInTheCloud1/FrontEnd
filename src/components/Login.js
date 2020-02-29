@@ -39,11 +39,11 @@ const Login = props => {
 
 	return (
 		<BackgroundDiv>
-			<Container>
+			<Container style={{ paddingTop: '40px' }}>
 				<Row>
 					<Col sm='12' md={{ size: 6, offset: 3 }}>
 						<h3>Log in below</h3>
-						<AvForm onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+						<AvForm onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
 							<AvField
 								label='Email'
 								type='email'

@@ -9,19 +9,21 @@ import SeniorSignUp from './components/SeniorSignUp'
 import AdminSignUp from './components/AdminSignUp'
 import Register from './components/Register'
 import StudentDash from './components/StudentDash'
+import AdminDash from './components/AdminDash'
 import DashBoards from './components/DashBoards'
 
 function App() {
 	return (
 		<div className='App'>
-            <NavBar />
-            <ProtectedRoute exact path ='/student-dash' component={StudentDash}/>
+         <NavBar />
+         <ProtectedRoute exact path ='/student-dash' component={StudentDash}/>
+			<ProtectedRoute exact path ='/admin-dash' component={AdminDash}/>
 			<Route exact path='/' component={Login} />
 			<Route path='/register' component={Register} />
 			<Route path='/student' component={StudentSignUp} />
 			<Route path='/volunteer' component={SeniorSignUp} />
-            <Route path='/admin-signup' component={AdminSignUp} />
-            <Route path='/dashboards' component={DashBoards}/>
+         <Route path='/admin-signup' component={AdminSignUp} />
+         <Route path='/dashboards' component={DashBoards}/>
 		</div>
 	);
 }
