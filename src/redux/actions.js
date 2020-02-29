@@ -5,7 +5,7 @@ export const GET_SENIORS_LIST = 'GET_SENIORS_LIST'
 export const POST_NEW_SENIOR = 'POST_NEW_SENIOR'
 export const POST_NEW_STUDENT = 'POST_NEW_STUDENT'
 export const POST_NEW_ADMIN = 'POST_NEW_ADMIN'
-export const POST_NEW_TASK = 'POST_NEW_TASK'
+export const ASSIGN_NEW_TASK = 'POST_NEW_TASK'
 export const SET_ERROR = 'SET_ERROR'
 
 export const login = (credentials, props) => dispatch => {
@@ -65,6 +65,15 @@ export const postNewAdmin = (adminToPost) => dispatch => {
       })
 }
 
-export const postNewTask = TaskToPost => dispatch => {
-   dispatch({ type: POST_NEW_TASK })
+export const assignNewTask = taskToAssign => dispatch => {
+   dispatch({ type: ASSIGN_NEW_TASK })
+   axiosWithAuth()
+      .post('/admin/8/todos', taskToAssign)
+      .then(res => {
+         console.log("Yo Look Here!", res)
+      })
+      .catch(err => {
+         console.log('NOOOOO!!!!', err)
+         dispatch({ type: SET_ERROR, payload: 'error logging in'})
+      })
 }
