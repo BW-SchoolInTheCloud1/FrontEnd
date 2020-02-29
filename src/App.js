@@ -11,6 +11,7 @@ import Register from './components/Register'
 import StudentDash from './components/StudentDash'
 import AdminDash from './components/AdminDash'
 import DashBoards from './components/DashBoards'
+import SeniorDash from './components/SeniorDash'
 
 function App() {
 	return (
@@ -22,8 +23,13 @@ function App() {
 			<Route path='/register' component={Register} />
 			<Route path='/student' component={StudentSignUp} />
 			<Route path='/volunteer' component={SeniorSignUp} />
+
+            
+            <Route path='/volunteer-dash' component={SeniorDash}/>
+
          <Route path='/admin-signup' component={AdminSignUp} />
          <Route path='/dashboards' component={DashBoards}/>
+
 		</div>
 	);
 }
