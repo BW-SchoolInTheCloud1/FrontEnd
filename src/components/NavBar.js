@@ -41,6 +41,11 @@ const NavBar = () => {
 											Register
 										</Link>
 									</NavItem>
+									<NavItem>
+										<Link to='/dashboards' className='navLink'>
+											Dashboards
+										</Link>
+									</NavItem>
 								</Nav>
 							</Collapse>
 						</Navbar>
