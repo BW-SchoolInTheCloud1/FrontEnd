@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { login } from '../redux/actions';
-import { Button, Container, Row, Col } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { login } from '../redux/actions'
+import { Button, Container, Row, Col } from 'reactstrap'
+import { AvForm, AvField } from 'availity-reactstrap-validation'
+import styled from 'styled-components'
 
 const BackgroundDiv = styled.div`
 	height: 100vh;
