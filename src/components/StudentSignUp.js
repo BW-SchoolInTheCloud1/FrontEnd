@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { postNewStudent } from '../redux/actions'
 import { Button, Container, Row, Col } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const BackgroundDiv = styled.div`
     height: 100vh;
