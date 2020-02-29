@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { login } from '../redux/actions'
 import { Button, Container, Row, Col } from 'reactstrap'
-import { AvForm, AvField, AvGroup } from 'availity-reactstrap-validation'
+import { AvForm, AvField } from 'availity-reactstrap-validation'
 
 const Login = props => {
    const dispatch = useDispatch()
