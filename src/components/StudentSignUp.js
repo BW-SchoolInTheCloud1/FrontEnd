@@ -49,11 +49,11 @@ const StudentSignUp = () => {
 
     return (
         <BackgroundDiv>
-            <Container>
+            <Container style={{ paddingTop: '40px' }}>
                 <Row>
                     <Col sm='12' md={{ size: 6, offset: 3 }}>
                         <h1>Student Sign Up</h1>
-                        <AvForm className='StudentSignUp-form' onSubmit={handleSubmit}>
+                        <AvForm className='StudentSignUp-form' onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
                             <AvField
                                 label='First Name'
                                 type='text'

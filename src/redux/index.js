@@ -4,7 +4,7 @@ import {
    GET_SENIORS_LIST, 
    POST_NEW_SENIOR, 
    POST_NEW_STUDENT, 
-   POST_NEW_TASK, 
+   ASSIGN_NEW_TASK, 
    SET_ERROR } from './actions'
 
 const initialState = {
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
          return {
             ...state
          }
-      case POST_NEW_TASK:
+      case ASSIGN_NEW_TASK:
          return {
             ...state
          }

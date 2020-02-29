@@ -19,7 +19,7 @@ function App() {
 			<Route path='/student' component={StudentSignUp} />
 			<Route path='/volunteer' component={SeniorSignUp} />
 			<Route path='/admin-signup' component={AdminSignUp} />
-			<ProtectedRoute path='/admin-dash' component={AdminDash} />
+			<Route path='/admin-dash' component={AdminDash} />
 		</div>
 	);
 }
