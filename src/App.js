@@ -18,7 +18,7 @@ function App() {
 		<div className='App'>
 			<NavBar />
 			<ProtectedRoute exact path='/student-dash' component={StudentDash} />
-			<ProtectedRoute exact path='/volunteer-dash' component={SeniorDash} />
+			<ProtectedRoute exact path='/volunteer-dash/:id' component={SeniorDash} />
 			<ProtectedRoute exact path='/admin-dash' component={AdminDash} />
 			<Route exact path='/' component={Login} />
 			<Route path='/register' component={Register} />

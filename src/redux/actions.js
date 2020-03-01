@@ -17,11 +17,11 @@ export const login = (credentials, props) => dispatch => {
          console.log(res)
          localStorage.setItem('token', res.data.token)
          if (res.data.user.role === 'admin') {
-            props.history.push('/admin-dash')
+            props.history.push(`/admin-dash/${res.data.user.id}`)
          } else if (res.data.user.role === 'volunteer') {
-            props.history.push('/volunteer-dash')
+            props.history.push(`/volunteer-dash/${res.data.user.id}`)
          } else if (res.data.user.role === 'student') {
-            props.history.push('/student-dash')
+            props.history.push(`/student-dash/${res.data.user.id}`)
          }
       })
       .catch(err => {
@@ -36,7 +36,7 @@ export const getSeniors  =  () => dispatch =>  {
 		.get('/volunteer/')
 		.then(res => {
 			console.log('getSeniors response', res);
-			dispatch({ type: GET_SENIORS_LIST,  payload: res.data });
+         dispatch({ type: GET_SENIORS_LIST,  payload: res.data });
 		})
 		.catch(err => {
 			console.log('NOOOOO!!!!', err);
@@ -45,12 +45,13 @@ export const getSeniors  =  () => dispatch =>  {
 }
 
 
-export const postNewSenior = (seniorToPost) => dispatch => {
+export const postNewSenior = (seniorToPost, props) => dispatch => {
    axiosWithAuth()
       .post('/auth/register', seniorToPost)
       .then(res => {
          console.log("Yo Look Here!", res)
          localStorage.setItem('token', res.data.token)
+         // props.history.push(`/volunteer-dash/${res.data.user.id}`)
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err)
