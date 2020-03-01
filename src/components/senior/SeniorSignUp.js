@@ -15,8 +15,7 @@ const BackgroundDiv = styled.div`
 	background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
 `;
 
-const SeniorSignUp = () => {
-	const history = useHistory();
+const SeniorSignUp = props => {
 	const dispatch = useDispatch();
 
 	const [seniorToPost, setSeniorToPost] = useState({
@@ -37,7 +36,7 @@ const SeniorSignUp = () => {
 	};
 	const handleSubmit = e => {
 		e.preventDefault();
-		dispatch(postNewSenior(seniorToPost));
+		dispatch(postNewSenior(seniorToPost, props));
 		setSeniorToPost({
 			firstName: '',
 			lastName: '',
@@ -47,7 +46,6 @@ const SeniorSignUp = () => {
 			available: '',
 			role: 'volunteer',
 		});
-		history.push('/volunteer-dash');
 	};
 
 	return (
