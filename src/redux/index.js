@@ -28,16 +28,6 @@ const reducer = (state = initialState, action) => {
             seniors: action.payload,
             isFetching: false
          }
-      case POST_NEW_SENIOR:
-         return {
-            ...state,
-            isFetching: false
-         }
-      case POST_NEW_STUDENT:
-         return {
-            ...state,
-            isFetching: false
-         }
       case SET_ERROR:
          return {
             ...state,
@@ -53,6 +43,10 @@ const reducer = (state = initialState, action) => {
       case ASSIGN_NEW_TASK:
          return {
             ...state,
+            tasks: [
+               ...state.tasks,
+               action.payload
+            ],
             isFetching: false
          }
       case PREPARE_DATA: 

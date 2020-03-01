@@ -31,20 +31,17 @@ export const login = (credentials, props) => dispatch => {
       })
 }
 
-export const getSeniors  =  () =>async dispatch =>  {
-   dispatch({ type: GET_SENIORS_LIST })
-   await
+export const getSeniors  =  () => dispatch =>  {
    axiosWithAuth()
-		         .get('/volunteer/')
-				   .then(res => {
-					console.log('GET_SENIORS_LIST', res);
-					dispatch({ type: GET_SENIORS_LIST,  payload: res.data });
-				})
-				.catch(err => {
-					console.log('NOOOOO!!!!', err);
-					dispatch({ type: SET_ERROR, payload: 'error getting tasks' });
-            });
-   
+		.get('/volunteer/')
+		.then(res => {
+			console.log('getSeniors response', res);
+			dispatch({ type: GET_SENIORS_LIST,  payload: res.data });
+		})
+		.catch(err => {
+			console.log('NOOOOO!!!!', err);
+			dispatch({ type: SET_ERROR, payload: 'error getting tasks' });
+      });
 }
 
 
@@ -76,7 +73,6 @@ export const postNewStudent = (studentToPost) => dispatch => {
 }
 
 export const postNewAdmin = (adminToPost) => dispatch => {
-   dispatch({ type: POST_NEW_ADMIN })
    axiosWithAuth()
       .post('/auth/register', adminToPost)
       .then(res => {
@@ -107,6 +103,7 @@ export const assignNewTask = taskToAssign => dispatch => {
       .post('/admin/8/todos', taskToAssign)
       .then(res => {
          console.log("ASSIGN_NEW_TASK", res.data)
+         dispatch({ type: ASSIGN_NEW_TASK, payload: res.data})
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err)

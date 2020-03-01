@@ -2,12 +2,13 @@ import React from 'react';
 
 
 
-const SeniorCard = ({ times, location }) => {
+const SeniorCard = ({ times, location, id }) => {
   
   return (
-    <div>
+    <div key={id}>
       <h2>Available: {times}</h2>
-      <h3>Location: {location}</h3>
+      <h2>Location: {location}</h2>
+      <p>Id: {id}</p>
     </div>
   )
 }

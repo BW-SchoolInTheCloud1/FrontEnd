@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSeniors } from '../../redux/actions';
 import SeniorList from '../senior/SeniorList';
-import { Spinner } from 'reactstrap';
+import { Spinner, Button } from 'reactstrap';
 import SeniorCard from '../senior/SeniorCard';
 
 const BackgroundDiv = styled.div`
@@ -15,7 +15,7 @@ const BackgroundDiv = styled.div`
 `;
 
 const StudentDash = () => {
-	const volunteers = useSelector(state => state.seniors);
+	const seniors = useSelector(state => state.seniors);
 	const isFetching = useSelector(state => state.isFetching);
 	const dispatch = useDispatch();
 	const [searchTerm, setSearchTerm] = useState('')
@@ -27,14 +27,14 @@ const StudentDash = () => {
 	};
 	const handleSubmit = e => {
 		e.preventDefault();
-		dispatch(getSeniors(setVolunteer));
-		const results = volunteers.filter(character => {
-			return (
-				character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				character.availability.toLowerCase().includes(searchTerm.toLowerCase())
-			);
-		});
-			setVolunteer(results);
+		dispatch(getSeniors());
+		// const results = volunteers.filter(character => {
+		// 	return (
+		// 		character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
+		// 		character.availability.toLowerCase().includes(searchTerm.toLowerCase())
+		// 	);
+		// });
+			// setVolunteer(results);
 		
 	};
 	return (
@@ -43,23 +43,11 @@ const StudentDash = () => {
 				<input type='search' name='search' value={searchTerm} onChange={handleChange} />
 				<button>Search</button>
 			</form>
-			<div>
-				{isFetching ? (
-					<div>
-						<Spinner />
-						<Spinner />
-						<Spinner />
-					</div>
-				) : (
-					<div>
-						{volunteer.map(person => (
-							<div>
-								<SeniorCard time={person.availability} location={person.country} />
-							</div>
-						))}
-					</div>
-				)}
-			</div>
+
+
+			<Button onClick={() => dispatch(getSeniors())}>Show all seniors</Button>
+			<SeniorList />
+
 		</BackgroundDiv>
 	);
 };
