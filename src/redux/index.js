@@ -65,5 +65,5 @@ const reducer = (state = initialState, action) => {
 }
 
 const store = createStore(reducer, applyMiddleware(thunk))
-store.subscribe(() => console.log(store.getState()))
+store.subscribe(() => console.log("THIS IS THE STORE!",store.getState()))
 export default store

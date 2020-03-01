@@ -47,6 +47,7 @@ const StudentSignUp = () => {
 		history.push('/student-dash');
 	};
 
+		
 	return (
 		<BackgroundDiv>
 			<Container style={{ paddingTop: '40px' }}>

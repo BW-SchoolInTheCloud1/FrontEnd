@@ -19,7 +19,7 @@ export const login = (credentials, props) => dispatch => {
          if (res.data.user.role === 'admin') {
             props.history.push('/admin-dash')
          } else if (res.data.user.role === 'volunteer') {
-            props.history.push('/senior-dash')
+            props.history.push('/volunteer-dash')
          } else if (res.data.user.role === 'student') {
             props.history.push('/student-dash')
          }
@@ -35,7 +35,7 @@ export const getSeniors = () => dispatch => {
    dispatch({ type: GET_SENIORS_LIST })
 }
 
-export const postNewSenior = seniorToPost => dispatch => {
+export const postNewSenior = (seniorToPost) => dispatch => {
    dispatch({ type: POST_NEW_SENIOR })
    axiosWithAuth()
       .post('/auth/register', seniorToPost)
