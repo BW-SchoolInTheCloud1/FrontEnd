@@ -33,7 +33,18 @@ export const login = (credentials, props) => dispatch => {
 
 export const getSeniors = () => dispatch => {
    dispatch({ type: GET_SENIORS_LIST })
+   axiosWithAuth()
+				.get('/volunteer/')
+				.then(res => {
+					console.log('GET_SENIORS_LIST', res);
+					dispatch({ type: GET_SENIORS_LIST, payload: res.data });
+				})
+				.catch(err => {
+					console.log('NOOOOO!!!!', err);
+					dispatch({ type: SET_ERROR, payload: 'error getting tasks' });
+				});
 }
+
 
 export const postNewSenior = (seniorToPost) => dispatch => {
    dispatch({ type: POST_NEW_SENIOR })
