@@ -2,11 +2,13 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 export const LOGIN = 'LOGIN'
 export const GET_SENIORS_LIST = 'GET_SENIORS_LIST'
+export const GET_TASKS = 'GET_TASKS'
 export const POST_NEW_SENIOR = 'POST_NEW_SENIOR'
 export const POST_NEW_STUDENT = 'POST_NEW_STUDENT'
 export const POST_NEW_ADMIN = 'POST_NEW_ADMIN'
 export const ASSIGN_NEW_TASK = 'POST_NEW_TASK'
 export const SET_ERROR = 'SET_ERROR'
+export const PREPARE_DATA = 'PREPARE_DATA'
 
 export const login = (credentials, props) => dispatch => {
    axiosWithAuth()
@@ -65,15 +67,27 @@ export const postNewAdmin = (adminToPost) => dispatch => {
       })
 }
 
-export const assignNewTask = taskToAssign => dispatch => {
-   dispatch({ type: ASSIGN_NEW_TASK })
+export const getTasks = () => dispatch => {
    axiosWithAuth()
-      .post('/admin/8/todos', taskToAssign)
+      .get('/todos')
       .then(res => {
-         console.log("Yo Look Here!", res)
+         console.log("GET_TASKS", res)
+         dispatch({ type: GET_TASKS, payload: res.data })
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err)
-         dispatch({ type: SET_ERROR, payload: 'error logging in'})
+         dispatch({ type: SET_ERROR, payload: 'error getting tasks'})
+      })
+}
+
+export const assignNewTask = taskToAssign => dispatch => {
+   axiosWithAuth()
+      .post('/admin/8/todos', taskToAssign)
+      .then(res => {
+         console.log("ASSIGN_NEW_TASK", res.data)
+      })
+      .catch(err => {
+         console.log('NOOOOO!!!!', err)
+         dispatch({ type: SET_ERROR, payload: 'error assigning task'})
       })
 }
