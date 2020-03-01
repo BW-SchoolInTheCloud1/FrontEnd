@@ -10,7 +10,6 @@ const BackgroundDiv = styled.div`
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background-color: #fcb97d;
 	background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
 `;
 
@@ -41,8 +40,8 @@ const Login = props => {
 			<Container style={{ paddingTop: '40px' }}>
 				<Row>
 					<Col sm='12' md={{ size: 6, offset: 3 }}>
-						<h3>Log in below</h3>
-						<AvForm onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
+						<h3 className='nonForm'>Log In</h3>
+						<AvForm className='formWrapper' onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
 							<AvField
 								label='Email'
 								type='email'
@@ -67,7 +66,7 @@ const Login = props => {
 									required: { value: true, errorMessage: 'A valid password is required for log in' },
 								}}
 							/>
-							<Button>Log In</Button>
+							<Button className='formButton'>Log In</Button>
 						</AvForm>
 					</Col>
 				</Row>

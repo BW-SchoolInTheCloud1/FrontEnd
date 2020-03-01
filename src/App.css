@@ -1,6 +1,3 @@
-/* .App {
-  text-align: center;
-} */
 
 .registerButton{
   margin: 5%;
@@ -9,15 +6,43 @@
 .registerLink{
   text-decoration: none;
   color: whitesmoke;
-}
 
+}
+a:hover{
+  color: whitesmoke;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+.navBar{
+  text-align: right;
+}
 .navLink{
   text-decoration: none;
   color: whitesmoke;
   font-size: 20px;
-  text-align: center;
 }
+
 .logo{
   width: 7rem;
 
 }
+
+.nonForm{
+  text-align: center;
+}
+
+.formButton{
+  margin-left: 45%;
+}
+
+.formWrapper{
+ box-shadow: 15px 20px 15px black;
+ background-color: rgba(85, 85, 85,.9);
+ border: 5px groove #28262C;
+ padding: 2%;
+ color: #F4F1DE;
+ border-radius: 10px;
+ border-bottom-right-radius: 50px;
+ border-top-left-radius: 50px;
+
+}
+

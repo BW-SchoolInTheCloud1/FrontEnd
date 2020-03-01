@@ -14,7 +14,7 @@ const BackgroundDiv = styled.div`
 
 const DashBoards = () => {
 	return (
-		<BackgroundDiv>
+		<BackgroundDiv className='nonForm'>
 			<Button size='lg' className='registerButton'>
 				<Link to='/student-dash' className='registerLink'>
 					Student Dash

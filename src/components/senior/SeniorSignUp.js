@@ -4,8 +4,7 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { postNewSenior} from '../redux/actions';
-
+import { postNewSenior } from '../../redux/actions';
 
 const BackgroundDiv = styled.div`
 	height: 100vh;
@@ -21,15 +20,13 @@ const SeniorSignUp = () => {
 	const dispatch = useDispatch();
 
 	const [seniorToPost, setSeniorToPost] = useState({
-		
 		firstName: '',
 		lastName: '',
 		email: '',
 		password: '',
 		country: '',
 		available: '',
-		role:'volunteer'
-		
+		role: 'volunteer',
 	});
 
 	const handleChange = e => {
@@ -58,8 +55,8 @@ const SeniorSignUp = () => {
 			<Container style={{ paddingTop: '40px' }}>
 				<Row>
 					<Col sm={{ size: 6, order: 2, offset: 3 }}>
-						<h1>Volunteer Sign Up</h1>
-						<AvForm className='VolunteerSignUp-form' onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
+						<h1 className='nonForm'>Volunteer Sign Up</h1>
+						<AvForm className='formWrapper' onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
 							<AvField
 								label='First Name'
 								type='text'
@@ -144,7 +141,9 @@ const SeniorSignUp = () => {
 									},
 								}}
 							/>
-							<Button type='submit'>Sign Up</Button>
+							<Button className='formButton' type='submit'>
+								Sign Up
+							</Button>
 						</AvForm>
 					</Col>
 				</Row>

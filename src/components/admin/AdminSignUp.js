@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { postNewAdmin } from '../redux/actions';
+import { postNewAdmin } from '../../redux/actions';
 import { Button, Container, Row, Col } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import styled from 'styled-components';
@@ -52,8 +52,8 @@ const AdminSignUp = () => {
 			<Container style={{ paddingTop: '40px' }}>
 				<Row>
 					<Col sm='12' md={{ size: 6, offset: 3 }}>
-						<h1>Admin Sign Up</h1>
-						<AvForm className='StudentSignUp-form' onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
+						<h1 className='nonForm'>Admin Sign Up</h1>
+						<AvForm className='formWrapper' onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
 							<AvField
 								label='First Name'
 								type='text'
@@ -110,7 +110,9 @@ const AdminSignUp = () => {
 									},
 								}}
 							/>
-							<Button type='submit'>Sign Up</Button>
+							<Button type='submit' className='formButton'>
+								Sign Up
+							</Button>
 						</AvForm>
 					</Col>
 				</Row>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../images/Golden-Tutors-logo.png';
+import Logo from '../../images/Golden-Tutors-logo.png';
 import { useHistory } from 'react-router-dom';
 import {
 	Collapse,
@@ -39,15 +39,15 @@ const NavBar = () => {
 				<NavbarBrand src={Logo} href='https://goldentutors.netlify.com/' className='mr-auto'>
 					<img src={Logo} alt='logo' className='logo' />
 				</NavbarBrand>
-				<Button onClick={clickHandle}outline color='secondary'>
+				<Button onClick={clickHandle} outline color='secondary' className='mr-2'>
 					Log In
 				</Button>
-				<Button onClick={handleClick} outline color='secondary'>
+				<Button onClick={handleClick} outline color='secondary' className='mr-2'>
 					Log Out
 				</Button>
 				<NavbarToggler onClick={toggleNavbar} className='mr-2' />
 				<Collapse isOpen={!collapsed} navbar>
-					<Nav navbar>
+					<Nav navbar className='navBar'>
 						<NavItem>
 							<Link to='/register' className='navLink'>
 								Register
