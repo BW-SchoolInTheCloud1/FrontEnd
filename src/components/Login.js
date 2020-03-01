@@ -28,8 +28,7 @@ const Login = props => {
 		});
 	};
 
-	const handleSubmit = e => {
-		e.preventDefault();
+	const handleSubmit = () => {
 		dispatch(login(credentials, props));
 		setCredentials({
 			email: '',

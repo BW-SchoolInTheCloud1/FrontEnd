@@ -59,7 +59,7 @@ const SeniorSignUp = () => {
 				<Row>
 					<Col sm={{ size: 6, order: 2, offset: 3 }}>
 						<h1>Volunteer Sign Up</h1>
-						<AvForm onSubmit={handleSubmit}style={{ marginTop: '40px' }} >
+						<AvForm className='VolunteerSignUp-form' onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
 							<AvField
 								label='First Name'
 								type='text'
@@ -103,18 +103,17 @@ const SeniorSignUp = () => {
 								}}
 							/>
 							<AvField
-								label='Country'
+								label='Country.'
 								type='select'
 								name='country'
+								defaultValue='DEFAULT'
 								value={seniorToPost.country}
-								onChange={handleChange}
-								>
-								
-								<option defaultValue disabled>
+								onChange={handleChange}>
+								<option value='DEFAULT' disabled>
 									Please select a country
 								</option>
-									<option>USA</option>
-								
+								<option>USA</option>
+
 								{/* write map function to return more options the one above is a placeholder */}
 							</AvField>
 							<AvField
