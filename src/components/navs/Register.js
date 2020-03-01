@@ -16,7 +16,7 @@ const Register = () => {
   
 
   return (
-			<BackgroundDiv>
+			<BackgroundDiv className='nonForm'>
 				<Button size='lg' className='registerButton'>
 					<Link to='/student' className='registerLink'>
 						Students

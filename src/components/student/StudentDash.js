@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
-
 const BackgroundDiv = styled.div`
 	height: 100vh;
 	margin: 0;
@@ -12,19 +10,14 @@ const BackgroundDiv = styled.div`
 	background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
 `;
 
-
-
 const StudentDash = () => {
-	
-	
+	return (
+		<BackgroundDiv>
+			<div>
+				<input type='search' value='' />
+			</div>
+		</BackgroundDiv>
+	);
+};
 
-  return (
-			<BackgroundDiv>
-				<div>
-					<input type='search' value='' />
-				</div>
-			</BackgroundDiv>
-		);
-}
-
-export default StudentDash
+export default StudentDash;

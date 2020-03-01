@@ -2,16 +2,16 @@ import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import ProtectedRoute from './utils/ProtectedRoute';
-import NavBar from './components/NavBar';
+import NavBar from './components/navs/NavBar';
 import Login from './components/Login';
-import StudentSignUp from './components/StudentSignUp';
-import SeniorSignUp from './components/SeniorSignUp';
-import AdminSignUp from './components/AdminSignUp';
-import Register from './components/Register';
-import StudentDash from './components/StudentDash';
-import AdminDash from './components/AdminDash';
-import DashBoards from './components/DashBoards';
-import SeniorDash from './components/SeniorDash';
+import StudentSignUp from './components/student/StudentSignUp';
+import SeniorSignUp from './components/senior/SeniorSignUp';
+import AdminSignUp from './components/admin/AdminSignUp';
+import Register from './components/navs/Register';
+import StudentDash from './components/student/StudentDash';
+import AdminDash from './components/admin/AdminDash';
+import DashBoards from './components/navs/DashBoards';
+import SeniorDash from './components/senior/SeniorDash';
 
 function App() {
 	return (
