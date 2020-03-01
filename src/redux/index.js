@@ -11,7 +11,6 @@ import {
 
 const initialState = {
    seniors: [],
-   volunteers:[],
    tasks: [{
       title: 'test',
       description: 'test from global state',
@@ -27,8 +26,7 @@ const reducer = (state = initialState, action) => {
          return {
             ...state,
             seniors: action.payload,
-            volunteers: action.payload,
-            isFetching: true
+            isFetching: false
          }
       case POST_NEW_SENIOR:
          return {

@@ -42,7 +42,7 @@ export const getSeniors = () => dispatch => {
 				.catch(err => {
 					console.log('NOOOOO!!!!', err);
 					dispatch({ type: SET_ERROR, payload: 'error getting tasks' });
-				});
+            });
 }
 
 
