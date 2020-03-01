@@ -22,10 +22,9 @@ const StudentDash = () => {
 	const handleChange = e => {
 		setSearchTerm(e.target.value)
 	};
+
 	const handleSubmit = e => {
 		e.preventDefault();
-		
-		
 		const results = seniors.filter(character => {
 			return (
 				character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
