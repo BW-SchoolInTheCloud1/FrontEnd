@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSeniors } from '../../redux/actions';
 import SeniorList from '../senior/SeniorList';
+import { Spinner } from 'reactstrap';
+import SeniorCard from '../senior/SeniorCard';
 
 const BackgroundDiv = styled.div`
 	height: 100vh;
@@ -13,25 +15,26 @@ const BackgroundDiv = styled.div`
 `;
 
 const StudentDash = () => {
-	const seniors = useSelector(state => state.seniors);
+	const volunteers = useSelector(state => state.seniors);
+	const isFetching = useSelector(state => state.isFetching);
 	const dispatch = useDispatch();
 	const [searchTerm, setSearchTerm] = useState('')
-	
+	const [volunteer, setVolunteer]= useState([])
 
 	
 	const handleChange = e => {
 		setSearchTerm(e.target.value)
 	};
-
 	const handleSubmit = e => {
 		e.preventDefault();
-		const results = seniors.filter(character => {
+		dispatch(getSeniors(setVolunteer));
+		const results = volunteers.filter(character => {
 			return (
 				character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
 				character.availability.toLowerCase().includes(searchTerm.toLowerCase())
 			);
 		});
-			dispatch(getSeniors(results));
+			setVolunteer(results);
 		
 	};
 	return (
@@ -41,7 +44,21 @@ const StudentDash = () => {
 				<button>Search</button>
 			</form>
 			<div>
-				<SeniorList />
+				{isFetching ? (
+					<div>
+						<Spinner />
+						<Spinner />
+						<Spinner />
+					</div>
+				) : (
+					<div>
+						{volunteer.map(person => (
+							<div>
+								<SeniorCard time={person.availability} location={person.country} />
+							</div>
+						))}
+					</div>
+				)}
 			</div>
 		</BackgroundDiv>
 	);

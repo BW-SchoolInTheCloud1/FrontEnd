@@ -25,10 +25,7 @@ const SeniorList = () => {
 					<div>
 						{seniors.map(person => (
 							<div>
-								<SeniorCard
-									time={person.availability}
-									location={person.country}
-								/>
+								<SeniorCard time={person.availability} location={person.country} />
 							</div>
 						))}
 					</div>
