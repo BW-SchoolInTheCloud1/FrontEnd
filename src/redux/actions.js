@@ -50,7 +50,6 @@ export const getSeniors =() => (async(dispatch) =>  {
 
 
 export const postNewSenior = (seniorToPost) => dispatch => {
-   dispatch({ type: POST_NEW_SENIOR })
    axiosWithAuth()
       .post('/auth/register', seniorToPost)
       .then(res => {
@@ -65,7 +64,6 @@ export const postNewSenior = (seniorToPost) => dispatch => {
 
 
 export const postNewStudent = (studentToPost) => dispatch => {
-   dispatch({ type: POST_NEW_STUDENT })
    axiosWithAuth()
       .post('/auth/register', studentToPost)
       .then(res => {
