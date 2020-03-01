@@ -13,10 +13,10 @@ const BackgroundDiv = styled.div`
 `;
 
 const StudentDash = () => {
-	const volunteers = useSelector(state => state.volunteer);
+	const seniors = useSelector(state => state.seniors);
 	const dispatch = useDispatch();
 	const [searchTerm, setSearchTerm] = useState('')
-	const [volunteer, setVolunteer]=([])
+	
 
 	
 	const handleChange = e => {
@@ -24,11 +24,16 @@ const StudentDash = () => {
 	};
 	const handleSubmit = e => {
 		e.preventDefault();
-		dispatch(getSeniors(setVolunteer));
-		const results = volunteers.filter(character => {
-			return character.country.toLowerCase().includes(searchTerm.toLowerCase());
+		
+		
+		const results = seniors.filter(character => {
+			return (
+				character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				character.availability.toLowerCase().includes(searchTerm.toLowerCase())
+			);
 		});
-		setVolunteer(results);
+			dispatch(getSeniors(results));
+		
 	};
 	return (
 		<BackgroundDiv>
