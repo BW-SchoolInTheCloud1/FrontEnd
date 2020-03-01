@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Button, Container, Row, Col } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { postNewSenior} from '../redux/actions';
+
 
 const BackgroundDiv = styled.div`
 	height: 100vh;
@@ -13,20 +17,40 @@ const BackgroundDiv = styled.div`
 `;
 
 const SeniorSignUp = () => {
-	const [seniors, setSeniors] = useState({
+	const history = useHistory();
+	const dispatch = useDispatch();
+
+	const [seniorToPost, setSeniorToPost] = useState({
+		
 		firstName: '',
 		lastName: '',
 		email: '',
 		password: '',
 		country: '',
 		available: '',
+		role:'volunteer'
+		
 	});
 
 	const handleChange = e => {
-		setSeniors({
-			...seniors,
+		setSeniorToPost({
+			...seniorToPost,
 			[e.target.name]: e.target.value,
 		});
+	};
+	const handleSubmit = e => {
+		e.preventDefault();
+		dispatch(postNewSenior(seniorToPost));
+		setSeniorToPost({
+			firstName: '',
+			lastName: '',
+			email: '',
+			password: '',
+			country: '',
+			available: '',
+			role: 'volunteer',
+		});
+		history.push('/volunteer-dash');
 	};
 
 	return (
@@ -35,13 +59,13 @@ const SeniorSignUp = () => {
 				<Row>
 					<Col sm={{ size: 6, order: 2, offset: 3 }}>
 						<h1>Volunteer Sign Up</h1>
-						<AvForm style={{ marginTop: '40px' }}>
+						<AvForm onSubmit={handleSubmit}style={{ marginTop: '40px' }} >
 							<AvField
 								label='First Name'
 								type='text'
 								name='firstName'
 								placeholder='Please enter your first name here'
-								value={seniors.firstName}
+								value={seniorToPost.firstName}
 								onChange={handleChange}
 								validate={{
 									required: {
@@ -55,7 +79,7 @@ const SeniorSignUp = () => {
 								type='text'
 								name='lastName'
 								placeholder='Please enter your last name here'
-								value={seniors.lastName}
+								value={seniorToPost.lastName}
 								onChange={handleChange}
 								validate={{
 									required: {
@@ -66,10 +90,10 @@ const SeniorSignUp = () => {
 							/>
 							<AvField
 								label='Email'
-								type='text'
+								type='email'
 								name='email'
 								placeholder='Please enter a valid email here'
-								value={seniors.email}
+								value={seniorToPost.email}
 								onChange={handleChange}
 								validate={{
 									required: {
@@ -82,18 +106,23 @@ const SeniorSignUp = () => {
 								label='Country'
 								type='select'
 								name='country'
-								value={seniors.country}
+								value={seniorToPost.country}
 								onChange={handleChange}
-								placeholder='Please select a country'>
-								<option disabled selected>Please select a country</option>
+								>
+								
+								<option defaultValue disabled>
+									Please select a country
+								</option>
+									<option>USA</option>
+								
 								{/* write map function to return more options the one above is a placeholder */}
 							</AvField>
 							<AvField
 								label='Availability'
-								type='text'
+								type='time'
 								name='available'
 								placeholder='Please indicate your availability'
-								value={seniors.available}
+								value={seniorToPost.available}
 								onChange={handleChange}
 								validate={{
 									required: {
@@ -104,10 +133,10 @@ const SeniorSignUp = () => {
 							/>
 							<AvField
 								label='Password'
-								type='text'
+								type='password'
 								name='password'
 								placeholder='Please enter an awesome password here'
-								value={seniors.password}
+								value={seniorToPost.password}
 								onChange={handleChange}
 								validate={{
 									required: {

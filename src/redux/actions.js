@@ -37,7 +37,18 @@ export const getSeniors = () => dispatch => {
 
 export const postNewSenior = seniorToPost => dispatch => {
    dispatch({ type: POST_NEW_SENIOR })
+   axiosWithAuth()
+      .post('/auth/register', seniorToPost)
+      .then(res => {
+         console.log("Yo Look Here!", res)
+         localStorage.setItem('token', res.data.token)
+      })
+      .catch(err => {
+         console.log('NOOOOO!!!!', err)
+         dispatch({ type: SET_ERROR, payload: 'error logging in'})
+      })
 }
+
 
 export const postNewStudent = (studentToPost) => dispatch => {
    dispatch({ type: POST_NEW_STUDENT })
