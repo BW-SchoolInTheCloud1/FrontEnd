@@ -31,11 +31,11 @@ const SeniorSignUp = () => {
 
 	return (
 		<BackgroundDiv>
-			<Container>
+			<Container style={{ paddingTop: '40px' }}>
 				<Row>
 					<Col sm={{ size: 6, order: 2, offset: 3 }}>
 						<h1>Volunteer Sign Up</h1>
-						<AvForm>
+						<AvForm style={{ marginTop: '40px' }}>
 							<AvField
 								label='First Name'
 								type='text'
@@ -116,7 +116,7 @@ const SeniorSignUp = () => {
 									},
 								}}
 							/>
-							<Button type='submit'>Submit</Button>
+							<Button type='submit'>Sign Up</Button>
 						</AvForm>
 					</Col>
 				</Row>

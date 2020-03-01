@@ -113,7 +113,7 @@ const StudentSignUp = () => {
                                     },
                                 }}
                             />
-                            <Button type='submit'>Submit</Button>
+                            <Button type='submit'>Sign Up</Button>
                         </AvForm>
                     </Col>
                 </Row>
