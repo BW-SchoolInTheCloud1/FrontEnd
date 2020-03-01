@@ -11,7 +11,11 @@ import {
 
 const initialState = {
    seniors: [],
-   tasks: [],
+   tasks: [{
+      title: 'test',
+      description: 'test from global state',
+      volunteer_id: 999
+   }],
    error: '',
    isFetching: false
 }

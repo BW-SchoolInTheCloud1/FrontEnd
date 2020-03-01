@@ -93,7 +93,7 @@ const AdminDash = () => {
 			      		</Col>
 			      	</Row>
 			      </Container>
-               {isFetching ? (<div><Spinner /><Spinner /><Spinner /></div>) : (<Button onClick={dispatch(getTasks)}>Show all tasks</Button>)}
+               {isFetching ? (<div><Spinner /><Spinner /><Spinner /></div>) : (<Button onClick={() => dispatch(getTasks())}>Show all tasks</Button>)}
                <div>{tasks.map(task => <p>{task.title}</p>)}</div>
             </Container>
          </BackgroundDiv>
