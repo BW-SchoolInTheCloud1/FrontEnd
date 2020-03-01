@@ -14,24 +14,22 @@ const SeniorList = () => {
   
 
   return (
-			<div>
-				{isFetching ? (
-					<div >
-						<Spinner />
-						<Spinner />
-						<Spinner />
-					</div>
-				) : (
-					<div>
-						{seniors.map(person => (
-							<div>
-								<SeniorCard time={person.availability} location={person.country} />
-							</div>
-						))}
-					</div>
-				)}
-			</div>
-		);
+		<div>
+			{isFetching ? (
+				<div >
+					<Spinner />
+					<Spinner />
+					<Spinner />
+				</div>
+			) : (
+				<div>
+					{seniors.map(person => (
+						<SeniorCard key={person.id} times={person.availability} location={person.country} id={person.id}/>
+					))}
+				</div>
+			)}
+		</div>
+);
 }
 
 export default SeniorList
