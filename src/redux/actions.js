@@ -1,6 +1,5 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-
 export const LOGIN = 'LOGIN'
 export const GET_SENIORS_LIST = 'GET_SENIORS_LIST'
 export const GET_TASKS = 'GET_TASKS'
@@ -32,21 +31,21 @@ export const login = (credentials, props) => dispatch => {
       })
 }
 
-export const getSeniors =() => (async(dispatch) =>  {
+export const getSeniors  =  () =>async dispatch =>  {
    dispatch({ type: GET_SENIORS_LIST })
-   
+   await
    axiosWithAuth()
-		const response = await fetch('/volunteer/')
-		response.then(res => {
+		         .get('/volunteer/')
+				   .then(res => {
 					console.log('GET_SENIORS_LIST', res);
-					dispatch({ type: GET_SENIORS_LIST, payload: res.data  });
+					dispatch({ type: GET_SENIORS_LIST,  payload: res.data });
 				})
 				.catch(err => {
 					console.log('NOOOOO!!!!', err);
 					dispatch({ type: SET_ERROR, payload: 'error getting tasks' });
             });
    
-      })
+}
 
 
 export const postNewSenior = (seniorToPost) => dispatch => {
