@@ -16,7 +16,7 @@ const SeniorList = () => {
   return (
 			<div>
 				{isFetching ? (
-					<div timeout= {6000}>
+					<div >
 						<Spinner />
 						<Spinner />
 						<Spinner />
