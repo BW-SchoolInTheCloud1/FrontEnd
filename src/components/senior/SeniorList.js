@@ -18,7 +18,7 @@ const SeniorList = () => {
 			) : (
 				<div>
 					{seniors.map(person => (
-						<SeniorCard key={person.id} times={person.availability} location={person.country} id={person.id}/>
+						<SeniorCard key={person.id} times={person.availability} location={person.country} user_id={person.user_id}/>
 					))}
 				</div>
 			)}
