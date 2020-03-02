@@ -1,22 +1,23 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { BackgroundDiv } from "../../Styles/styles"
 import DashNavBar from '../navs/DashNavBar'
 import { getTasks } from "../../redux/actions"
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button } from 'reactstrap'
 
 const SeniorDash = () => {
-   const [myTasks, setMyTasks] = useState([])
    const tasks = useSelector(state => state.tasks)
+   const [myTasks, setMyTasks] = useState([])
    const dispatch = useDispatch()
    const { id } = useParams()
 
-   const handleClick = () => {
-      dispatch(getTasks)
-      console.log(tasks)
-      setMyTasks(tasks.filter(task => task.volunteer_id === id))
-      console.log(myTasks)
+   useEffect(() => {
+      dispatch(getTasks())
+   }, [])
+
+   const handleClick = (e) => {
+      setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)))
    }
 
    return (
@@ -27,21 +28,19 @@ const SeniorDash = () => {
             <h1>To Do</h1>
          </div>
          <Button  style={{ marginTop: '50px' }} className='formButton' onClick={handleClick}>
-            Show all Tasks
+            Show My Tasks
          </Button>
-
          <div>
             My Tasks
             {myTasks.map(task => {
                return (
-                  <div>
+                  <div key={task.id}>
                      <h3>{task.title}</h3>
                      <p>{task.description}</p>
                   </div>
                )  
             })}
          </div>
-
       </BackgroundDiv>
       </div>
    )
