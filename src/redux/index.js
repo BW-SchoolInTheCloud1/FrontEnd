@@ -2,9 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import {
    GET_TASKS,
-   GET_SENIORS_LIST, 
-   POST_NEW_SENIOR, 
-   POST_NEW_STUDENT, 
+   GET_SENIORS_LIST,  
    ASSIGN_NEW_TASK, 
    SET_ERROR,
    PREPARE_DATA } from './actions'
