@@ -107,12 +107,11 @@ const SeniorSignUp = props => {
 								<option value='DEFAULT' disabled>
 									Please select a country
 								</option>
+								{/* write map function from API CALL to return more options the one above is a placeholder the ones below were just standins until this is done */}
 								<option>USA</option>
 								<option>Canada</option>
 								<option>France</option>
 								<option>Wakanda</option>
-
-								{/* write map function to return more options the one above is a placeholder */}
 							</AvField>
 							<AvField
 								label='Availability.'
@@ -122,8 +121,9 @@ const SeniorSignUp = props => {
 								value={seniorToPost.availability}
 								onChange={handleChange}>
 								<option value='DEFAULT' disabled>
-									Please select your availability
+									Select an Availability
 								</option>
+								{/* write map function from data.js file to return more options the one above is a placeholder the ones below were just stand-ins until this is done */}
 								<option>Mon-Fri, 2pm-3pm</option>
 								<option>Mon-Fri, 3pm-4pm</option>
 								<option>Mon-Fri, 4pm-5pm</option>
