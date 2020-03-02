@@ -15,9 +15,8 @@ const BackgroundDiv = styled.div`
 	background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
 `;
 
-const AdminSignUp = () => {
+const AdminSignUp = props => {
 	const dispatch = useDispatch();
-	const history = useHistory();
 
 	const [adminToPost, setAdminToPost] = useState({
 		firstName: '',
@@ -44,7 +43,6 @@ const AdminSignUp = () => {
 			password: '',
 			role: 'admin',
 		});
-		history.push('/admin-dash');
 	};
 
 	return (
