@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'reactstrap'
+
 
 
 const SeniorCard = ({ times, location, user_id }) => {
