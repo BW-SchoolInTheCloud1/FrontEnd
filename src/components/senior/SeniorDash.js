@@ -23,7 +23,7 @@ const SeniorDash = () => {
 	};
 	const handleDelete = task => {
 		axiosWithAuth()
-			.delete(`/todos/2${task.id}`)
+			.delete(`/todos/${task.id}`)
 			/* console.log("here ya go",task.id) */
 			.then(res => {
 				console.log(res);
