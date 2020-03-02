@@ -1,28 +1,29 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Spinner } from 'reactstrap'
 import SeniorCard from './SeniorCard';
+import {Col,Row} from 'reactstrap'
 
 const SeniorList = () => {
   const seniors = useSelector(state => state.seniors);
-  const isFetching = useSelector(state => state.isFetching);
   
-  return (
+  
+	return (
+		
 		<div>
-			{isFetching ? (
-				<div >
-					<Spinner />
-					<Spinner />
-					<Spinner />
-				</div>
-			) : (
-				<div>
+			
+			<div>
+				<Row>
 					{seniors.map(person => (
-						<SeniorCard key={person.id} times={person.availability} location={person.country} user_id={person.user_id}/>
+						<Col lg='3'>
+							<SeniorCard key={person.id} times={person.availability} location={person.country} user_id={person.user_id} />
+						</Col>
 					))}
+				</Row>
 				</div>
-			)}
-		</div>
+				
+			
+			</div>
+		
 );
 }
 

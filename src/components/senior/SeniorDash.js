@@ -4,7 +4,7 @@ import DashNavBar from '../navs/DashNavBar';
 import { getTasks } from '../../redux/actions';
 import { useParams, useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button } from 'reactstrap';
+import { Button, Col, Row} from 'reactstrap';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const SeniorDash = () => {
@@ -35,30 +35,33 @@ const SeniorDash = () => {
 	return (
 		<div>
 			<DashNavBar />
-			<BackgroundDiv>
+			<BackgroundDiv >
 				<div>
-					<h1>To Do</h1>
+					<h1 className='nonForm'>To Do</h1>
 				</div>
 				<Button style={{ marginTop: '50px' }} className='formButton' onClick={handleClick}>
 					Show My Tasks
 				</Button>
 				<div>
-					My Tasks
-					{myTasks.map(task => {
-						return (
-							<div key={task.id}>
-								<Button
-									onClick={e => {
-										e.stopPropagation();
-										handleDelete(task);
-									}}>
-									X
-								</Button>
-								<h3>{task.title}</h3>
-								<p>{task.description}</p>
-							</div>
-						);
-					})}
+					<Row>
+						{myTasks.map(task => {
+							return (
+								<Col lg='3'>
+                           <div key={task.id}>
+										<Button
+											onClick={e => {
+												e.stopPropagation();
+												handleDelete(task);
+											}}>
+											X
+										</Button>
+										<h3>{task.title}</h3>
+										<p>{task.description}</p>
+									</div>
+								</Col>
+							);
+						})}
+					</Row>
 				</div>
 			</BackgroundDiv>
 		</div>
