@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSeniors } from '../../redux/actions';
 import SeniorCard from '../senior/SeniorCard';
 import DashNavBar from '../navs/DashNavBar';
+import { Col, Row } from 'reactstrap';
 
 const StudentDash = () => {
 	const seniors = useSelector(state => state.seniors);
@@ -34,9 +35,9 @@ const StudentDash = () => {
 		<div>
 			<DashNavBar />
 			<BackgroundDiv>
-				<form>
+				<form className='nonForm'>
 					<input
-						style={{ width: "50%" }}
+						style={{ width: '50%' }}
 						type='search'
 						name='search'
 						value={searchTerm}
@@ -44,14 +45,22 @@ const StudentDash = () => {
 						placeholder='Search For a Volunteer by Time or Country'
 					/>
 				</form>
-				<button onClick={handleClick}>Search</button>
-
+				<div className='nonForm'>
+				<button  onClick={handleClick}>
+					Search
+				</button>
+				</div>
+				
 				<div>
-					{searchResults.map(person => {
-						return (
-							<SeniorCard key={person.id} times={person.availability} location={person.country} user_id={person.user_id} />
-						);
-					})}
+					<Row>
+						{searchResults.map(person => {
+							return (
+								<Col lg='3'>
+									<SeniorCard key={person.id} times={person.availability} location={person.country} user_id={person.user_id} />
+								</Col>
+							);
+						})}
+					</Row>
 				</div>
 			</BackgroundDiv>
 		</div>
