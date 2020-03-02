@@ -108,23 +108,30 @@ const SeniorSignUp = props => {
 									Please select a country
 								</option>
 								<option>USA</option>
+								<option>Canada</option>
+								<option>France</option>
+								<option>Wakanda</option>
 
 								{/* write map function to return more options the one above is a placeholder */}
 							</AvField>
 							<AvField
-								label='Availability'
-								type='time'
-								name='available'
-								placeholder='Please indicate your availability'
-								value={seniorToPost.available}
-								onChange={handleChange}
-								validate={{
-									required: {
-										value: true,
-										errorMessage: 'Please let us know your time preference',
-									},
-								}}
-							/>
+								label='Availability.'
+								type='select'
+								name='availability'
+								defaultValue='DEFAULT'
+								value={seniorToPost.availability}
+								onChange={handleChange}>
+								<option value='DEFAULT' disabled>
+									Please select your availability
+								</option>
+								<option>Mon-Fri, 2pm-3pm</option>
+								<option>Mon-Fri, 3pm-4pm</option>
+								<option>Mon-Fri, 4pm-5pm</option>
+								<option>Mon-Fri, 5pm-6pm</option>
+								<option>Mon-Fri, 6pm-7pm</option>
+
+								{/* write map function to return more options the one above is a placeholder */}
+							</AvField>
 							<AvField
 								label='Password'
 								type='password'

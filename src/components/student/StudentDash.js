@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSeniors } from '../../redux/actions';
@@ -19,35 +19,51 @@ const StudentDash = () => {
 	const isFetching = useSelector(state => state.isFetching);
 	const dispatch = useDispatch();
 	const [searchTerm, setSearchTerm] = useState('')
-	const [volunteer, setVolunteer]= useState([])
+	const [searchResults, setSearchResults]= useState(seniors)
 
-	
+	useEffect(() => {
+		dispatch(getSeniors());
+		const results = seniors.filter(character => {
+			return (
+				character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				character.availability.toLowerCase().includes(searchTerm.toLowerCase())
+			);
+		});
+		setSearchResults(results)
+	}, [searchTerm])
+
 	const handleChange = e => {
 		setSearchTerm(e.target.value)
 	};
+
 	const handleSubmit = e => {
 		e.preventDefault();
-		dispatch(getSeniors());
-		// const results = volunteers.filter(character => {
-		// 	return (
-		// 		character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-		// 		character.availability.toLowerCase().includes(searchTerm.toLowerCase())
-		// 	);
-		// });
-			// setVolunteer(results);
-		
 	};
+
 	return (
 		<BackgroundDiv>
 			<form onSubmit={handleSubmit}>
 				<input type='search' name='search' value={searchTerm} onChange={handleChange} />
 				<button>Search</button>
 			</form>
+			<div>
+			{searchTerm.length === 0 ? (
+					<div>
+						<SeniorList />
+					</div>
+				) : (
+					<div>
+						{searchResults.map(sr => {
+							return (
+								<SeniorCard location={sr.country} times={sr.availaility}/>
+							);
+						})}
+					</div>
+				)}
+			</div>
 
 
-			<Button onClick={() => dispatch(getSeniors())}>Show all seniors</Button>
-			<SeniorList />
-
+			{/* <Button onClick={() => dispatch(getSeniors())}>Show all seniors</Button> */}
 		</BackgroundDiv>
 	);
 };

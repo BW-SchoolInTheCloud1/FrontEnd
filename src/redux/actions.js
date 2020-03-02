@@ -51,7 +51,7 @@ export const postNewSenior = (seniorToPost, props) => dispatch => {
       .then(res => {
          console.log("Yo Look Here!", res)
          localStorage.setItem('token', res.data.token)
-         // props.history.push(`/volunteer-dash/${res.data.user.id}`)
+         props.history.push(`/volunteer-dash/${res.data.createdUser.id}`)
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err)
@@ -60,12 +60,13 @@ export const postNewSenior = (seniorToPost, props) => dispatch => {
 }
 
 
-export const postNewStudent = (studentToPost) => dispatch => {
+export const postNewStudent = (studentToPost, props) => dispatch => {
    axiosWithAuth()
       .post('/auth/register', studentToPost)
       .then(res => {
          console.log("Yo Look Here!", res)
          localStorage.setItem('token', res.data.token)
+         props.history.push(`/student-dash/${res.data.createdUser.id}`)
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err)
@@ -73,12 +74,13 @@ export const postNewStudent = (studentToPost) => dispatch => {
       })
 }
 
-export const postNewAdmin = (adminToPost) => dispatch => {
+export const postNewAdmin = (adminToPost, props) => dispatch => {
    axiosWithAuth()
       .post('/auth/register', adminToPost)
       .then(res => {
          console.log("Yo Look Here!", res)
          localStorage.setItem('token', res.data.token)
+         props.history.push(`/admin-dash/${res.data.createdUser.id}`)
       })
       .catch(err => {
          console.log('NOOOOO!!!!', err)
