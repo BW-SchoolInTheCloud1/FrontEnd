@@ -37,6 +37,8 @@ const StudentSignUp = props => {
    }
 
    return (
+      <div>
+      <NavBar/>
       <BackgroundDiv>
          <Container style={{ paddingTop: "40px" }}>
             <Row>
@@ -112,7 +114,8 @@ const StudentSignUp = props => {
                </Col>
             </Row>
          </Container>
-      </BackgroundDiv>
+         </BackgroundDiv>
+      </div>
    )
 }
 
