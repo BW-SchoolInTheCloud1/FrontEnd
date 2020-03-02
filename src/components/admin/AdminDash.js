@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { assignNewTask, getTasks } from "../../redux/actions"
+import { assignNewTask, getTasks, getSeniors } from "../../redux/actions"
 import { Button, Container, Row, Col, Spinner } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
 import { BackgroundDiv } from "../../Styles/styles"
+import DashNavBar from '../navs/DashNavBar'
+import SeniorList from '../senior/SeniorList'
 
 const AdminDash = () => {
     const tasks = useSelector(state => state.tasks)
@@ -36,13 +38,15 @@ const AdminDash = () => {
 
     return (
         <div>
+            <DashNavBar />
             <BackgroundDiv>
                 <Container>
                     <Container style={{ paddingTop: "40px" }}>
                         <Row>
                             <Col sm='12' md={{ size: 6, offset: 3 }}>
-                                <h3>Assign a new task below</h3>
+                                <h3 className='nonForm'>Assign a new task below</h3>
                                 <AvForm
+                                    className='formWrapper'
                                     onSubmit={handleSubmit}
                                     style={{ marginTop: "40px" }}>
                                     <AvField
@@ -93,7 +97,7 @@ const AdminDash = () => {
                                             },
                                         }}
                                     />
-                                    <Button>Assign Task</Button>
+                                    <Button className='formButton'>Assign Task</Button>
                                 </AvForm>
                             </Col>
                         </Row>
@@ -105,7 +109,7 @@ const AdminDash = () => {
                             <Spinner />
                         </div>
                     ) : (
-                        <Button onClick={() => dispatch(getTasks())}>
+                        <Button  style={{ marginTop: '50px' }}className='formButton' onClick={() => dispatch(getTasks())}>
                             Show all tasks
                         </Button>
                     )}
@@ -113,6 +117,21 @@ const AdminDash = () => {
                         {tasks.map(task => (
                             <p>{task.title}</p>
                         ))}
+                    </div>
+
+                    {isFetching ? (
+                        <div>
+                            <Spinner />
+                            <Spinner />
+                            <Spinner />
+                        </div>
+                    ) : (
+                        <Button  style={{ marginTop: '50px' }}className='formButton' onClick={() => dispatch(getSeniors())}>
+                            Show all Volunteers
+                        </Button>
+                    )}
+                    <div>
+                        <SeniorList />
                     </div>
                 </Container>
             </BackgroundDiv>

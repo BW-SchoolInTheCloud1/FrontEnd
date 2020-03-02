@@ -12,7 +12,7 @@ import {
 const initialState = {
    seniors: [],
    tasks: [{
-      title: 'test',
+      title: 'test from global state',
       description: 'test from global state',
       volunteer_id: 999
    }],
