@@ -21,7 +21,6 @@ const initialState = {
       volunteer_id: ''
    },
    error: '',
-   isFetching: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -30,19 +29,19 @@ const reducer = (state = initialState, action) => {
          return {
             ...state,
             seniors: action.payload,
-            isFetching: false
+            
          }
       case SET_ERROR:
          return {
             ...state,
             error: action.payload,
-            isFetching: false
+            
          }
       case GET_TASKS:
          return {
             ...state,
             tasks: action.payload,
-            isFetching: false
+            
          }
       case ASSIGN_NEW_TASK:
          return {
@@ -51,7 +50,7 @@ const reducer = (state = initialState, action) => {
                ...state.tasks,
                action.payload
             ],
-            isFetching: false
+            
          }
       case GET_TASK_DATA:
          return {
@@ -61,8 +60,8 @@ const reducer = (state = initialState, action) => {
       case PREPARE_DATA: 
          return {
             ...state,
-            isFetching: true,
             tasks: [],
+            taskDate: [],
             seniors: [],
          }
       default: return state
