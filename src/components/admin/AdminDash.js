@@ -8,13 +8,12 @@ import { BackgroundDiv } from '../../Styles/styles';
 import DashNavBar from '../navs/DashNavBar';
 import SeniorList from '../senior/SeniorList';
 import TaskEditForm from './TaskEditForm'
-import TaskCard from '../TaskCard'
+import TaskCard from './TaskCard'
 
 const AdminDash = () => {
-	const [modal, setModal] = useState(false);
 	const tasks = useSelector(state => state.tasks);
 	const dispatch = useDispatch();
-	const toggle = () => setModal(!modal);
+	
   	
 	const [taskToAssign, setTaskToAssign] = useState({
 		title: '',
@@ -40,16 +39,7 @@ const AdminDash = () => {
 		});
 	};
 
-	const editTask = task => {
-		console.log(task)
-		axiosWithAuth()
-			.put(`/admin/${task.admin_id}/todos`)
-			.then(res => {
-				console.log('response =', res);
-				toggle()
-         })
-			.catch(err => console.log(err));
-	}
+	
 
 	return (
 		<div>
@@ -119,13 +109,6 @@ const AdminDash = () => {
 								Show all Volunteers
 							</Button>
 						</ButtonGroup>
-
-						
-      				<Modal isOpen={modal} toggle={toggle}>
-							<ModalHeader toggle={toggle}>Edit Tasks</ModalHeader>
-							<TaskEditForm taskData={tasks} />
-							<Button type='submit' onClick={editTask}>Submit Changes</Button> <Button onClick={toggle}>Cancel</Button>
-						</Modal>
 
 						<div>
 							<Row>

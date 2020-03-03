@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Button, CardHeader, CardFooter, CardBody,
-  CardTitle, CardText, Collapse } from 'reactstrap';
-import TaskEditForm from './admin/TaskEditForm';
+   CardText, Collapse } from 'reactstrap';
+import TaskEditForm from './TaskEditForm';
 
 const Example = ({ title, description, assigned_to}) => {
    const [isOpen, setIsOpen] = useState(false);

@@ -105,7 +105,7 @@ export const getTasks = () => dispatch => {
 
 export const getTaskById = task => dispatch => {
    axiosWithAuth()
-			.get(`/todos/${task.id}`)
+			.get(`/todos/id`, task)
 			.then(res => {
             console.log('response =', res);
             dispatch({ type: GET_TASK_DATA, payload: res.data })
