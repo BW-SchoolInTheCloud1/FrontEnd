@@ -10,7 +10,6 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 const SeniorDash = () => {
 	const tasks = useSelector(state => state.tasks);
 	const [myTasks, setMyTasks] = useState([]);
-	const history = useHistory();
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
@@ -18,16 +17,18 @@ const SeniorDash = () => {
 		dispatch(getTasks());
 	}, [dispatch]);
 
-	const handleClick = e => {
+	const handleClick = () => {
 		setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)));
-	};
-	const handleDelete = task => {
+   };
+   
+	const deleteTask = task => {
+      console.log(task)
 		axiosWithAuth()
 			.delete(`/todos/${task.id}`)
 			.then(res => {
-				console.log(res);
-			})
-
+            console.log('response =', res);
+            setMyTasks(myTasks.filter(mytask => parseInt(mytask.id) !== parseInt(task.id)));
+         })
 			.catch(err => console.log(err));
 	};
 
@@ -50,12 +51,13 @@ const SeniorDash = () => {
 										<Button
 											onClick={e => {
 												e.stopPropagation();
-												handleDelete(task);
+												deleteTask(task);
 											}}>
 											X
 										</Button>
 										<h3>{task.title}</h3>
 										<p>{task.description}</p>
+                              <p>{task.id}</p>
 									</div>
 								</Col>
 							);

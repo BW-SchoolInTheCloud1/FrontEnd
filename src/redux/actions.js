@@ -9,6 +9,7 @@ export const POST_NEW_ADMIN = 'POST_NEW_ADMIN'
 export const ASSIGN_NEW_TASK = 'POST_NEW_TASK'
 export const SET_ERROR = 'SET_ERROR'
 export const PREPARE_DATA = 'PREPARE_DATA'
+export const GET_TASK_DATA = 'GET_TASK_DATA'
 
 
 export const login = (credentials, props) => dispatch => {
@@ -102,9 +103,19 @@ export const getTasks = () => dispatch => {
       })
 }
 
+export const getTaskById = task => dispatch => {
+   axiosWithAuth()
+			.get(`/todos/${task.id}`)
+			.then(res => {
+            console.log('response =', res);
+            dispatch({ type: GET_TASK_DATA, payload: res.data })
+         })
+			.catch(err => console.log(err));
+};
+
 export const assignNewTask = taskToAssign => dispatch => {
    axiosWithAuth()
-      .post('/admin/8/todos', taskToAssign)
+      .post(`/admin/${taskToAssign.admin_id}/todos`, taskToAssign)
       .then(res => {
          console.log("ASSIGN_NEW_TASK", res.data)
          dispatch({ type: ASSIGN_NEW_TASK, payload: res.data})

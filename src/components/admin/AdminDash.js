@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { useDispatch, useSelector } from 'react-redux';
 import { assignNewTask, getTasks, getSeniors } from '../../redux/actions';
 import { Button, Container, Row, Col, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -6,16 +7,15 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { BackgroundDiv } from '../../Styles/styles';
 import DashNavBar from '../navs/DashNavBar';
 import SeniorList from '../senior/SeniorList';
+import TaskEditForm from './TaskEditForm'
+import TaskCard from '../TaskCard'
 
 const AdminDash = () => {
+	const [modal, setModal] = useState(false);
 	const tasks = useSelector(state => state.tasks);
 	const dispatch = useDispatch();
-	 
-
-  const [modal, setModal] = useState(false);
-
-  const toggle = () => setModal(!modal);
-
+	const toggle = () => setModal(!modal);
+  	
 	const [taskToAssign, setTaskToAssign] = useState({
 		title: '',
 		description: '',
@@ -39,6 +39,17 @@ const AdminDash = () => {
 			volunteer_id: '',
 		});
 	};
+
+	const editTask = task => {
+		console.log(task)
+		axiosWithAuth()
+			.put(`/admin/${task.admin_id}/todos`)
+			.then(res => {
+				console.log('response =', res);
+				toggle()
+         })
+			.catch(err => console.log(err));
+	}
 
 	return (
 		<div>
@@ -104,73 +115,23 @@ const AdminDash = () => {
 							<Button style={{ marginTop: '50px' }} onClick={() => dispatch(getTasks())}>
 								Show all tasks
 							</Button>
-							<Button style={{ marginTop: '50px' }} onClick={toggle}>
-								Edit Tasks
-							</Button>
 							<Button style={{ marginTop: '50px' }} className='formButton' onClick={() => dispatch(getSeniors())}>
 								Show all Volunteers
 							</Button>
 						</ButtonGroup>
-						<Modal isOpen={modal} toggle={toggle}>
+
+						
+      				<Modal isOpen={modal} toggle={toggle}>
 							<ModalHeader toggle={toggle}>Edit Tasks</ModalHeader>
-							<ModalBody>
-								<AvForm className='formWrapper' onSubmit={handleSubmit}>
-									<AvField
-										label='Title'
-										type='text'
-										name='title'
-										id='title'
-										placeholder='Please enter task title here'
-										value={taskToAssign.title}
-										onChange={handleChange}
-										validate={{
-											required: {
-												value: true,
-												errorMessage: 'A title is required to assign a new task',
-											},
-										}}
-									/>
-									<AvField
-										label='Description'
-										type='textarea'
-										name='description'
-										id='description'
-										placeholder='Please enter task description'
-										value={taskToAssign.description}
-										onChange={handleChange}
-										validate={{
-											required: {
-												value: true,
-												errorMessage: 'A task description is required to assign a new task',
-											},
-										}}
-									/>
-									<AvField
-										label='Volunteer ID'
-										type='number'
-										name='volunteer_id'
-										id='volunteer_id'
-										placeholder='Please enter a valid Volunteer ID'
-										value={taskToAssign.volunteer_id}
-										onChange={handleChange}
-										validate={{
-											required: {
-												value: true,
-												errorMessage: 'A valid Volunteer ID is required to assign a new task',
-											},
-										}}
-									/>
-								</AvForm>
-							</ModalBody>
-							<ModalFooter>
-								<Button onClick={toggle}>Submit Changes</Button> <Button onClick={toggle}>Cancel</Button>
-							</ModalFooter>
+							<TaskEditForm taskData={tasks} />
+							<Button type='submit' onClick={editTask}>Submit Changes</Button> <Button onClick={toggle}>Cancel</Button>
 						</Modal>
+
 						<div>
 							<Row>
 								{tasks.map(task => (
-									<Col lg='2'>
-										<div>{task.title}</div>
+									<Col lg='4'>
+										<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id}/>
 									</Col>
 								))}
 							</Row>
