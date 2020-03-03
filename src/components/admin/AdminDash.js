@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { useDispatch, useSelector } from 'react-redux';
 import { assignNewTask, getTasks, getSeniors } from '../../redux/actions';
-import { Button, Container, Row, Col, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Container, Row, Col, ButtonGroup } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { BackgroundDiv } from '../../Styles/styles';
 import DashNavBar from '../navs/DashNavBar';
 import SeniorList from '../senior/SeniorList';
-import TaskEditForm from './TaskEditForm'
-import TaskCard from './TaskCard'
+import { useParams } from 'react-router-dom';
+import { Link, Route, Switch, } from 'react-router-dom';
+import TaskList from './TaskList';
 
 const AdminDash = () => {
-	const tasks = useSelector(state => state.tasks);
 	const dispatch = useDispatch();
+	const { id } = useParams();
   	
 	const [taskToAssign, setTaskToAssign] = useState({
 		title: '',
@@ -100,33 +100,46 @@ const AdminDash = () => {
 							</Col>
 						</Container>
 
-						<ButtonGroup style={{ marginLeft: '33%', marginTop: '50px'  }}>
-							<Button style={{ marginTop: '50px' }} onClick={() => dispatch(getTasks())}>
-								Show all tasks
-							</Button>
-							<Button style={{ marginTop: '50px' }} className='formButton' onClick={() => dispatch(getSeniors())}>
-								Show all Volunteers
+						<ButtonGroup style={{ marginLeft: '37%', marginTop: '50px' }}>
+							<Button
+								outline='secondary'
+								style={{ marginTop: '50px' }}
+								link={<Link to={`${id}/adminTask` onClick={() => {
+										dispatch(getTasks());
+									}}} className='navLink2'>
+											Show all tasks/>}
+								
+			
+								
+								/>
+								
+							
+							<Button
+								outline='secondary'
+								style={{ marginTop: '50px' }}
+								className='formButton'
+								onClick={() => dispatch(getSeniors())}>
+								<Link to={`/admin-dash/${id}/adminVolunteer`} className='navLink2'>
+									Show all Volunteers
+								</Link>
 							</Button>
 						</ButtonGroup>
 
 						<div>
-							<Row>
-								{tasks.length > 0 ? (
-									tasks.map(task => (
-										<Col lg='4'>
-											<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id} task={task}/>
-										</Col>
-									))
-								) : (null)}
-							</Row>
+							<TaskList />
 						</div>
-
 						<div>
 							<SeniorList />
 						</div>
 					</Container>
 				</Row>
 			</BackgroundDiv>
+			<div>
+				<Switch>
+					<Route path={`${id}/:adminTask`} component={TaskList} />
+					<Route path={`/admin-dash/${id}/adminVolunteer`} component={SeniorList} />
+				</Switch>
+			</div>
 		</div>
 	);
 };

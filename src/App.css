@@ -8,10 +8,7 @@
   color: whitesmoke;
 
 }
-a:hover{
-  color: whitesmoke;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-}
+
 .navBar{
   text-align: right;
 }
@@ -19,6 +16,11 @@ a:hover{
   text-decoration: none;
   color: whitesmoke;
   font-size: 20px;
+}
+.navLink2{
+ text-decoration: none;
+ color: gray; 
+ font-size: 20px; 
 }
 
 .logo{
@@ -33,10 +35,24 @@ a:hover{
 .formButton{
   margin-left: 45%;
 }
+.formButton2{
+  margin-left: 30%;
+  background: #F4F1DE
+}
 
+.editForm{
+ background: radial-gradient(#f8cfab, #fcb97d,
+  #e07a5f  );
+ border: 1px solid black;
+ padding: 2%;
+ color: #F4F1DE;
+ font-size: 18px;
+ text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ border-radius: 10px;
+}
 .formWrapper{
  box-shadow: 15px 20px 15px black;
- background-color: rgba(85, 85, 85,.9);
+ background: rgba(85, 85, 85,.9);
  border: 5px groove #28262C;
  padding: 2%;
  color: #F4F1DE;
@@ -56,6 +72,7 @@ a:hover{
 }
  .cardWrapper{
   height: 40vh;
+  
 }
 
 .imgDiv{
@@ -72,3 +89,8 @@ a:hover{
   
 }
 
+a:hover{
+  text-decoration: none;
+  color: whitesmoke;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
