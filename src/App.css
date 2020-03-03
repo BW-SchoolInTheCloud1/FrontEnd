@@ -1,8 +1,25 @@
+.App {
+  height: 100vh;
+  max-width: 100%;
+  font-family: sans-serif;
+  background-size: auto;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-position: center;
+  overflow: auto ;
+  background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
+}
 
 .registerButton{
   margin: 5%;
-  margin-top: 15%;
+  margin-top: 40px;
+  background: #fcb97d;
 }
+
+.active{
+  background: #e07a5f;
+}
+
 .registerLink{
   text-decoration: none;
   color: whitesmoke;
@@ -41,8 +58,7 @@
 }
 
 .editForm{
- background: radial-gradient(#f8cfab, #fcb97d,
-  #e07a5f  );
+ background: steelblue;
  border: 1px solid black;
  padding: 2%;
  color: #F4F1DE;
@@ -50,6 +66,7 @@
  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
  border-radius: 10px;
 }
+
 .formWrapper{
  box-shadow: 15px 20px 15px black;
  background: rgba(85, 85, 85,.9);
@@ -70,6 +87,7 @@
 .col{
   margin: 2%;
 }
+
  .cardWrapper{
   height: 40vh;
   
@@ -84,7 +102,7 @@
   
 }
 .img {
-  border : 5px solid #E07A5F;
+  border : 5px double #E07A5F;
   margin: 20% 50%
   
 }

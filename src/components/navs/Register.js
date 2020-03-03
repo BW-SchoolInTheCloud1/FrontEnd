@@ -1,31 +1,28 @@
 import React from "react"
 import { Button } from "reactstrap"
-import { Link } from "react-router-dom"
-import { BackgroundDiv } from "../../Styles/styles"
+import { NavLink } from "react-router-dom"
 import NavBar from './NavBar'
 
 const Register = () => {
     return (
-        <div>
-        <NavBar />
-        <BackgroundDiv className='nonForm'>
+        <div className='nonForm'>
+            <NavBar />
             <h1 className='nonForm' style={{ paddingTop: '40px'}}>Choose a Role to Register</h1>
-            <Button size='lg' className='registerButton'>
-                <Link to='/student' className='registerLink'>
+            
+                <NavLink to='/register/student' className='registerLink' activeClassName='active'>
                     Students
-                </Link>
-            </Button>
-            <Button size='lg' className='registerButton'>
-                <Link to='/volunteer' className='registerLink'>
+                </NavLink>
+            
+            
+                <NavLink to='/register/volunteer' className='registerLink' activeClassName='active'>
                     Volunteers
-                </Link>
-            </Button>
-            <Button size='lg' className='registerButton'>
-                <Link to='/admin-signup' className='registerLink'>
+                </NavLink>
+            
+            
+                <NavLink to='/register/admin-signup' className='registerLink' activeClassName='active'>
                     Admin
-                </Link>
-            </Button>
-        </BackgroundDiv>
+                </NavLink>
+            
         </div>
     )
 }
