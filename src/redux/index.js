@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import {
    GET_TASKS,
+   GET_TASK_DATA,
    GET_SENIORS_LIST,  
    ASSIGN_NEW_TASK, 
    SET_ERROR,
@@ -14,6 +15,11 @@ const initialState = {
       description: 'test from global state',
       volunteer_id: 999
    }],
+   taskData: {
+      title: '',
+      description: '',
+      volunteer_id: ''
+   },
    error: '',
    isFetching: false
 }
@@ -46,6 +52,11 @@ const reducer = (state = initialState, action) => {
                action.payload
             ],
             isFetching: false
+         }
+      case GET_TASK_DATA:
+         return {
+            ...state,
+            taskData: action.payload
          }
       case PREPARE_DATA: 
          return {
