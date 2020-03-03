@@ -13,7 +13,6 @@ import TaskCard from './TaskCard'
 const AdminDash = () => {
 	const tasks = useSelector(state => state.tasks);
 	const dispatch = useDispatch();
-	
   	
 	const [taskToAssign, setTaskToAssign] = useState({
 		title: '',
@@ -112,11 +111,13 @@ const AdminDash = () => {
 
 						<div>
 							<Row>
-								{tasks.map(task => (
-									<Col lg='4'>
-										<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id} task={task}/>
-									</Col>
-								))}
+								{tasks.length > 0 ? (
+									tasks.map(task => (
+										<Col lg='4'>
+											<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id} task={task}/>
+										</Col>
+									))
+								) : (null)}
 							</Row>
 						</div>
 

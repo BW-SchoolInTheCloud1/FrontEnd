@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { useDispatch, useSelector } from 'react-redux';
-import {  getTaskById } from '../../redux/actions';
+import {  getTasks } from '../../redux/actions';
 import {  Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
-const TaskEditForm = ({ taskToEdit, setTaskToEdit }) => {
+const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle }) => {
 	const tasks = useSelector(state => state.tasks)
 	const { id } = useParams()
+	const dispatch = useDispatch()
 
 	const putTask = e => {
 		e.preventDefault()
@@ -28,6 +29,8 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit }) => {
 				}))
 			})
 			.catch(err => console.log(err));
+		dispatch(getTasks())
+		toggle()
 	};
    
    return (
@@ -78,8 +81,8 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit }) => {
 								},
 							}}
 						/>
-						<Button >
-							Edit
+						<Button>
+							Submit Edit
 						</Button>
 					</AvForm>
 				</div>
