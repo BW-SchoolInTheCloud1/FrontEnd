@@ -46,3 +46,29 @@ a:hover{
 
 }
 
+.search-bar{
+  width: 50%;
+  margin: 2%;
+}
+
+.col{
+  margin: 2%;
+}
+ .cardWrapper{
+  height: 40vh;
+}
+
+.imgDiv{
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  font-size: 250%;
+  width: 75%;
+  
+}
+.img {
+  border : 5px solid #E07A5F;
+  margin: 20% 50%
+  
+}
+

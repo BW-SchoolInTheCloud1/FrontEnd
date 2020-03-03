@@ -5,6 +5,7 @@ import { getSeniors } from '../../redux/actions';
 import SeniorCard from '../senior/SeniorCard';
 import DashNavBar from '../navs/DashNavBar';
 import { Col, Row } from 'reactstrap';
+import { Icon, Input } from 'semantic-ui-react';
 
 const StudentDash = () => {
 	const seniors = useSelector(state => state.seniors);
@@ -36,8 +37,9 @@ const StudentDash = () => {
 			<DashNavBar />
 			<BackgroundDiv>
 				<form className='nonForm'>
-					<input
-						style={{ width: '50%' }}
+					<Input
+						className='search-bar'
+						icon={<Icon name='search' inverted circular link onClick={handleClick} />}
 						type='search'
 						name='search'
 						value={searchTerm}
@@ -45,18 +47,20 @@ const StudentDash = () => {
 						placeholder='Search For a Volunteer by Time or Country'
 					/>
 				</form>
-				<div className='nonForm'>
-				<button  onClick={handleClick}>
-					Search
-				</button>
-				</div>
-				
+
 				<div>
 					<Row>
 						{searchResults.map(person => {
 							return (
 								<Col lg='3'>
-									<SeniorCard key={person.id} times={person.availability} location={person.country} user_id={person.user_id} />
+									<SeniorCard
+										key={person.id}
+										times={person.availability}
+										location={person.country}
+										firstName={person.firstName}
+										lastName={person.lastName}
+										user_id={person.user_id}
+									/>
 								</Col>
 							);
 						})}
