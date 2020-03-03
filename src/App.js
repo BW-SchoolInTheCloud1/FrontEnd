@@ -10,6 +10,8 @@ import Register from './components/navs/Register';
 import StudentDash from './components/student/StudentDash';
 import AdminDash from './components/admin/AdminDash';
 import SeniorDash from './components/senior/SeniorDash';
+import TaskList from './components/admin/TaskList'
+import SeniorList from './components/senior/SeniorList'
 
 function App() {
 	return (
@@ -17,11 +19,13 @@ function App() {
 			<ProtectedRoute exact path='/student-dash/:id' component={StudentDash} />
 			<ProtectedRoute exact path='/volunteer-dash/:id' component={SeniorDash} />
 			<ProtectedRoute exact path='/admin-dash/:id' component={AdminDash} />
+			<ProtectedRoute path={'/admin-dash/:id/adminTask'} component={TaskList} />
+			<ProtectedRoute path={'/admin-dash/:id/adminVolunteer'} component={SeniorList} />
 			<Route exact path='/' component={Login} />
-			<Route path='/register' component={Register} />
-			<Route path='/student' component={StudentSignUp} />
-			<Route path='/volunteer' component={SeniorSignUp} />
-			<Route path='/admin-signup' component={AdminSignUp} />
+			<Route exact path='/register' component={Register} />
+			<Route path='/register/student' component={StudentSignUp} />
+			<Route path='/register/volunteer' component={SeniorSignUp} />
+			<Route path='/register/admin-signup' component={AdminSignUp} />
 		</div>
 	);
 }

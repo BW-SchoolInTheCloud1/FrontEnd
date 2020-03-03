@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BackgroundDiv } from '../../Styles/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSeniors } from '../../redux/actions';
 import SeniorCard from '../senior/SeniorCard';
@@ -35,7 +34,6 @@ const StudentDash = () => {
 	return (
 		<div>
 			<DashNavBar />
-			<BackgroundDiv>
 				<form className='nonForm'>
 					<Input
 						className='search-bar'
@@ -52,7 +50,7 @@ const StudentDash = () => {
 					<Row>
 						{searchResults.map(person => {
 							return (
-								<Col lg='3'>
+								<Col lg='4'>
 									<SeniorCard
 										key={person.id}
 										times={person.availability}
@@ -66,7 +64,6 @@ const StudentDash = () => {
 						})}
 					</Row>
 				</div>
-			</BackgroundDiv>
 		</div>
 	);
 };

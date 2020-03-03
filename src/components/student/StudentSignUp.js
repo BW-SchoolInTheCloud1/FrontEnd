@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux"
 import { postNewStudent } from "../../redux/actions"
 import { Button, Container, Row, Col } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
-import { BackgroundDiv } from "../../Styles/styles"
 import NavBar from '../navs/NavBar'
+import Register from '../navs/Register'
 
 const StudentSignUp = props => {
    const dispatch = useDispatch()
@@ -38,9 +38,8 @@ const StudentSignUp = props => {
 
    return (
       <div>
-      <NavBar/>
-      <BackgroundDiv>
-         <Container style={{ paddingTop: "40px" }}>
+         <Register />
+         <Container>
             <Row>
                <Col sm='12' md={{ size: 6, offset: 3 }}>
                   <h1 className='nonForm'>Student Sign Up</h1>
@@ -114,7 +113,6 @@ const StudentSignUp = props => {
                </Col>
             </Row>
          </Container>
-         </BackgroundDiv>
       </div>
    )
 }

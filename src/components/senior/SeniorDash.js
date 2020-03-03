@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BackgroundDiv } from '../../Styles/styles';
 import DashNavBar from '../navs/DashNavBar';
 import { getTasks } from '../../redux/actions';
 import { useParams, useHistory } from 'react-router';
@@ -35,7 +34,6 @@ const SeniorDash = () => {
 	return (
 		<div>
 			<DashNavBar />
-			<BackgroundDiv >
 				<div>
 					<h1 className='nonForm'>To Do</h1>
 				</div>
@@ -64,7 +62,6 @@ const SeniorDash = () => {
 						})}
 					</Row>
 				</div>
-			</BackgroundDiv>
 		</div>
 	);
 };

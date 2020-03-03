@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux"
 import { login } from "../redux/actions"
 import { Button, Container, Row, Col } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
-import { BackgroundDiv } from "../Styles/styles"
 import NavBar from '../components/navs/NavBar'
 import { Link } from 'react-router-dom'
 
@@ -32,7 +31,6 @@ const Login = props => {
    return (
       <div>
       <NavBar />
-      <BackgroundDiv>
          <Container style={{ paddingTop: "40px" }}>
             <Row>
                <Col sm='12' md={{ size: 6, offset: 3 }}>
@@ -81,7 +79,6 @@ const Login = props => {
          <div style={{ marginTop: '50px'}}>
             <p className='nonForm'>Don't have an account? Click here to <Link to='/register'>Register</Link></p>
          </div>
-      </BackgroundDiv>
       </div>
    )
 }
