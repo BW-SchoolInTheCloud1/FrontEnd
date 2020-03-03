@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,59 +34,59 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle }) => {
 	};
    
    return (
-				<div>
-					<AvForm className='formWrapper' onSubmit={putTask}>
-						<AvField
-							label='Title'
-							type='text'
-							name='title'
-							id='title'
-							placeholder='Please enter task title here'
-							value={taskToEdit.title}
-							onChange={e => setTaskToEdit({ ...taskToEdit, title: e.target.value })}
-							validate={{
-								required: {
-									value: true,
-									errorMessage: 'A title is required to assign a new task',
-								},
-							}}
-						/>
-						<AvField
-							label='Description'
-							type='textarea'
-							name='description'
-							id='description'
-							placeholder='Please enter task description'
-							value={taskToEdit.description}
-							onChange={e => setTaskToEdit({ ...taskToEdit, description: e.target.value })}
-							validate={{
-								required: {
-									value: true,
-									errorMessage: 'A task description is required to assign a new task',
-								},
-							}}
-						/>
-						<AvField
-							label='Volunteer ID'
-							type='number'
-							name='volunteer_id'
-							id='volunteer_id'
-							placeholder='Please enter a valid Volunteer ID'
-							value={taskToEdit.volunteer_id}
-							onChange={e => setTaskToEdit({ ...taskToEdit, volunteer_id: e.target.value })}
-							validate={{
-								required: {
-									value: true,
-									errorMessage: 'A valid Volunteer ID is required to assign a new task',
-								},
-							}}
-						/>
-						<Button>
-							Submit Edit
-						</Button>
-					</AvForm>
-				</div>
-			);
+		<div>
+			<AvForm onSubmit={putTask}>
+				<AvField
+					label='Title'
+					type='text'
+					name='title'
+					id='title'
+					placeholder='Please enter task title here'
+					value={taskToEdit.title}
+					onChange={e => setTaskToEdit({ ...taskToEdit, title: e.target.value })}
+					validate={{
+						required: {
+							value: true,
+							errorMessage: 'A title is required to assign a new task',
+						},
+					}}
+				/>
+				<AvField
+					label='Description'
+					type='textarea'
+					name='description'
+					id='description'
+					placeholder='Please enter task description'
+					value={taskToEdit.description}
+					onChange={e => setTaskToEdit({ ...taskToEdit, description: e.target.value })}
+					validate={{
+						required: {
+							value: true,
+							errorMessage: 'A task description is required to assign a new task',
+						},
+					}}
+				/>
+				<AvField
+					label='Volunteer ID'
+					type='number'
+					name='volunteer_id'
+					id='volunteer_id'
+					placeholder='Please enter a valid Volunteer ID'
+					value={taskToEdit.volunteer_id}
+					onChange={e => setTaskToEdit({ ...taskToEdit, volunteer_id: e.target.value })}
+					validate={{
+						required: {
+							value: true,
+							errorMessage: 'A valid Volunteer ID is required to assign a new task',
+						},
+					}}
+				/>
+				<Button>
+					Submit Edit
+				</Button>
+			</AvForm>
+		</div>
+	);
 }
 
 export default TaskEditForm
