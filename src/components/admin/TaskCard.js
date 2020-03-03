@@ -16,24 +16,35 @@ const Example = ({ task, title, description, assigned_to}) => {
    }
    
    return (
-      <div>
-         <Card>
-            <CardHeader tag="h3">{title}</CardHeader>
-               <CardBody>
-                  <CardText>{description}</CardText>
-                  <Button color="primary" onClick={() => editTask(task)} style={{ marginBottom: '1rem' }}>Edit Task</Button>
-                  <Collapse isOpen={isOpen}>
-                     <Card>
-                        <CardBody>
-                           <TaskEditForm taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit} toggle={toggle}/>
-                        </CardBody>
-                     </Card>
-                  </Collapse>
-               </CardBody>
-            <CardFooter className="text-muted">Assigned to: {assigned_to}</CardFooter>
-        </Card>
-      </div>
-   );
+				<div className='col'>
+					<Card
+						style={{
+							background: '#F4F1DE',
+							boxShadow: '15px 20px 15px black',
+							borderRadius: '10px',
+							borderTop: '5px groove #E07A5F',
+							borderBottom: '5px groove #E07A5F',
+							borderRight: '1px solid #E07A5F',
+							borderLeft: '1px solid #E07A5F',
+						}}>
+						<CardHeader tag='h3'>{title}</CardHeader>
+						<CardBody>
+							<CardText>{description}</CardText>
+							<Button outline='secondary' onClick={() => editTask(task)} style={{ marginBottom: '1rem' }}>
+								Edit Task
+							</Button>
+							<Collapse isOpen={isOpen}>
+								<Card>
+									<CardBody>
+										<TaskEditForm taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit} toggle={toggle} />
+									</CardBody>
+								</Card>
+							</Collapse>
+						</CardBody>
+						<CardFooter className='text-muted'>Assigned to: {assigned_to}</CardFooter>
+					</Card>
+				</div>
+			);
 };
 
 export default Example;
