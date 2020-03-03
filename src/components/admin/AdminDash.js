@@ -114,7 +114,7 @@ const AdminDash = () => {
 							<Row>
 								{tasks.map(task => (
 									<Col lg='4'>
-										<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id}/>
+										<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id} task={task}/>
 									</Col>
 								))}
 							</Row>

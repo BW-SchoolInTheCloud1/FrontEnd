@@ -6,49 +6,33 @@ import {  getTaskById } from '../../redux/actions';
 import {  Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
-const TaskEditForm = () => {
-	const taskData = useSelector(state => state.taskData)
-	const dispatch = useDispatch()
-	const [taskToEdit, setTaskToEdit] = useState({ title: '', description: '', volunteer_id: '' });
-	 
+const TaskEditForm = ({ taskToEdit, setTaskToEdit }) => {
+	const tasks = useSelector(state => state.tasks)
+	const { id } = useParams()
 
-	 /* useEffect(() => {
-		 dispatch((getTaskById()))
-		 setTaskToEdit(taskData)
-	 }, []) */
-	 useEffect(() => {
-			axiosWithAuth()
-				.get(`/todos/`)
-				.then(response => {
-					console.log(response);
-					setTaskToEdit(response.data);
-				})
-				.catch(err => {
-					console.log(err);
-				});
-		}, []);
-	
-	const handleChange = ev => {    
-		ev.persist();    
-		let value = ev.target.value;      
-		setTaskToEdit({    
-			...taskToEdit,    
-			[ev.target.name]: value    
-		});   
-	};
-	const editTask = task => {
-		console.log(task);
+	const putTask = e => {
+		e.preventDefault()
 		axiosWithAuth()
-			.put(`/admin/${task.admin_id}/todos`, task.id)
+			.put(`/admin/${id}/todos`, taskToEdit)
 			.then(res => {
 				console.log('response', res);
+				setTaskToEdit(tasks.map(task => {
+					if (task.id === res.data.id) {
+						console.log('SUCCESS')
+						setTaskToEdit({ title: '', description: '', volunteer_id: '' })
+						return res.data
+					} else {
+						console.log('ERROR')
+						return task
+					}
+				}))
 			})
 			.catch(err => console.log(err));
 	};
    
    return (
 				<div>
-					<AvForm className='formWrapper' onSubmit={editTask}>
+					<AvForm className='formWrapper' onSubmit={putTask}>
 						<AvField
 							label='Title'
 							type='text'
@@ -56,7 +40,7 @@ const TaskEditForm = () => {
 							id='title'
 							placeholder='Please enter task title here'
 							value={taskToEdit.title}
-							onChange={handleChange}
+							onChange={e => setTaskToEdit({ ...taskToEdit, title: e.target.value })}
 							validate={{
 								required: {
 									value: true,
@@ -71,7 +55,7 @@ const TaskEditForm = () => {
 							id='description'
 							placeholder='Please enter task description'
 							value={taskToEdit.description}
-							onChange={handleChange}
+							onChange={e => setTaskToEdit({ ...taskToEdit, description: e.target.value })}
 							validate={{
 								required: {
 									value: true,
@@ -86,7 +70,7 @@ const TaskEditForm = () => {
 							id='volunteer_id'
 							placeholder='Please enter a valid Volunteer ID'
 							value={taskToEdit.volunteer_id}
-							onChange={handleChange}
+							onChange={e => setTaskToEdit({ ...taskToEdit, volunteer_id: e.target.value })}
 							validate={{
 								required: {
 									value: true,
