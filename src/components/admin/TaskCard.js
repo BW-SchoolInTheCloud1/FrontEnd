@@ -25,7 +25,7 @@ const Example = ({ task, title, description, assigned_to}) => {
                   <Collapse isOpen={isOpen}>
                      <Card>
                         <CardBody>
-                           <TaskEditForm taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit} />
+                           <TaskEditForm taskToEdit={taskToEdit} setTaskToEdit={setTaskToEdit} toggle={toggle}/>
                         </CardBody>
                      </Card>
                   </Collapse>
