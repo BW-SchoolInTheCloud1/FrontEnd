@@ -7,26 +7,20 @@ import { NavLink } from 'react-router-dom';
 
 const AdminDash = () => {
 	const { id } = useParams();
-  	
 	
-return (
-	<div>
-		<DashNavBar/>
-		<Container className='nestedNav'>
-			<NavLink className='navLink' to={`/admin-dash/${id}/makeTask`} activeClassName='active'>
-				Add A Task
-			</NavLink>
-
-			<NavLink className='navLink' to={`/admin-dash/${id}/showTask`} activeClassName='active'>
-				Show all tasks
-			</NavLink>
-
-			<NavLink className='navLink' to={`/admin-dash/${id}/adminVolunteer`} activeClassName='active'>
-				Show all Volunteers
-			</NavLink>
-		</Container>
-	</div>
-);
+	return (
+		<div>
+			<DashNavBar/>
+			<Container className='nestedNav'>
+				<NavLink className='navLink' to={`/admin-dash/${id}/showTask`} activeClassName='active'>
+					Show all tasks
+				</NavLink>
+				<NavLink className='navLink' to={`/admin-dash/${id}/adminVolunteer`} activeClassName='active'>
+					Show all Volunteers
+				</NavLink>
+			</Container>
+		</div>
+	);
 };
 
 export default AdminDash;
