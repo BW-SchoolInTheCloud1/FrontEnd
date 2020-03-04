@@ -125,16 +125,10 @@ a:hover {
 	height: 50px;
 }
 
-.task-list {
-	margin: 5% 0;
-	border: 1px groove rgba(70, 130, 180, 0.9);
-	box-shadow: 5px 10px 5px rgba(0, 0, 128, 0.7);
-	border-radius: 2px;
-}
 .task-nav {
 	display: flex;
 	justify-content: flex-end;
-	background: rgba(85, 85, 85, 0.7);
+	margin: 5% 0;
 }
 
 .task-info > p {

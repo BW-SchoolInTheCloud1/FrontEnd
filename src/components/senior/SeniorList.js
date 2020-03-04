@@ -9,25 +9,28 @@ const SeniorList = () => {
 	const seniors = useSelector(state => state.seniors);
 	const dispatch = useDispatch();
 	const [searchTerm, setSearchTerm] = useState('');
+
 	const [searchResults, setSearchResults] = useState(seniors);
 
 	useEffect(() => {
 		dispatch(getSeniors());
 	}, [dispatch]);
 	
-	useEffect(()=>{
+	useEffect(() => {
 		const results = seniors.filter(character => {
-			 character.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			 character.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			 character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			 character.availability.toLowerCase().includes(searchTerm.toLowerCase());
+			return (
+				character.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			 	character.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			 	character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			 	character.availability.toLowerCase().includes(searchTerm.toLowerCase())
+			)
 		});
 		setSearchResults(results);
 	}, [searchTerm, seniors]);
 
 	const handleChange = e => {
 		setSearchTerm(e.target.value);
-		console.log(searchTerm);
+		console.log('From handleChange in StudentList---->', searchTerm);
 	};
 
 	return (
