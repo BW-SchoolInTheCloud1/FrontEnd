@@ -19,7 +19,6 @@ const AddTask = ({ user_id, toggleRight }) => {
 			...taskToAssign,
 			[e.target.name]: e.target.value,
 		});
-		console.log(taskToAssign)
 	};
 
 	const handleSubmit = e => {
@@ -68,7 +67,6 @@ const AddTask = ({ user_id, toggleRight }) => {
 			/>
 			<AvField 
 				style={{ display: 'none' }}
-				// disabled
 				type='text'
 				name='volunteer_id'
 				id='volunteer_id'
