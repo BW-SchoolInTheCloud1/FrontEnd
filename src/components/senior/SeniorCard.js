@@ -21,7 +21,9 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 	const toggleLeft = () => setTaskListIsOpen(!taskListIsOpen);
 	const toggleRight = () => setAddTaskIsOpen(!addTaskIsOpen);
 	const toggleApptBook = () => setToggleCalender(!toggleCalender);
+
 	const url = window.location.href;
+
 	useEffect(() => {
 		dispatch(getTasks())
 	}, [dispatch]) 
@@ -31,7 +33,6 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 		setUserTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(user_id)))
 		toggleLeft()
 		setAddTaskIsOpen(false)
-		console.log("Heelllloooo", userTasks)
 	}
 
 	const handleAddTaskClick = () => {
@@ -83,10 +84,7 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 								<ol style={{ }}>
 									{userTasks.map(userTask => {
 										return (
-											<div
-												className='task-list'
-												>
-												<Navbar className='task-nav'>
+											<div className='task-nav'>
 													<span style={{ margin: '1%' }}>
 														<Button color='primary' size='sm'>
 															Edit
@@ -97,13 +95,9 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 															Remove
 														</Button>
 													</span>
-												</Navbar>
-												<div className='task-info'>
 													<li>
 														<h3>{userTask.title}</h3>
-														<p>Goal: {userTask.description}</p>
 													</li>
-												</div>
 											</div>
 										);
 									})}
@@ -123,13 +117,12 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 				<CardFooter className='text-muted'>
 					{url.match(/admin-dash/gi) ? (
 						<span>Volunteer ID: {user_id}</span>) : (
-							<span>
+						<span>
 							<Button outline color='primary' onClick={() => toggleApptBook()}>Schedule an Appointment</Button>
-
 							<Collapse isOpen={toggleCalender}>
 								<span className='calender'><Appointments/></span>
-								</Collapse>
-							</span>
+							</Collapse>
+						</span>
 					)}
 				</CardFooter>
 			</Card>

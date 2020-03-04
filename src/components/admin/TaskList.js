@@ -20,7 +20,7 @@ const TaskList = () => {
 				});
 				setSearch(results);
 				
-			}, [searchTerm,dispatch, tasks]);
+			}, [searchTerm, dispatch, tasks]);
 
 			const handleChange = e => {
 				setSearchTerm(e.target.value);
