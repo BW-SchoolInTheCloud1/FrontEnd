@@ -67,7 +67,7 @@ const AddTask = ({ user_id, toggleRight }) => {
 				}}
 			/>
 			<AvField 
-				// style={{ display: 'none' }}
+				style={{ display: 'none' }}
 				// disabled
 				type='text'
 				name='volunteer_id'
