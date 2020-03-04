@@ -11,11 +11,7 @@
 	background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
 }
 
-/* .registerButton {
-	margin: 5%;
-	margin-top: 40px;
-	background: rgba(224, 122, 95, .9) ;
-} */
+
 
 .registerLink {
 	text-decoration: none;
@@ -34,16 +30,13 @@
 
 a {
 	text-decoration: none;
-	color: rgba(169, 169, 169, 0.609);
-	/* text-shadow: -1px 0 lightgray, 0 1px lightgray, 1px 0 lightgray, 0 -1px lightgray; */
 }
 
 .navLink {
 	text-decoration: none;
 	color: rgb(231, 111, 81);
-	/* text-shadow: -1px 0 lightgray, 0 1px lightgray, 1px 0 lightgray, 0 -1px lightgray; */
 	padding: 1%;
-	/* border: 1px solid gray; */
+	border: 1px solid rgba(231, 111, 81,.3);
 	border-radius: 10px;
   font-size: 20px;
   margin: 5%;
@@ -52,8 +45,9 @@ a {
 }
 
 .active {
-  background: #e07a5f ;
-  color: rgb(29, 29, 29)
+  background: steelblue ;
+	color: navy;
+	text-decoration: underline overline;
 }
 
 .logo {
@@ -69,18 +63,18 @@ a {
 }
 
 .formButton2 {
-	margin-left: 30%;
+	margin: 0 auto;
 	background: #f4f1de;
 }
 
-.editForm {
-	background: steelblue;
-	border: 1px solid black;
+.adminForms {
+	background: rgba(70, 130, 180, .4);
+	border: 1px solid rgba(0, 0, 128, .4);
 	padding: 2%;
-	color: #f4f1de;
+	color: rgba(0, 0, 128, .4);
 	font-size: 18px;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	border-radius: 10px;
+	text-shadow: -1px 0 rgba(70, 130, 180, .2), 0 1px rgba(70, 130, 180, .2), 1px 0 rgba(70, 130, 180, .2), 0 -1px rgba(70, 130, 180, .2);
+	border-radius: 5px;
 }
 
 .formWrapper {
@@ -103,26 +97,28 @@ a {
 	margin: 2%;
 }
 
-.cardWrapper {
-	height: 40vh;
-}
 
-/* .imgDiv {
+
+.imgDiv {
 	display: flex;
 	margin: 0 auto;
-	justify-content: space-evenly;
-	font-size: 250%;
+	justify-content: space-between;
 	width: 100%;
 }
 .img {
-	border: 5px double #e07a5f;
-	margin: 20% 50%;
-} */
+	border: 5px double steelblue;
+	margin: 20% 10%;
+	font-size: 325%;
+}
+.names{
+	margin: 10% auto;
+}
 
 a:hover {
-  background: gray;
+  background: rgb(231, 111, 81);
 	text-decoration: none;
-	color: whitesmoke;
+	color: whitesmoke ;
+	
 }
 
 .buttonGroup {
@@ -131,4 +127,25 @@ a:hover {
   margin:  0 auto;
   margin-top: 5%; 
   height: 50px;
+}
+
+.task-list{
+	margin: 5% 0;
+	border: 1px groove rgba(70, 130, 180,.9);
+	box-shadow: 5px 10px 5px rgba(0, 0, 128, .7);
+	border-radius: 2px;
+ 
+}
+.task-nav{
+	display: flex;
+	justify-content: flex-end;
+	background: rgba(85, 85, 85, 0.7)
+	
+}
+
+
+
+.task-info > p{
+ font-size: 18px;
+ 
 }
