@@ -34,7 +34,7 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle }) => {
 	};
    
 	return (
-		<div className='editForm >nonForm'>
+		<div className='editForm > nonForm'>
 					<AvForm onSubmit={putTask}>
 						<AvField
 							label='Title'

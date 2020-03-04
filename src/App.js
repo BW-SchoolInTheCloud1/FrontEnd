@@ -11,6 +11,7 @@ import StudentDash from './components/student/StudentDash';
 import AdminDash from './components/admin/AdminDash';
 import SeniorDash from './components/senior/SeniorDash';
 import TaskList from './components/admin/TaskList'
+import AddTask from './components/admin/AddTask'
 import SeniorList from './components/senior/SeniorList'
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
 			<ProtectedRoute exact path='/student-dash/:id' component={StudentDash} />
 			<ProtectedRoute exact path='/volunteer-dash/:id' component={SeniorDash} />
 			<ProtectedRoute exact path='/admin-dash/:id' component={AdminDash} />
-			<ProtectedRoute path={'/admin-dash/:id/adminTask'} component={TaskList} />
+			<ProtectedRoute path={'/admin-dash/:id/makeTask'} component={AddTask} />
+			<ProtectedRoute path={'/admin-dash/:id/showTask'} component={TaskList} />
 			<ProtectedRoute path={'/admin-dash/:id/adminVolunteer'} component={SeniorList} />
 			<Route exact path='/' component={Login} />
 			<Route exact path='/register' component={Register} />
