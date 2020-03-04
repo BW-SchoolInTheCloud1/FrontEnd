@@ -1,28 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getTasks } from '../../redux/actions'
-import {useParams} from 'react-router-dom'
 import img from '../../images/ph.bmp';
 import { Image } from 'semantic-ui-react';
-import { Button, ButtonGroup, Card, CardBody, CardHeader, CardFooter, CardTitle, CardText, Collapse, Navbar, NavbarBrand } from 'reactstrap'
+import { Button, ButtonGroup, Card, CardBody, CardHeader, CardFooter, CardTitle, CardText, Collapse, Navbar} from 'reactstrap'
 import AddTask from '../admin/AddTask'
+import Appointments from './Appointments'
+
 
 
 const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 	const [taskListIsOpen, setTaskListIsOpen] = useState(false);
 	const [addTaskIsOpen, setAddTaskIsOpen] = useState(false);
+	const [toggleCalender, setToggleCalender] = useState(false);
 	const [userTasks, setUserTasks] = useState([])
 
 	const tasks = useSelector(state => state.tasks)
 	const dispatch = useDispatch()
-	const {id} = useParams()
+	
 	const toggleLeft = () => setTaskListIsOpen(!taskListIsOpen);
 	const toggleRight = () => setAddTaskIsOpen(!addTaskIsOpen);
+	const toggleApptBook = () => setToggleCalender(!toggleCalender);
 	const url = window.location.href;
 	useEffect(() => {
 		dispatch(getTasks())
 	}, [dispatch]) 
 
+	
 	const handleTaskListClick = () => {
 		setUserTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(user_id)))
 		toggleLeft()
@@ -116,7 +120,18 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 						</Card>
 					</Collapse>
 				</CardBody>
-				<CardFooter className='text-muted'>Volunteer ID: {user_id}</CardFooter>
+				<CardFooter className='text-muted'>
+					{url.match(/admin-dash/gi) ? (
+						<span>Volunteer ID: {user_id}</span>) : (
+							<span>
+							<Button outline color='primary' onClick={() => toggleApptBook()}>Schedule an Appointment</Button>
+
+							<Collapse isOpen={toggleCalender}>
+								<span className='calender'><Appointments/></span>
+								</Collapse>
+							</span>
+					)}
+				</CardFooter>
 			</Card>
 		</div>
 	);
