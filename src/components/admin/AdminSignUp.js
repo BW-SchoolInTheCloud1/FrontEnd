@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux"
 import { postNewAdmin } from "../../redux/actions"
 import { Button, Container, Row, Col } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
-import NavBar from '../navs/NavBar'
 import Register from '../navs/Register'
 
 const AdminSignUp = props => {

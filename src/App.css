@@ -1,114 +1,119 @@
 .App {
-  height: 100vh;
-  max-width: 100%;
-  font-family: sans-serif;
-  background-size: auto;
-  background-attachment: fixed;
-  background-repeat: repeat;
-  background-position: center;
-  overflow: auto ;
-  background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
+	height: 100vh;
+	max-width: 100%;
+	font-family: sans-serif;
+	background-size: auto;
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-position: center;
+	overflow-x: auto;
+	overflow-y: auto;
+	background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
 }
 
-.registerButton{
-  margin: 5%;
-  margin-top: 40px;
-  background: #fcb97d;
+.registerButton {
+	margin: 5%;
+	margin-top: 40px;
+	background: rgb(224, 122, 95, .9) ;
 }
 
-.active{
-  background: #e07a5f;
+.active {
+	background: #e07a5f;
 }
 
-.registerLink{
-  text-decoration: none;
-  color: whitesmoke;
-
+.registerLink {
+	text-decoration: none;
+	color: whitesmoke;
 }
 
-.navBar{
-  text-align: right;
+.nestedNav {
+	display: flex;
+	justify-content: space-evenly;
+	padding-top: 2%;
 }
-.navLink{
-  text-decoration: none;
-  color: whitesmoke;
-  font-size: 20px;
-}
-.navLink2{
- text-decoration: none;
- color: gray; 
- font-size: 20px; 
+.navBar {
+	text-align: right;
 }
 
-.logo{
-  width: 7rem;
-
+a {
+	text-decoration: none;
+	color: rgba(169, 169, 169, 0.609);
+	text-shadow: -1px 0 lightgray, 0 1px lightgray, 1px 0 lightgray, 0 -1px lightgray;
+}
+.navLink {
+	text-decoration: none;
+	color: rgba(85, 85, 85);
+	text-shadow: -1px 0 lightgray, 0 1px lightgray, 1px 0 lightgray, 0 -1px lightgray;
+	padding: 1%;
+	border: 2px solid gray;
+	border-radius: 10px;
+	font-size: 20px;
 }
 
-.nonForm{
-  text-align: center;
+.logo {
+	width: 7rem;
 }
 
-.formButton{
-  margin-left: 45%;
-}
-.formButton2{
-  margin-left: 30%;
-  background: #F4F1DE
+.nonForm {
+	text-align: center;
 }
 
-.editForm{
- background: steelblue;
- border: 1px solid black;
- padding: 2%;
- color: #F4F1DE;
- font-size: 18px;
- text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
- border-radius: 10px;
+.formButton {
+	margin-left: 45%;
+}
+.formButton2 {
+	margin-left: 30%;
+	background: #f4f1de;
 }
 
-.formWrapper{
- box-shadow: 15px 20px 15px black;
- background: rgba(85, 85, 85,.9);
- border: 5px groove #28262C;
- padding: 2%;
- color: #F4F1DE;
- border-radius: 10px;
- border-bottom-left-radius: 50px;
- border-top-right-radius: 50px;
-
+.editForm {
+	background: steelblue;
+	border: 1px solid black;
+	padding: 2%;
+	color: #f4f1de;
+	font-size: 18px;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	border-radius: 10px;
 }
 
-.search-bar{
-  width: 50%;
-  margin: 2%;
+.formWrapper {
+	box-shadow: 15px 20px 15px black;
+	background: rgba(85, 85, 85, 0.9);
+	border: 5px groove #28262c;
+	padding: 2%;
+	color: #f4f1de;
+	border-radius: 10px;
+	border-bottom-left-radius: 50px;
+	border-top-right-radius: 50px;
 }
 
-.col{
-  margin: 2%;
+.search-bar {
+	width: 50%;
+	margin: 2%;
 }
 
- .cardWrapper{
-  height: 40vh;
-  
+.col {
+	margin: 2%;
 }
 
-.imgDiv{
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-evenly;
-  font-size: 250%;
-  width: 75%;
-  
+.cardWrapper {
+	height: 40vh;
+}
+
+.imgDiv {
+	display: flex;
+	margin: 0 auto;
+	justify-content: space-evenly;
+	font-size: 250%;
+	width: 75%;
 }
 .img {
-  border : 5px double #E07A5F;
-  margin: 20% 50%
-  
+	border: 5px double #e07a5f;
+	margin: 20% 50%;
 }
 
-a:hover{
-  text-decoration: none;
-  color: whitesmoke;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+a:hover {
+	background: gray;
+	text-decoration: none;
+	color: whitesmoke;
 }
