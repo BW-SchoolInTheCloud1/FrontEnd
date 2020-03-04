@@ -33,8 +33,9 @@ const AddTask = ({ user_id, toggleRight }) => {
 		toggleRight()
 	};
 
-  return (
-		<AvForm onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+	return (
+		<div className='adminForms > nonForm'>
+		<AvForm onSubmit={handleSubmit} >
 			<AvField
 				label='Title'
 				type='text'
@@ -72,8 +73,9 @@ const AddTask = ({ user_id, toggleRight }) => {
 				id='volunteer_id'
 				value={taskToAssign.volunteer_id}
 			/>
-			<Button className='formButton'>Assign Task</Button>
-		</AvForm>
+			<Button outline color='primary' className='formButton2'>Assign Task</Button>
+			</AvForm>
+		</div>
 );
 }
   export default AddTask

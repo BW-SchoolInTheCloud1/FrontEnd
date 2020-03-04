@@ -8,7 +8,6 @@ const NavBar = () => {
         <div>
             <Navbar color='dark' dark>
                 <NavbarBrand
-                    src={Logo}
                     href='https://goldentutors.netlify.com/'
                     className='mr-auto'>
                     <img src={Logo} alt='logo' className='logo' />

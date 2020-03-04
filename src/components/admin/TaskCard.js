@@ -22,15 +22,15 @@ const Example = ({ task, title, description, assigned_to}) => {
 							background: '#F4F1DE',
 							boxShadow: '15px 20px 15px black',
 							borderRadius: '10px',
-							borderTop: '5px groove #E07A5F',
-							borderBottom: '5px groove #E07A5F',
-							borderRight: '1px solid #E07A5F',
-							borderLeft: '1px solid #E07A5F',
+							borderTop: '5px groove steelblue',
+							borderBottom: '5px groove steelblue',
+							borderRight: '1px solid steelblue',
+							borderLeft: '1px solid steelblue',
 						}}>
 						<CardHeader tag='h3'>{title}</CardHeader>
 						<CardBody>
 							<CardText>{description}</CardText>
-							<Button outline='secondary' onClick={() => editTask(task)} style={{ marginBottom: '1rem' }}>
+							<Button outline color='primary' onClick={() => editTask(task)} style={{ marginBottom: '1rem' }}>
 								Edit Task
 							</Button>
 							<Collapse isOpen={isOpen}>
