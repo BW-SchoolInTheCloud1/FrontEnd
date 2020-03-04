@@ -6,12 +6,12 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import AdminDash from './AdminDash';
 
 
-const AddTask = () => {
-  const dispatch = useDispatch()
+const AddTask = ({ user_id, toggleRight }) => {
+  	const dispatch = useDispatch()
 	const [taskToAssign, setTaskToAssign] = useState({
 		title: '',
 		description: '',
-		volunteer_id: '',
+		volunteer_id: user_id,
 	});
 
 	const handleChange = e => {
@@ -19,6 +19,7 @@ const AddTask = () => {
 			...taskToAssign,
 			[e.target.name]: e.target.value,
 		});
+		console.log(taskToAssign)
 	};
 
 	const handleSubmit = e => {
@@ -28,71 +29,53 @@ const AddTask = () => {
 		setTaskToAssign({
 			title: '',
 			description: '',
-			volunteer_id: '',
+			volunteer_id: user_id,
 		});
+		toggleRight()
 	};
+
   return (
-    <div>
-    <AdminDash />
-	<Row>
-		
-		<Container>
-			<Container className='nonForm' style={{ paddingTop: '40px' }}>
-				<Col sm='12' md={{ size: 6, offset: 3 }}>
-					<h3 className='nonForm'>Assign a new task below</h3>
-					<AvForm className='formWrapper' onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
-						<AvField
-							label='Title'
-							type='text'
-							name='title'
-							id='title'
-							placeholder='Please enter task title here'
-							value={taskToAssign.title}
-							onChange={handleChange}
-							validate={{
-								required: {
-									value: true,
-									errorMessage: 'A title is required to assign a new task',
-								},
-							}}
-						/>
-						<AvField
-							label='Description'
-							type='textarea'
-							name='description'
-							id='description'
-							placeholder='Please enter task description'
-							value={taskToAssign.description}
-							onChange={handleChange}
-							validate={{
-								required: {
-									value: true,
-									errorMessage: 'A task description is required to assign a new task',
-								},
-							}}
-						/>
-						<AvField
-							label='Volunteer ID'
-							type='number'
-							name='volunteer_id'
-							id='volunteer_id'
-							placeholder='Please enter a valid Volunteer ID'
-							value={taskToAssign.volunteer_id}
-							onChange={handleChange}
-							validate={{
-								required: {
-									value: true,
-									errorMessage: 'A valid Volunteer ID is required to assign a new task',
-								},
-							}}
-						/>
-						<Button className='formButton'>Assign Task</Button>
-					</AvForm>
-				</Col>
-			</Container>
-		</Container>
-      </Row>
-    </div>
+		<AvForm onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+			<AvField
+				label='Title'
+				type='text'
+				name='title'
+				id='title'
+				placeholder='Please enter task title here'
+				value={taskToAssign.title}
+				onChange={handleChange}
+				validate={{
+					required: {
+						value: true,
+						errorMessage: 'A title is required to assign a new task',
+					},
+				}}
+			/>
+			<AvField
+				label='Description'
+				type='textarea'
+				name='description'
+				id='description'
+				placeholder='Please enter task description'
+				value={taskToAssign.description}
+				onChange={handleChange}
+				validate={{
+					required: {
+						value: true,
+						errorMessage: 'A task description is required to assign a new task',
+					},
+				}}
+			/>
+			<AvField 
+				// style={{ display: 'none' }}
+				// disabled
+				type='text'
+				name='volunteer_id'
+				id='volunteer_id'
+				value={taskToAssign.volunteer_id}
+			/>
+			<Button className='formButton'>Assign Task</Button>
+		</AvForm>
 );
 }
   export default AddTask
