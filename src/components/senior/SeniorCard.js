@@ -42,6 +42,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 			})
 			.catch(err => console.log("No Images", err))
 	}, [dispatch]) 
+	
 
 	const deleteTask = task => {
       console.log('from deleteTask on SeniorCard', task)
@@ -74,6 +75,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 		toggleEditForm()
 		console.log('From the handleEditClick (setTaskToEdit) function call ---> ', taskToEdit)
 	} 
+	
 
 	return (
 		<div className='col'>
@@ -89,8 +91,8 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 					borderLeft: '1px solid steelblue',
 				}}>
 				<CardHeader className='imgDiv'>
-					<div>	
-						<Image src={img} alt='avatar' avatar className='img' />
+					<div>
+							<Image src={avatars} alt='avatar' avatar className='img' />
 					</div>
 					<div className='names'>
 						<h2>
@@ -123,7 +125,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 												<div className='task-nav'>
 													
 													<li className='li'>
-														<p>{userTask.title}</p>
+														{userTask.title}
 													</li>
 
 													<div className='task-btns'>
