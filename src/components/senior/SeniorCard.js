@@ -112,8 +112,7 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 														<Button color='primary' size='sm'>
 															Remove
 														</Button>
-													</span>
-													
+													</span>	
 											</div>
 										);
 									})}
