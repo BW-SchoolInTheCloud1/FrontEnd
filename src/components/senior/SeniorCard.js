@@ -7,8 +7,9 @@ import Appointments from './Appointments'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import TaskEditForm from '../admin/TaskEditForm';
 import { Image } from 'semantic-ui-react';
+import image from '../../images/ph.bmp';
 
-const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image }) => {
+const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	const [taskListIsOpen, setTaskListIsOpen] = useState(false);
 	const [addTaskIsOpen, setAddTaskIsOpen] = useState(false);
 	const [toggleCalender, setToggleCalender] = useState(false);
@@ -57,13 +58,9 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image 
 	}
 
 	const handleEditClick = task => {
-		console.log('from handleEditClick on SeniorCard, before setting task', task)
-		console.log('userTasks ===', userTasks)
 		const [extractedUser] = userTasks
-		console.log('extractedUser', extractedUser)
 		setTaskToEdit(extractedUser)
 		toggleEditForm()
-		console.log('From the handleEditClick (setTaskToEdit) function call ---> ', taskToEdit)
 	} 
 	
 
