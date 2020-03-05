@@ -4,17 +4,30 @@ import { getSeniors } from '../../redux/actions';
 import SeniorCard from './SeniorCard';
 import { Col, Row } from 'reactstrap';
 import AdminDash from '../admin/AdminDash';
+import axios from "axios"
+
 
 const SeniorList = () => {
 	const seniors = useSelector(state => state.seniors);
 	const dispatch = useDispatch();
 	const [searchTerm, setSearchTerm] = useState('');
-
 	const [searchResults, setSearchResults] = useState(seniors);
+	const [avatars, setAvatars] = useState([]);
 
 	useEffect(() => {
-		dispatch(getSeniors());
-	}, [dispatch]);
+		axios
+			.get('https://pixabay.com/api/?key=15487793-8de1803bf08fe5bfa00ea0af4&q=grandparents&image_type=photo')
+			.then(res => {
+				console.log('Images API INFO ----->', res.data.hits);
+				setAvatars(res.data.hits);
+				
+			})
+			.catch(err => console.log('No Images', err));
+	}, []);
+	
+	useEffect(() => {
+		dispatch(getSeniors())
+	},[dispatch])
 	
 	useEffect(() => {
 		const results = seniors.filter(character => {
@@ -35,30 +48,41 @@ const SeniorList = () => {
 
 	return (
 		<div>
-			<section >
+			<section>
 				<AdminDash />
-				<input style={{ marginLeft: '36%', width: '29%'}} placeholder='Search...' onChange={handleChange} type='text' name='searchTerm' value={searchTerm} />
+				<input
+					style={{ marginLeft: '36%', width: '29%' }}
+					placeholder='Search...'
+					onChange={handleChange}
+					type='text'
+					name='searchTerm'
+					value={searchTerm}
+				/>
 			</section>
 
 			{searchTerm.length === 0 ? (
-			<div>
+				<div>
 					<Row>
-						{seniors.map(person => (
-							<Col lg='4'>
-								<SeniorCard
-									key={person.id}
-									firstName={person.firstName}
-									lastName={person.lastName}
-									times={person.availability}
-									location={person.country}
-									volunteer_id={person.volunteer_id}
-								/>
-							</Col>
-						))}
+						{seniors.map(person => {
+							return(
+							avatars.map(image => {
+								return(
+								<Col lg='4' key={person.id}>
+									<SeniorCard
+										key={person.id}
+										firstName={person.firstName}
+										lastName={person.lastName}
+										times={person.availability}
+										location={person.country}
+										volunteer_id={person.volunteer_id}
+										image={image.largeImageURL}
+									/>
+								</Col>
+						)}))})}
 					</Row>
 				</div>
 			) : (
-					<div>
+				<div>
 					<Row>
 						{searchResults.map(person => (
 							<Col lg='4'>
