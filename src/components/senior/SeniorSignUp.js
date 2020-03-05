@@ -156,7 +156,7 @@ const SeniorSignUp = props => {
                         },
                      }}
                   />
-                  <Button className='formButton' type='submit'>
+                  <Button outline color='primary' className='formButton' type='submit'>
                      Sign Up
                   </Button>
                </AvForm>

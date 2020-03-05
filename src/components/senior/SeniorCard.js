@@ -7,8 +7,9 @@ import Appointments from './Appointments'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import TaskEditForm from '../admin/TaskEditForm';
 import { Image } from 'semantic-ui-react';
+import image from '../../images/ph.bmp';
 
-const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image }) => {
+const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	const [taskListIsOpen, setTaskListIsOpen] = useState(false);
 	const [addTaskIsOpen, setAddTaskIsOpen] = useState(false);
 	const [toggleCalender, setToggleCalender] = useState(false);
@@ -57,13 +58,9 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image 
 	}
 
 	const handleEditClick = task => {
-		console.log('from handleEditClick on SeniorCard, before setting task', task)
-		console.log('userTasks ===', userTasks)
 		const [extractedUser] = userTasks
-		console.log('extractedUser', extractedUser)
 		setTaskToEdit(extractedUser)
 		toggleEditForm()
-		console.log('From the handleEditClick (setTaskToEdit) function call ---> ', taskToEdit)
 	} 
 	
 
@@ -79,7 +76,8 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image 
 					borderBottom: '5px groove steelblue',
 					borderRight: '1px solid steelblue',
 					borderLeft: '1px solid steelblue',
-				}}>
+				}}
+			>
 				<CardHeader className='imgDiv'>
 					<div>
 						<Image src={image} alt='avatar' avatar className='img' />
@@ -104,15 +102,18 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image 
 							</Button>
 						</ButtonGroup>
 					) : null}
+
 					<Collapse isOpen={taskListIsOpen}>
 						<Card>
 							<CardBody>
-								<ol style={{}}>
+								<ol style={{ }}>
 									{userTasks.map(userTask => {
 										return (
 											<div className='editFormCollapse'>
 												<div className='task-nav'>
-													<li className='li'>{userTask.title}</li>
+													<li className='li'>
+														<p>{userTask.title}</p>
+													</li>
 
 													<div className='task-btns'>
 														<span style={{ margin: '1%' }}>
@@ -155,6 +156,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image 
 						</Card>
 					</Collapse>
 				</CardBody>
+
 				<CardFooter className='text-muted'>
 					{url.match(/admin-dash/gi) ? (
 						<span>Volunteer ID: {volunteer_id}</span>
@@ -171,6 +173,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image 
 						</span>
 					)}
 				</CardFooter>
+
 			</Card>
 		</div>
 	);
