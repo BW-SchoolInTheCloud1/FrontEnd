@@ -6,6 +6,7 @@ import { Image } from 'semantic-ui-react';
 import { Button, ButtonGroup, Card, CardBody, CardHeader, CardFooter, CardTitle, CardText, Collapse, Navbar} from 'reactstrap'
 import AddTask from '../admin/AddTask'
 import Appointments from './Appointments'
+import axios from 'axios'
 
 
 
@@ -14,7 +15,7 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 	const [addTaskIsOpen, setAddTaskIsOpen] = useState(false);
 	const [toggleCalender, setToggleCalender] = useState(false);
 	const [userTasks, setUserTasks] = useState([])
-
+	const [avatar, setAvatar]=useState([])
 	const tasks = useSelector(state => state.tasks)
 	const dispatch = useDispatch()
 	
@@ -23,10 +24,23 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 	const toggleApptBook = () => setToggleCalender(!toggleCalender);
 
 	const url = window.location.href;
-
+	
 	useEffect(() => {
 		dispatch(getTasks())
 	}, [dispatch]) 
+
+{/*useEffect(()=>{
+		axios
+		.get ('https://pixabay.com/api/?key=15487793-8de1803bf08fe5bfa00ea0af4&q=grandparents&image_type=photo')
+		.then(res => {
+			console.log('Images API INFO ----->', res.data.hits)
+			setAvatar(res.data.hits)
+			{avatar.map(image => return
+			
+			console.log("2nd res call for images --->",avatar)
+		})
+		.catch(err => console.log("No Images", err))
+	},[])}*/}
 
 	
 	const handleTaskListClick = () => {
@@ -39,7 +53,8 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 		setTaskListIsOpen(false)
 		toggleRight()
 	}
-  
+	//const img = {avatar.map(image =>{)})}
+	//return(
 	return (
 		<div className='col'>
 			<Card
@@ -54,7 +69,7 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 					borderLeft: '1px solid steelblue',
 				}}>
 				<CardHeader className='imgDiv'>
-					<div>
+					<div>	
 						<Image src={img} alt='avatar' avatar className='img' />
 					</div>
 					<div className='names'>
@@ -85,6 +100,9 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 									{userTasks.map(userTask => {
 										return (
 											<div className='task-nav'>
+												<li>
+														<h3>{userTask.title}</h3>
+													</li>
 													<span style={{ margin: '1%' }}>
 														<Button color='primary' size='sm'>
 															Edit
@@ -95,9 +113,7 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 															Remove
 														</Button>
 													</span>
-													<li>
-														<h3>{userTask.title}</h3>
-													</li>
+													
 											</div>
 										);
 									})}
