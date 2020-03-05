@@ -6,10 +6,12 @@ import {  getTasks } from '../../redux/actions';
 import {  Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
-const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle }) => {
+const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 	const tasks = useSelector(state => state.tasks)
 	const { id } = useParams()
 	const dispatch = useDispatch()
+
+	const url = window.location.href;
 
 	const putTask = e => {
 		e.preventDefault()
@@ -27,10 +29,12 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle }) => {
 						return task
 					}
 				}))
+				toggle()
+				closeTaskView()
 			})
 			.catch(err => console.log(err));
 		dispatch(getTasks())
-		toggle()
+		
 	};
    
 	return (
@@ -66,21 +70,23 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle }) => {
 						},
 					}}
 				/>
-				<AvField
-					label='Volunteer ID'
-					type='number'
-					name='volunteer_id'
-					id='volunteer_id'
-					placeholder='Please enter a valid Volunteer ID'
-					value={taskToEdit.volunteer_id}
-					onChange={e => setTaskToEdit({ ...taskToEdit, volunteer_id: e.target.value })}
-					validate={{
-						required: {
-							value: true,
-							errorMessage: 'A valid Volunteer ID is required to assign a new task',
-						},
-					}}
-				/>
+				{url.match(/adminVolunteer/gi) ? null : (
+					<AvField
+						label='Volunteer ID'
+						type='number'
+						name='volunteer_id'
+						id='volunteer_id'
+						placeholder='Please enter a valid Volunteer ID'
+						value={taskToEdit.volunteer_id}
+						onChange={e => setTaskToEdit({ ...taskToEdit, volunteer_id: e.target.value })}
+						validate={{
+							required: {
+								value: true,
+								errorMessage: 'A valid Volunteer ID is required to assign a new task',
+							},
+						}}
+					/>
+				)}
 				<Button outline color='primary' className='formButton2'>
 					Submit Edit
 				</Button>
