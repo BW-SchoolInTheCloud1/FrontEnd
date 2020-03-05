@@ -51,7 +51,7 @@ const SeniorList = () => {
 									lastName={person.lastName}
 									times={person.availability}
 									location={person.country}
-									user_id={person.user_id}
+									volunteer_id={person.volunteer_id}
 								/>
 							</Col>
 						))}
@@ -68,7 +68,7 @@ const SeniorList = () => {
 									lastName={person.lastName}
 									times={person.availability}
 									location={person.country}
-									user_id={person.user_id}
+									volunteer_id={person.volunteer_id}
 								/>
 							</Col>
 						))}

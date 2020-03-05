@@ -10,7 +10,7 @@ import axios from 'axios'
 
 
 
-const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
+const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	const [taskListIsOpen, setTaskListIsOpen] = useState(false);
 	const [addTaskIsOpen, setAddTaskIsOpen] = useState(false);
 	const [toggleCalender, setToggleCalender] = useState(false);
@@ -44,7 +44,7 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 
 	
 	const handleTaskListClick = () => {
-		setUserTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(user_id)))
+		setUserTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(volunteer_id)))
 		toggleLeft()
 		setAddTaskIsOpen(false)
 	}
@@ -58,7 +58,7 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 	return (
 		<div className='col'>
 			<Card
-				key={user_id}
+				key={volunteer_id}
 				style={{
 					background: '#F4F1DE',
 					boxShadow: '15px 20px 15px #555',
@@ -126,13 +126,13 @@ const SeniorCard = ({ firstName, lastName, times, location, user_id }) => {
 
 					<Collapse isOpen={addTaskIsOpen}>
 						<Card style={{ marginTop: '20px ' }}>
-							<AddTask user_id={user_id} toggleRight={toggleRight} />
+							<AddTask volunteer_id={volunteer_id} toggleRight={toggleRight} />
 						</Card>
 					</Collapse>
 				</CardBody>
 				<CardFooter className='text-muted'>
 					{url.match(/admin-dash/gi) ? (
-						<span>Volunteer ID: {user_id}</span>) : (
+						<span>Volunteer ID: {volunteer_id}</span>) : (
 						<span>
 							<Button outline color='primary' onClick={() => toggleApptBook()}>Schedule an Appointment</Button>
 							<Collapse isOpen={toggleCalender}>

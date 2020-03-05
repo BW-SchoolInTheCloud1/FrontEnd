@@ -13,7 +13,7 @@ const AdminDash = () => {
 			<DashNavBar/>
 			<Container className='nestedNav'>
 				<NavLink className='navLink' to={`/admin-dash/${id}/showTask`} activeClassName='active'>
-					Show all tasks
+					Show all tasks 
 				</NavLink>
 				<NavLink className='navLink' to={`/admin-dash/${id}/adminVolunteer`} activeClassName='active'>
 					Show all Volunteers
