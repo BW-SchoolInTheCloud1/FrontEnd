@@ -157,7 +157,32 @@ a:hover {
 }
 
 .task-nav {
+
     display: flex;
     justify-content: center;
     margin: 5% 0;
 }
+
+	border-bottom: 1px solid gray;
+	display: flex;
+	justify-content: space-between;
+	margin: 5% 0;
+}
+
+.li {
+	/* border: 1px solid blue; */
+	display: flex;
+	align-items: flex-end;
+}
+
+.task-btns {
+	/* border: 1px solid red; */
+	display: flex;
+}
+
+.editFormCollapse {
+	display: flex;
+	flex-direction: column;
+}
+
+

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 
 const AdminDash = () => {
+
     const { id } = useParams()
 
     return (
@@ -27,5 +28,6 @@ const AdminDash = () => {
         </div>
     )
 }
+
 
 export default AdminDash
