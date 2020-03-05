@@ -12,10 +12,10 @@ const AdminDash = () => {
 		<div>
 			<DashNavBar/>
 			<Container className='nestedNav'>
-				<NavLink className='navLink' to={`/admin-dash/${id}/showTask`} activeClassName='active'>
+				<NavLink className='navLink2' to={`/admin-dash/${id}/showTask`} activeClassName='active'>
 					Show all tasks
 				</NavLink>
-				<NavLink className='navLink' to={`/admin-dash/${id}/adminVolunteer`} activeClassName='active'>
+				<NavLink className='navLink2' to={`/admin-dash/${id}/adminVolunteer`} activeClassName='active'>
 					Show all Volunteers
 				</NavLink>
 			</Container>
