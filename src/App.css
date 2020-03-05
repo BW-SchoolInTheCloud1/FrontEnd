@@ -127,10 +127,8 @@ a:hover {
 
 .task-nav {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 	margin: 5% 0;
 }
 
-.task-info > p {
-	font-size: 18px;
-}
+
