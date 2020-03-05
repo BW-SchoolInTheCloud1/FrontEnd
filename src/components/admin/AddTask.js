@@ -3,15 +3,19 @@ import { useDispatch} from 'react-redux';
 import { assignNewTask, getTasks } from '../../redux/actions';
 import { Button, Container, Row, Col,} from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { useParams } from 'react-router-dom'
 import AdminDash from './AdminDash';
 
 
-const AddTask = ({ user_id, toggleRight }) => {
-  	const dispatch = useDispatch()
+const AddTask = ({ volunteer_id, toggleRight }) => {
+	const dispatch = useDispatch()
+	const { id } = useParams()
+
 	const [taskToAssign, setTaskToAssign] = useState({
 		title: '',
 		description: '',
-		volunteer_id: user_id,
+		volunteer_id: volunteer_id,
+		admin_id: id
 	});
 
 	const handleChange = e => {
@@ -28,7 +32,7 @@ const AddTask = ({ user_id, toggleRight }) => {
 		setTaskToAssign({
 			title: '',
 			description: '',
-			volunteer_id: user_id,
+			volunteer_id: volunteer_id,
 		});
 		toggleRight()
 	};
@@ -76,6 +80,6 @@ const AddTask = ({ user_id, toggleRight }) => {
 			<Button outline color='primary' className='formButton2'>Assign Task</Button>
 			</AvForm>
 		</div>
-);
+	);
 }
   export default AddTask
