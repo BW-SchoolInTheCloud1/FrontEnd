@@ -71,7 +71,7 @@ const Login = props => {
                            },
                         }}
                      />
-                     <Button className='formButton'>Log In</Button>
+                     <Button outline color='primary' className='formButton'>Log In</Button>
                   </AvForm>
                </Col>
             </Row>

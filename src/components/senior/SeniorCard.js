@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getTasks } from '../../redux/actions'
-import img from '../../images/ph.bmp';
-import { Image } from 'semantic-ui-react';
-import { Button, ButtonGroup, Card, CardBody, CardHeader, CardFooter, CardTitle, CardText, Collapse, Navbar} from 'reactstrap'
+import { Button, ButtonGroup, Card, CardBody, CardHeader, CardFooter, CardTitle, CardText, Collapse} from 'reactstrap'
 import AddTask from '../admin/AddTask'
 import Appointments from './Appointments'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
-import axios from 'axios'
 import TaskEditForm from '../admin/TaskEditForm';
+import { Image } from 'semantic-ui-react';
 
-const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
+const SeniorCard = ({ firstName, lastName, times, location, volunteer_id, image }) => {
 	const [taskListIsOpen, setTaskListIsOpen] = useState(false);
 	const [addTaskIsOpen, setAddTaskIsOpen] = useState(false);
 	const [toggleCalender, setToggleCalender] = useState(false);
@@ -21,7 +19,6 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 		 volunteer_id: '' 
 	});
 	const [userTasks, setUserTasks] = useState([])
-	const [avatars, setAvatars]=useState([])
 	const tasks = useSelector(state => state.tasks)
 	const dispatch = useDispatch()
 	
@@ -34,14 +31,8 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	
 	useEffect(() => {
 		dispatch(getTasks())
-		axios
-			.get ('https://pixabay.com/api/?key=15487793-8de1803bf08fe5bfa00ea0af4&q=grandparents&image_type=photo')
-			.then(res => {
-				console.log('Images API INFO ----->', res.data.hits)
-				setAvatars(res.data.hits.map(avatar => avatar.largeImageURL))
-			})
-			.catch(err => console.log("No Images", err))
 	}, [dispatch]) 
+	
 
 	const deleteTask = task => {
       console.log('from deleteTask on SeniorCard', task)
@@ -74,6 +65,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 		toggleEditForm()
 		console.log('From the handleEditClick (setTaskToEdit) function call ---> ', taskToEdit)
 	} 
+	
 
 	return (
 		<div className='col'>
@@ -90,8 +82,8 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 				}}
 			>
 				<CardHeader className='imgDiv'>
-					<div>	
-						<Image src={img} alt='avatar' avatar className='img' />
+					<div>
+						<Image src={image} alt='avatar' avatar className='img' />
 					</div>
 					<div className='names'>
 						<h2>
@@ -120,7 +112,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 								<ol style={{ }}>
 									{userTasks.map(userTask => {
 										return (
-											<div classname='editFormCollapse'>
+											<div className='editFormCollapse'>
 												<div className='task-nav'>
 													<li className='li'>
 														<p>{userTask.title}</p>
@@ -133,22 +125,25 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 															</Button>
 														</span>
 														<span style={{ margin: '1%' }}>
-															<Button 
+															<Button
 																onClick={e => {
 																	e.stopPropagation();
 																	deleteTask(userTask);
 																}}
-																color='danger' 
-																size='sm'
-															>
+																color='danger'
+																size='sm'>
 																Remove
 															</Button>
-															
 														</span>
 													</div>
 												</div>
 												<Collapse isOpen={editFormIsOpen}>
-													<TaskEditForm setTaskToEdit={setTaskToEdit} taskToEdit={taskToEdit} toggle={toggleEditForm} closeTaskView={toggleLeft}/>
+													<TaskEditForm
+														setTaskToEdit={setTaskToEdit}
+														taskToEdit={taskToEdit}
+														toggle={toggleEditForm}
+														closeTaskView={toggleLeft}
+													/>
 												</Collapse>
 											</div>
 										);
@@ -167,11 +162,16 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 
 				<CardFooter className='text-muted'>
 					{url.match(/admin-dash/gi) ? (
-						<span>Volunteer ID: {volunteer_id}</span>) : (
+						<span>Volunteer ID: {volunteer_id}</span>
+					) : (
 						<span>
-							<Button outline color='primary' onClick={() => toggleApptBook()}>Schedule an Appointment</Button>
+							<Button outline color='primary' onClick={() => toggleApptBook()}>
+								Schedule an Appointment
+							</Button>
 							<Collapse isOpen={toggleCalender}>
-								<span className='calender'><Appointments/></span>
+								<span className='calender'>
+									<Appointments />
+								</span>
 							</Collapse>
 						</span>
 					)}

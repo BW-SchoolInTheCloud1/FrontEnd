@@ -1,128 +1,172 @@
 .App {
-	height: 100vh;
-	max-width: 100%;
-	font-family: sans-serif;
-	background-size: auto;
-	background-attachment: fixed;
-	background-repeat: repeat;
-	background-position: center;
-	overflow-x: auto;
-	overflow-y: auto;
-	background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
+	  height: 100vh;
+	  color: navy;
+		max-width: 100%;
+    font-family: sans-serif;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+		overflow-x: auto;
+		overflow-y: auto;
+    background-image: linear-gradient(180deg, #fcb97d 25%, #e07a5f 100%);
+}
+
+
+.register-text{
+	font-size: 18px;
+	text-align: center;
+	margin-top: 15%;
+	color: #f9f9f9;
+}
+.register-text > h2{
+	 text-shadow: 2px 2px 4px lightblue;
+	  border-bottom: 3px solid steelblue;
+	 color: navy;
 }
 
 .registerLink {
-	text-decoration: none;
-	color: whitesmoke;
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 .nestedNav {
-	display: flex;
-	justify-content: space-evenly;
-	padding-top: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+		padding-top: 2%;
+		
+}
+
+.register-card {
+    width: 50%;
+		margin: 2%;
+		background: #f4f1de;
+		border: 3px double navy;
+		
 }
 
 .navBar {
-	text-align: right;
+    text-align: right;
 }
 
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 .navLink {
-	text-decoration: none;
-	color: rgb(231, 111, 81);
-	padding: 1%;
-	border: 1px solid rgba(231, 111, 81, 0.3);
-	border-radius: 10px;
-	font-size: 20px;
-	margin: 5%;
-	margin-top: 40px;
-	background: rgba(224, 122, 95, 0.1);
+	  background: steelblue;
+    color: navy;
+    text-decoration: none;
+    padding: 1%;
+    border: 1px solid steelblue;
+    border-radius: 10px;
+		font-size: 20px;
+		
+}
+
+.navLink2 {
+    text-decoration: none;
+    color: rgb(231, 111, 81);
+    padding: 1%;
+    border: 1px solid rgba(231, 111, 81, 0.3);
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 5%;
+    margin-top: 40px;
+    background: rgba(224, 122, 95, 0.1);
 }
 
 .active {
-	background: steelblue;
-	color: navy;
-	text-decoration: underline overline;
+    background: steelblue;
+    color: navy;
+    text-decoration: underline overline;
 }
 
+.active2 {
+    background: navy;
+    color: white;
+    text-decoration: underline overline;
+}
 .logo {
-	width: 7rem;
+    width: 7rem;
 }
 
 .nonForm {
-	text-align: center;
+    text-align: center;
 }
 
 .formButton {
-	margin-left: 45%;
+		margin-left: 45%;
+		background: #f4f1de
 }
 
 .formButton2 {
-	margin: 0 auto;
-	background: #f4f1de;
+    margin: 0 auto;
+    background: #f4f1de;
 }
 
 .adminForms {
-	background: rgba(70, 130, 180, 0.4);
-	border: 1px solid rgba(0, 0, 128, 0.4);
-	padding: 2%;
-	color: rgba(0, 0, 128, 0.4);
-	font-size: 18px;
-	text-shadow: -1px 0 rgba(70, 130, 180, 0.2), 0 1px rgba(70, 130, 180, 0.2), 1px 0 rgba(70, 130, 180, 0.2),
-		0 -1px rgba(70, 130, 180, 0.2);
-	border-radius: 5px;
+    box-shadow:  10px 15px 10px #555;
+    background: rgba(70, 130, 180, 0.6);
+    padding: 2%;
+    color: rgba(0, 0, 128, 0.4);
+    font-size: 18px;
+    text-shadow: -1px 0 rgba(70, 130, 180, 0.2), 0 1px rgba(70, 130, 180, 0.2),
+        1px 0 rgba(70, 130, 180, 0.2), 0 -1px rgba(70, 130, 180, 0.2);
+    border-radius: 5px;
 }
 
 .formWrapper {
-	box-shadow: 15px 20px 15px black;
-	background: rgba(85, 85, 85, 0.9);
-	border: 5px groove #28262c;
-	padding: 2%;
-	color: #f4f1de;
-	border-radius: 10px;
-	border-bottom-left-radius: 50px;
-	border-top-right-radius: 50px;
+    box-shadow:  10px 15px 10px #555;
+    background: rgba(70, 130, 180, 0.6);
+    border: 5px groove rgba(0, 0, 128, 0.4);
+    padding: 2%;
+    color: rgba(0, 0, 128, 0.4);
+    text-shadow: -1px 0 rgba(70, 130, 180, 0.2), 0 1px rgba(70, 130, 180, 0.2),
+        1px 0 rgba(70, 130, 180, 0.2), 0 -1px rgba(70, 130, 180, 0.2);
+    border-radius: 10px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
 
+
+
 .search-bar {
-	width: 50%;
-	margin: 2%;
+    width: 50%;
+    margin: 2%;
 }
 
 .col {
-	margin: 2%;
+    margin: 2%;
 }
 
 .imgDiv {
-	display: flex;
-	margin: 0 auto;
-	justify-content: space-between;
-	width: 100%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    width: 100%;
 }
 .img {
-	border: 5px double steelblue;
-	margin: 20% 10%;
-	font-size: 325%;
+    border: 5px double steelblue;
+    margin: 20% 10%;
+    font-size: 325%;
 }
 .names {
-	margin: 10% auto;
+    margin: 10% auto;
 }
 
 a:hover {
-	background: rgb(231, 111, 81);
-	text-decoration: none;
-	color: whitesmoke;
+    background: rgb(231, 111, 81);
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 .buttonGroup {
-	display: flex;
-	width: 75%;
-	margin: 0 auto;
-	margin-top: 5%;
-	height: 50px;
+    display: flex;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 5%;
+    height: 50px;
 }
 
 .task-nav {
@@ -132,19 +176,25 @@ a:hover {
 	margin: 5% 0;
 }
 
+/*.li{
+	display:flex;
+	align-items:flex-end;
+}*/
 .li {
-	/* border: 1px solid blue; */
-	display: flex;
-	align-items: flex-end;
+	padding-left: 2%;
+	padding-top: 5%;
+	
 }
 
 .task-btns {
-	/* border: 1px solid red; */
+	
 	display: flex;
+	padding-top: 2%;
 }
 
 .editFormCollapse {
 	display: flex;
 	flex-direction: column;
 }
+
 
