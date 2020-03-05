@@ -57,8 +57,9 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 		toggleRight()
 	}
 
-	const handleEditClick = task => {
+	const handleEditClick = userTask => {
 		const [extractedUser] = userTasks
+		console.log(extractedUser)
 		setTaskToEdit(extractedUser)
 		toggleEditForm()
 	} 
