@@ -57,13 +57,32 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 		toggleRight()
 	}
 
+
+
+
+             //Starting Code
 	const handleEditClick = userTask => {
+		const [extractedUser] = userTasks;
+		console.log(extractedUser);
+		setTaskToEdit(extractedUser);	
+	}; 
+
+// Kara Trying Some Stuff May Come in Handy May Not
+	/* const handleEditClick = userTask => {
+		console.log ('Task Being Clicked in SeniorCard------>', userTask)
 		const [extractedUser] = userTasks
 		console.log(extractedUser)
 		setTaskToEdit(extractedUser)
-		toggleEditForm()
+		console.log('This Array Has An ID we Need to Extract to Tell if Toggle is Okay to Open----->', userTasks)
+		if (Task We Click Ons Id === Task We are Trying to Edit Match) {
+			return (
+
+				Then Open the form ( otherwise do nothing ternary possible here? sometimes I have to revert to an if )
+				toggleEditForm()
+			)
+		}
 	} 
-	
+	 */
 
 	return (
 		<div className='col'>
