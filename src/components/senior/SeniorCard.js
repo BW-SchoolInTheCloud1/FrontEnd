@@ -87,7 +87,8 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 					borderBottom: '5px groove steelblue',
 					borderRight: '1px solid steelblue',
 					borderLeft: '1px solid steelblue',
-				}}>
+				}}
+			>
 				<CardHeader className='imgDiv'>
 					<div>	
 						<Image src={img} alt='avatar' avatar className='img' />
@@ -112,16 +113,15 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 							</Button>
 						</ButtonGroup>
 					) : null}
+
 					<Collapse isOpen={taskListIsOpen}>
 						<Card>
 							<CardBody>
-								
 								<ol style={{ }}>
 									{userTasks.map(userTask => {
 										return (
 											<div classname='editFormCollapse'>
 												<div className='task-nav'>
-													
 													<li className='li'>
 														<p>{userTask.title}</p>
 													</li>
@@ -153,9 +153,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 											</div>
 										);
 									})}
-									
-									</ol>
-								
+								</ol>
 							</CardBody>
 						</Card>
 					</Collapse>
@@ -166,6 +164,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 						</Card>
 					</Collapse>
 				</CardBody>
+
 				<CardFooter className='text-muted'>
 					{url.match(/admin-dash/gi) ? (
 						<span>Volunteer ID: {volunteer_id}</span>) : (
@@ -177,6 +176,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 						</span>
 					)}
 				</CardFooter>
+
 			</Card>
 		</div>
 	);
