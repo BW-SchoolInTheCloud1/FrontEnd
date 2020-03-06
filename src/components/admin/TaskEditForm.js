@@ -30,7 +30,7 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 					}
 				}))
 				toggle()
-				/* closeTaskView()   WHAT THE HECK IS THIS A TIRED WORK REMNANT IT SAYS NOT A FUNCTION IN THE CONSOLE BUT EVERYTHING WORKS WITHOUT IT JUST FINE :) */ 
+			closeTaskView()  
 			})
 			.catch(err => console.log(err));
 		dispatch(getTasks())
