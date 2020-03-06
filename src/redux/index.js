@@ -4,7 +4,9 @@ import {
    GET_TASKS,
    GET_SENIORS_LIST,  
    ASSIGN_NEW_TASK, 
-   SET_ERROR, } from './actions'
+   SET_ERROR,
+   TOGGLE_TASK_COMPLETED, 
+   EDIT_TASK } from './actions'
 
 const initialState = {
    seniors: [],
@@ -30,7 +32,6 @@ const reducer = (state = initialState, action) => {
          return {
             ...state,
             tasks: action.payload,
-            
          }
       case ASSIGN_NEW_TASK:
          return {
@@ -39,12 +40,27 @@ const reducer = (state = initialState, action) => {
                ...state.tasks,
                action.payload
             ],
-            
+         }
+      case TOGGLE_TASK_COMPLETED:
+         return state.tasks.map(task => {
+            if (task.id === action.payload.id) {
+               task.is_completed = !task.is_completed;
+            }
+            return task
+         })
+      case EDIT_TASK:
+         const newTasksArray = state.tasks.filter(task => task.id !== action.payload.id)
+         return {
+            ...state,
+            tasks: [
+               ...newTasksArray,
+               action.payload
+            ]
          }
       default: return state
    } 
 }
 
 const store = createStore(reducer, applyMiddleware(thunk))
-// store.subscribe(() => console.log("THIS IS THE STORE!",store.getState()))
+store.subscribe(() => console.log("THIS IS THE STORE!",store.getState()))
 export default store
