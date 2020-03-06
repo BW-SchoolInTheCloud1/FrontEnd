@@ -43,7 +43,8 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 			.delete(`/todos/${task.id}`)
 			.then(res => {
             console.log('response =', res);
-            setUserTasks(userTasks.filter(userTask => parseInt(userTask.id) !== parseInt(task.id)));
+				setUserTasks(userTasks.filter(userTask => parseInt(userTask.id) !== parseInt(task.id)));
+				dispatch(getTasks())
          })
 			.catch(err => console.log(err));
 	};
@@ -115,7 +116,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 													<div className='task-btns'>
 														<span style={{ margin: '1%' }}>
 															<Button onClick={() => handleEditClick(userTask, index)} color='primary' size='sm'>
-																Edit
+																Details
 															</Button>
 														</span>
 														<span style={{ margin: '1%' }}>
