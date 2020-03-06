@@ -25,9 +25,10 @@ const Register = () => {
 								style={{
 									textShadow: '1px 1px 3px navy',
 								}}>
-								In college? In high school? In school at all? Need help? You are a student. Register Here!
+								In college? In high school? In school at all? Need help? You are a student. 
 							</CardText>
-							<div nav-link-wrapper style={{paddingTop: '10%', paddingBottom:'2%'}}>
+							<div nav-link-wrapper style={{ paddingTop: '12%', paddingBottom: '2%' }}>Register Here!
+								<br/>
 								<NavLink to='/register/student' activeClassName='active2' className='navLink'>
 									Students
 								</NavLink>
@@ -44,9 +45,11 @@ const Register = () => {
 						<span className='register-text'>
 							<h2>Volunteer</h2>
 							<CardText style={{ textShadow: '1px 1px 3px navy' }}>
-								Want to help students from all over? Have extra time? Why not be a tutor volunteer? Sign up now!
+								Want to help students from all over? Have extra time? Why not be a tutor volunteer? 
 							</CardText>
-							<div nav-link-wrapper style={{paddingTop: '10%' }}>
+							<div nav-link-wrapper style={{ paddingTop: '5%' }}>
+								Sign up now!
+								<br/>
 								<NavLink to='/register/volunteer' className='navLink' activeClassName='active2'>
 									Volunteers
 								</NavLink>
@@ -68,9 +71,11 @@ const Register = () => {
 									margin: '2%',
 								}}>
 								Is your goal to help close the achievement gap by connecting students with
-								qualified available volunteer tutors. This is your Role!
+								qualified available volunteer tutors. 
 							</CardText>
-							<div nav-link-wrapper style={{ paddingTop: '5%' }}>
+							<div nav-link-wrapper style={{ paddingBottom: '5%' }}>
+								This is your Role!
+								<br/>
 								<NavLink to='/register/admin-signup' className='navLink' activeClassName='active2'>
 									Administrator
 								</NavLink>
