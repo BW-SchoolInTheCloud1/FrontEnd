@@ -16,8 +16,7 @@ const Example = ({ task, title, description, assigned_to}) => {
    
    return (
 				<div className='col'>
-					<Card className='cards' style={{height: '50vh'}}
-					>
+					<Card className='cards'>
 						<CardHeader tag='h3'>{title}</CardHeader>
 						<CardBody>
 							<CardText>{description}</CardText>

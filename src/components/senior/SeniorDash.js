@@ -14,20 +14,27 @@ import {
 	CardHeader,
 	CardBody,
 	CardText,
+	CardFooter
 } from 'reactstrap';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const SeniorDash = () => {
 	const tasks = useSelector(state => state.tasks);
 	const [myTasks, setMyTasks] = useState([]);
+	const [isCompleted, setIsCompleted] = useState(false);
+	const [taskToComplete, setTaskToComplete] = useState({});
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
 	const [modal, setModal] = useState(false);
 	const toggle = () => setModal(!modal);
+	const toggleCompleted = (index) => {
+		setIsCompleted({[index]: !isCompleted[index]});
+	}
 
 	useEffect(() => {
 		dispatch(getTasks());
+		console.log('isCompleted from useEffect:', isCompleted)
 	}, [dispatch]);
 
 	const handleClick = () => {
@@ -35,6 +42,14 @@ const SeniorDash = () => {
 		setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)));
 		toggle();
 	};
+	
+	const handleToggelCompletedClick = (myTask, index) => {
+		const arrayWithTaskToComplete = myTasks.filter(task => task.id === myTask.id)
+		const [extractedTaskObject] = arrayWithTaskToComplete
+		setTaskToComplete(extractedTaskObject);	
+		toggleCompleted(index)
+		console.log('isCompleted:', isCompleted)
+	}; 
 
 	const deleteTask = task => {
 		console.log(task);
@@ -68,27 +83,25 @@ const SeniorDash = () => {
 							</ModalFooter>
 						</Modal>
 					) : (
-						myTasks.map(task => {
+						myTasks.map((myTask, index) => {
 							return (
 								<Col lg='3'>
-									<div key={task.id} className='col'>
-										<Card className='cards' style={{ height: '50vh' }}>
+									<div key={myTask.id} className='col'>
+										<Card className='cards'>
 											<CardHeader style={{ display: 'flex', justifyContent: 'space-between' }}>
-												<h3>{task.title}</h3>
+												<h3>{myTask.title}</h3>
 												<Button
 													outline
-													color='danger'
-													onClick={e => {
-														e.stopPropagation();
-														deleteTask(task);
-													}}>
+													color={isCompleted === true ? 'success' : 'danger'}
+													onClick={() => handleToggelCompletedClick(myTask, index)}
+												>
 													X
 												</Button>
 											</CardHeader>
 											<CardBody>
-												<CardText>{task.description}</CardText>
-												<CardText>{task.id}</CardText>
+												<CardText>{myTask.description}</CardText>
 											</CardBody>
+											<CardFooter>Task ID: {myTask.id}</CardFooter>
 										</Card>
 									</div>
 								</Col>
