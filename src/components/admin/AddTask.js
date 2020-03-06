@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch} from 'react-redux';
 import { assignNewTask, getTasks } from '../../redux/actions';
 import { Button, Container, Row, Col,} from 'reactstrap';
@@ -10,6 +10,10 @@ import AdminDash from './AdminDash';
 const AddTask = ({ volunteer_id, toggleRight }) => {
 	const dispatch = useDispatch()
 	const { id } = useParams()
+
+	useEffect(() => {
+		dispatch(getTasks)
+	}, [dispatch])
 
 	const [taskToAssign, setTaskToAssign] = useState({
 		title: '',

@@ -62,12 +62,9 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 
              //Starting Code
 	const handleEditClick = (userTask, index) => {
-		console.log ('Task Being Clicked in SeniorCard------>', userTask)
 		const arrayWithTaskToEdit = userTasks.filter(task => task.id === userTask.id)
 		const [extractedTaskObject] = arrayWithTaskToEdit
-		console.log('extractedTaskObject--->', extractedTaskObject)
 		setTaskToEdit(extractedTaskObject);	
-		console.log('This Array Has An ID we Need to Extract to Tell if Toggle is Okay to Open (userTasks)----->', userTasks)
 		toggleEditForm(index)
 	}; 
 

@@ -34,7 +34,6 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 			})
 			.catch(err => console.log(err));
 		dispatch(getTasks())
-		
 	};
    
 	return (
