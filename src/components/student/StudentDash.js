@@ -18,9 +18,7 @@ const StudentDash = () => {
 
 	const handleClick = e => {
 		e.preventDefault();
-		setSearchResults(
-			seniors.filter(
-				character =>
+		setSearchResults(seniors.filter(character =>
 					character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
 					character.availability.toLowerCase().includes(searchTerm.toLowerCase()),
 			),
