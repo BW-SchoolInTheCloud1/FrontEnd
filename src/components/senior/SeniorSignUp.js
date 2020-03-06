@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux"
 import { postNewSenior } from "../../redux/actions"
 import axios from "axios"
 import { timeOptions } from "../../data"
-import NavBar from '../navs/NavBar'
 import Register from '../navs/Register'
 
 const SeniorSignUp = props => {
@@ -16,7 +15,6 @@ const SeniorSignUp = props => {
       axios
          .get(`https://restcountries.eu/rest/v2/all`)
          .then(response => {
-            console.log("this is my country data", response.data)
             setCountry(response.data)
          })
          .catch(error => {

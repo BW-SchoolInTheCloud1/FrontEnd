@@ -12,21 +12,12 @@ const Example = ({ task, title, description, assigned_to}) => {
 	const editTask = task => {
       setTaskToEdit(task)
       toggle()
-      console.log('From the editTask (setTaskToEdit) function call ---> ', taskToEdit)
    }
    
    return (
 				<div className='col'>
-					<Card
-						style={{
-							background: '#F4F1DE',
-							boxShadow: '15px 20px 15px black',
-							borderRadius: '10px',
-							borderTop: '5px groove steelblue',
-							borderBottom: '5px groove steelblue',
-							borderRight: '1px solid steelblue',
-							borderLeft: '1px solid steelblue',
-						}}>
+					<Card className='cards' style={{height: '50vh'}}
+					>
 						<CardHeader tag='h3'>{title}</CardHeader>
 						<CardBody>
 							<CardText>{description}</CardText>

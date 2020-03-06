@@ -88,15 +88,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 		<div className='col'>
 			<Card
 				key={volunteer_id}
-				style={{
-					background: '#F4F1DE',
-					boxShadow: '15px 20px 15px #555',
-					borderRadius: '10px',
-					borderTop: '5px groove steelblue',
-					borderBottom: '5px groove steelblue',
-					borderRight: '1px solid steelblue',
-					borderLeft: '1px solid steelblue',
-				}}
+				className='cards'
 			>
 				<CardHeader className='imgDiv'>
 					<div>
