@@ -5,10 +5,6 @@ import { Button} from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { useParams } from 'react-router-dom'
 
-//! We May Need to Pass these Notes to Denton after We Double Check Our Side of the App as I Believe There is a Problem with the BackEnd Creating Two Copies in the Backend when we Post.....
-//# 1.{Behavior When Adding a Task The First Time Usually always a success and stages everything fine...Or Random 400 Error and again right after definite 400 Error}
-//# 2. {2nd Time After Refresh It Creates 2 of The Same Item in State. Then it Hits a 400 Again Until Refresh}
-
 
 //!These Notes are for Adrian on What I have checked and my Thoughts of what might cause the issue from our side
 
@@ -97,7 +93,7 @@ const AddTask = ({ volunteer_id, toggleRight }) => {
 				id='volunteer_id'
 				value={taskToAssign.volunteer_id}
 			/>
-			<Button outline color='primary' className='formButton2'>Assign Task</Button>
+			<Button color='success' className='formButton2'>Assign Task</Button>
 			</AvForm>
 		</div>
 	);

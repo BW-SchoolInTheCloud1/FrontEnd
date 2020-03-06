@@ -113,8 +113,11 @@ a {
 }
 
 .formButton2 {
+    display: flex;
+    justify-content: flex-end;
     margin: 0 auto;
-    background: #f4f1de;
+    margin-left: 80%;
+    /* background: #f4f1de; */
 }
 
 .adminForms {

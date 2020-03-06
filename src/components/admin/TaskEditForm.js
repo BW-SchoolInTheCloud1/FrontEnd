@@ -86,8 +86,8 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 						}}
 					/>
 				)}
-				<Button outline color='primary' className='formButton2'>
-					Submit Edit
+				<Button color='success' className='formButton2'>
+					Edit Task
 				</Button>
 			</AvForm>
 		</div>

@@ -12,19 +12,19 @@ const TaskList = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 
   	useEffect(() => {
-				dispatch(getTasks());
-				const results = tasks.filter(character => {
-					return (
-						character.title.toLowerCase().includes(searchTerm.toLowerCase())
-					);
-				});
-				setSearch(results);
-				
-			}, [searchTerm, dispatch, tasks]);
+		dispatch(getTasks());
+		const results = tasks.filter(character => {
+			return (
+				character.title.toLowerCase().includes(searchTerm.toLowerCase())
+			);
+		});
+		setSearch(results);
+	}, [searchTerm, dispatch]);
 
-			const handleChange = e => {
-				setSearchTerm(e.target.value);
-			};
+	const handleChange = e => {
+		setSearchTerm(e.target.value);
+	};
+
   	return (
     	<div>
 				<AdminDash />
