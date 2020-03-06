@@ -13,7 +13,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	const [taskListIsOpen, setTaskListIsOpen] = useState(false);
 	const [addTaskIsOpen, setAddTaskIsOpen] = useState(false);
 	const [toggleCalender, setToggleCalender] = useState(false);
-	const [editFormIsOpen, setEditFormIsOpen] = useState(false);
+	const [editFormIsOpen, setEditFormIsOpen] = useState({});
 	const [taskToEdit, setTaskToEdit] = useState({
 		 title: '', 
 		 description: '', 
@@ -26,7 +26,9 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	const toggleLeft = () => setTaskListIsOpen(!taskListIsOpen);
 	const toggleRight = () => setAddTaskIsOpen(!addTaskIsOpen);
 	const toggleApptBook = () => setToggleCalender(!toggleCalender);
-	const toggleEditForm = () => setEditFormIsOpen(!editFormIsOpen);
+	const toggleEditForm = (index) => {
+		setEditFormIsOpen({[index]: !editFormIsOpen[index]});
+	}
 
 	const url = window.location.href;
 	
@@ -46,43 +48,45 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 			.catch(err => console.log(err));
 	};
 
-	const handleTaskListClick = () => {
+	const handleTaskListClick = e => {
 		setUserTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(volunteer_id)))
+		console.log(userTasks)
 		toggleLeft()
 		setAddTaskIsOpen(false)
 	}
 
-	const handleAddTaskClick = () => {
+	const handleAddTaskClick = e => {
 		setTaskListIsOpen(false)
 		toggleRight()
 	}
 
-
-
-
              //Starting Code
-	const handleEditClick = userTask => {
-		const [extractedUser] = userTasks;
-		console.log(extractedUser);
-		setTaskToEdit(extractedUser);	
+	const handleEditClick = (userTask, index) => {
+		console.log ('Task Being Clicked in SeniorCard------>', userTask)
+		const arrayWithTaskToEdit = userTasks.filter(task => task.id === userTask.id)
+		const [extractedTaskObject] = arrayWithTaskToEdit
+		console.log('extractedTaskObject--->', extractedTaskObject)
+		setTaskToEdit(extractedTaskObject);	
+		console.log('This Array Has An ID we Need to Extract to Tell if Toggle is Okay to Open (userTasks)----->', userTasks)
+		toggleEditForm(index)
 	}; 
 
 // Kara Trying Some Stuff May Come in Handy May Not
-	/* const handleEditClick = userTask => {
-		console.log ('Task Being Clicked in SeniorCard------>', userTask)
-		const [extractedUser] = userTasks
-		console.log(extractedUser)
-		setTaskToEdit(extractedUser)
-		console.log('This Array Has An ID we Need to Extract to Tell if Toggle is Okay to Open----->', userTasks)
-		if (Task We Click Ons Id === Task We are Trying to Edit Match) {
-			return (
+	//  const handleEditClick = userTask => {
+	// 	console.log ('Task Being Clicked in SeniorCard------>', userTask)
+	// 	const [extractedUser] = userTasks
+	// 	console.log(extractedUser)
+	// 	setTaskToEdit(extractedUser)
+	// 	console.log('This Array Has An ID we Need to Extract to Tell if Toggle is Okay to Open----->', userTasks)
+	// 	if (Task We Click Ons Id === Task We are Trying to Edit Match) {
+	// 		return (
 
-				Then Open the form ( otherwise do nothing ternary possible here? sometimes I have to revert to an if )
-				toggleEditForm()
-			)
-		}
-	} 
-	 */
+	// 			Then Open the form ( otherwise do nothing ternary possible here? sometimes I have to revert to an if )
+	// 			toggleEditForm()
+	// 		)
+	// 	}
+	// } 
+	 
 
 	return (
 		<div className='col'>
@@ -119,9 +123,9 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 						<Card>
 							<CardBody>
 								<ol style={{ }}>
-									{userTasks.map(userTask => {
+									{userTasks.map((userTask, index) => {
 										return (
-											<div className='editFormCollapse'>
+											<div className='editFormCollapse' key={index}>
 												<div className='task-nav'>
 													<li className='li'>
 														<p>{userTask.title}</p>
@@ -129,7 +133,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 
 													<div className='task-btns'>
 														<span style={{ margin: '1%' }}>
-															<Button onClick={handleEditClick} color='primary' size='sm'>
+															<Button onClick={() => handleEditClick(userTask, index)} color='primary' size='sm'>
 																Edit
 															</Button>
 														</span>
@@ -146,7 +150,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 														</span>
 													</div>
 												</div>
-												<Collapse isOpen={editFormIsOpen}>
+												<Collapse isOpen={editFormIsOpen[index] ? true : false}>
 													<TaskEditForm
 														setTaskToEdit={setTaskToEdit}
 														taskToEdit={taskToEdit}
