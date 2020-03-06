@@ -15,7 +15,6 @@ export const login = (credentials, props) => dispatch => {
    axiosWithAuth()
       .post('/auth/login', credentials)
       .then(res => {
-         console.log(res)
          localStorage.setItem('token', res.data.token)
          if (res.data.user.role === 'admin') {
             props.history.push(`/admin-dash/${res.data.roleId.id}`)
@@ -36,7 +35,6 @@ export const getSeniors  =  () => dispatch =>  {
    axiosWithAuth()
 		.get('/volunteer/')
 		.then(res => {
-			console.log('getSeniors response', res);
          dispatch({ type: GET_SENIORS_LIST,  payload: res.data });
 		})
 		.catch(err => {
@@ -50,7 +48,6 @@ export const postNewSenior = (seniorToPost, props) => dispatch => {
    axiosWithAuth()
       .post('/auth/register', seniorToPost)
       .then(res => {
-         console.log("Yo Look Here!", res)
          localStorage.setItem('token', res.data.token)
          props.history.push(`/volunteer-dash/${res.data.roleId.id}`)
       })
@@ -65,7 +62,6 @@ export const postNewStudent = (studentToPost, props) => dispatch => {
    axiosWithAuth()
       .post('/auth/register', studentToPost)
       .then(res => {
-         console.log("Yo Look Here!", res)
          localStorage.setItem('token', res.data.token)
          props.history.push(`/student-dash/${res.data.roleId.id}`)
       })
@@ -79,7 +75,6 @@ export const postNewAdmin = (adminToPost, props) => dispatch => {
    axiosWithAuth()
       .post('/auth/register', adminToPost)
       .then(res => {
-         console.log("Yo Look Here!", res)
          localStorage.setItem('token', res.data.token)
          props.history.push(`/admin-dash/${res.data.roleId.id}`)
       })
@@ -93,7 +88,6 @@ export const getTasks = () => dispatch => {
    axiosWithAuth()
       .get('/todos')
       .then(res => {
-         console.log("GET_TASKS", res)
          dispatch({ type: GET_TASKS, payload: res.data })
       })
       .catch(err => {
@@ -106,7 +100,6 @@ export const assignNewTask = taskToAssign => dispatch => {
    axiosWithAuth()
       .post(`/admin/${taskToAssign.admin_id}/todos`, taskToAssign)
       .then(res => {
-         console.log("ASSIGN_NEW_TASK", res.data)
          dispatch({ type: ASSIGN_NEW_TASK, payload: res.data})
       })
       .catch(err => {
