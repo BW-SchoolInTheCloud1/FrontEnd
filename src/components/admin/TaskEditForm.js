@@ -30,14 +30,14 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 					}
 				}))
 				toggle()
-				closeTaskView()
+				/* closeTaskView()   WHAT THE HECK IS THIS A TIRED WORK REMNANT IT SAYS NOT A FUNCTION IN THE CONSOLE BUT EVERYTHING WORKS WITHOUT IT JUST FINE :) */ 
 			})
 			.catch(err => console.log(err));
 		dispatch(getTasks())
 	};
    
 	return (
-		<div className='adminForms > nonForm'>
+		<div className='adminForms'>
 			<AvForm onSubmit={putTask}>
 				<AvField
 					label='Title'

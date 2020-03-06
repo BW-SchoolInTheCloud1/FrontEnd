@@ -30,7 +30,6 @@ const SeniorList = () => {
 
 	const handleChange = e => {
 		setSearchTerm(e.target.value);
-		console.log('From handleChange in StudentList---->', searchTerm);
 	};
 
 	return (
@@ -50,9 +49,9 @@ const SeniorList = () => {
 			{searchTerm.length === 0 ? (
 				<div>
 					<Row>
-						{seniors.map(person => {
+						{seniors.map((person,index) => {
 							return(
-								<Col lg='4' key={person.id}>
+								<Col lg='4' key={index}>
 									<SeniorCard
 										key={person.id}
 										firstName={person.firstName}

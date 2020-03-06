@@ -16,18 +16,20 @@ import {
 	CardText,
 	CardFooter
 } from 'reactstrap';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
+//import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import checked from '../../images/checkmark.png'
 const SeniorDash = () => {
+
 	const tasks = useSelector(state => state.tasks);
 	const [myTasks, setMyTasks] = useState([]);
 	const [isCompleted, setIsCompleted] = useState(false);
 	const [taskToComplete, setTaskToComplete] = useState({});
 	const dispatch = useDispatch();
 	const { id } = useParams();
-
 	const [modal, setModal] = useState(false);
 	const toggle = () => setModal(!modal);
+
+
 	const toggleCompleted = (index) => {
 		setIsCompleted({[index]: !isCompleted[index]});
 	}
@@ -35,7 +37,7 @@ const SeniorDash = () => {
 	useEffect(() => {
 		dispatch(getTasks());
 		console.log('isCompleted from useEffect:', isCompleted)
-	}, [dispatch]);
+	}, [dispatch, isCompleted]);
 
 	const handleClick = () => {
 		dispatch(getTasks());
@@ -43,7 +45,7 @@ const SeniorDash = () => {
 		toggle();
 	};
 	
-	const handleToggelCompletedClick = (myTask, index) => {
+	const handleToggleCompletedClick = (myTask, index) => {
 		const arrayWithTaskToComplete = myTasks.filter(task => task.id === myTask.id)
 		const [extractedTaskObject] = arrayWithTaskToComplete
 		setTaskToComplete(extractedTaskObject);	
@@ -51,7 +53,7 @@ const SeniorDash = () => {
 		console.log('isCompleted:', isCompleted)
 	}; 
 
-	const deleteTask = task => {
+	/* const deleteTask = task => {
 		console.log(task);
 		axiosWithAuth()
 			.delete(`/todos/${task.id}`)
@@ -60,7 +62,7 @@ const SeniorDash = () => {
 				setMyTasks(myTasks.filter(mytask => parseInt(mytask.id) !== parseInt(task.id)));
 			})
 			.catch(err => console.log(err));
-	};
+	}; */
 
 	return (
 		<div>
@@ -86,17 +88,26 @@ const SeniorDash = () => {
 						myTasks.map((myTask, index) => {
 							return (
 								<Col lg='3'>
-									<div key={myTask.id} className='col'>
+									<div key={index} className='col'>
 										<Card className='cards'>
 											<CardHeader style={{ display: 'flex', justifyContent: 'space-between' }}>
 												<h3>{myTask.title}</h3>
-												<Button
+												{isCompleted[index] === true ?
+													(<Button
+													style={{maxWidth: '30px'}}
 													outline
-													color={isCompleted === true ? 'success' : 'danger'}
-													onClick={() => handleToggelCompletedClick(myTask, index)}
+													color='success'
+													onClick={() => handleToggleCompletedClick(myTask, index)}
+													><img style={{marginLeft: '-115%'}} src={checked} alt='completed'/></Button>)
+													 : 
+													(<Button
+													outline
+													color='danger'
+													onClick={() => handleToggleCompletedClick(myTask, index)}
 												>
 													X
-												</Button>
+												</Button>) }
+												
 											</CardHeader>
 											<CardBody>
 												<CardText>{myTask.description}</CardText>
