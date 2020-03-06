@@ -30,6 +30,7 @@ const SeniorList = () => {
 
 	const handleChange = e => {
 		setSearchTerm(e.target.value);
+		console.log('From handleChange in StudentList---->', searchTerm);
 	};
 
 	return (
