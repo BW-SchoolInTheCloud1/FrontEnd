@@ -6,7 +6,7 @@ import TaskCard from './TaskCard'
 import AdminDash from './AdminDash'
 
 const TaskList = () => {
-  const tasks = useSelector(state => state.tasks);
+  	const tasks = useSelector(state => state.tasks);
 	const dispatch = useDispatch()
 	const [search, setSearch] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');

@@ -30,7 +30,7 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 					}
 				}))
 				toggle()
-			closeTaskView()  
+				closeTaskView()  
 			})
 			.catch(err => console.log(err));
 		dispatch(getTasks())

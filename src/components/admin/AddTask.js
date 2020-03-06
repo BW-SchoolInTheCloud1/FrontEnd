@@ -51,6 +51,7 @@ const AddTask = ({ volunteer_id, toggleRight }) => {
 			title: '',
 			description: '',
 			volunteer_id: volunteer_id,
+			admin_id: id
 		});
 		dispatch(getTasks())
 		toggleRight()
