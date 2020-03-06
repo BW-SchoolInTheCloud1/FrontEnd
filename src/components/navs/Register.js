@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, CardHeader, CardText, CardImg, CardImgOverlay } from 'reactstrap';
+import { Container, Card, CardText, CardImg } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import NavBar from './NavBar';
 import Student from '../../images/Student.png';

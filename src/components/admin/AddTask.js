@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch} from 'react-redux';
 import { assignNewTask, getTasks } from '../../redux/actions';
-import { Button, Container, Row, Col,} from 'reactstrap';
+import { Button} from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { useParams } from 'react-router-dom'
-import AdminDash from './AdminDash';
+
 
 
 const AddTask = ({ volunteer_id, toggleRight }) => {
@@ -12,7 +12,7 @@ const AddTask = ({ volunteer_id, toggleRight }) => {
 	const { id } = useParams()
 
 	useEffect(() => {
-		dispatch(getTasks)
+		dispatch(getTasks())
 	}, [dispatch])
 
 	const [taskToAssign, setTaskToAssign] = useState({
@@ -29,15 +29,14 @@ const AddTask = ({ volunteer_id, toggleRight }) => {
 		});
 	};
 
-	const handleSubmit = e => {
-		e.preventDefault();
+	const handleSubmit = () => {
 		dispatch(assignNewTask(taskToAssign));
-		dispatch(getTasks());
 		setTaskToAssign({
 			title: '',
 			description: '',
 			volunteer_id: volunteer_id,
 		});
+		dispatch(getTasks())
 		toggleRight()
 	};
 

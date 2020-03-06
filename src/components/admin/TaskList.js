@@ -35,9 +35,9 @@ const TaskList = () => {
 					<div>
 					<Row>
 				{tasks.length > 0
-					? tasks.map(task => (
-							<Col lg='4'>
-								<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id} task={task} />
+					? tasks.map((task, index) => (
+							<Col lg='4'key={index}>
+							<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id} task={task} />
 							</Col>
 					  ))
           		: null
@@ -47,9 +47,9 @@ const TaskList = () => {
 				) : (<div>
 						<Row>
 				{search.length > 0
-					? search.map(task => (
-							<Col lg='4'>
-								<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id} task={task} />
+					? search.map((task, index )=> (
+							<Col lg='4'key={index}>
+							<TaskCard title={task.title} description={task.description} assigned_to={task.volunteer_id} task={task} />
 							</Col>
 					  ))
           		: null

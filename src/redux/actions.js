@@ -100,6 +100,7 @@ export const assignNewTask = taskToAssign => dispatch => {
    axiosWithAuth()
       .post(`/admin/${taskToAssign.admin_id}/todos`, taskToAssign)
       .then(res => {
+         console.log(res)
          dispatch({ type: ASSIGN_NEW_TASK, payload: res.data})
       })
       .catch(err => {
