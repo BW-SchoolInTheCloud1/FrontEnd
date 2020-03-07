@@ -15,7 +15,9 @@ const TaskList = () => {
 		dispatch(getTasks());
 		const results = tasks.filter(character => {
 			return (
-				character.title.toLowerCase().includes(searchTerm.toLowerCase())
+				character.title.toLowerCase().includes(searchTerm.toLowerCase()) || character.volunteer_id.toLowerCase().includes(searchTerm.toLowerCase())
+
+				
 			);
 		});
 		setSearch(results);
