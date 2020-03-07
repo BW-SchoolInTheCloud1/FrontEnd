@@ -20,7 +20,7 @@ const StudentDash = () => {
 		e.preventDefault();
 		setSearchResults(seniors.filter(character =>
 					character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					character.availability.toLowerCase().includes(searchTerm.toLowerCase()),
+					character.availability.toLowerCase().includes(searchTerm.toLowerCase()) ||character.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||character.lastName.toLowerCase().includes(searchTerm.toLowerCase()),
 			),
 		);
 	};

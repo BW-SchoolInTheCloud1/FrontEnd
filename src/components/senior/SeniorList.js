@@ -22,7 +22,8 @@ const SeniorList = () => {
 				character.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
 			 	character.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
 			 	character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			 	character.availability.toLowerCase().includes(searchTerm.toLowerCase())
+				character.availability.toLowerCase().includes(searchTerm.toLowerCase()) ||
+				character.volunteer_id.toLowerCase().includes(searchTerm.toLowerCase())
 			)
 		});
 		setSearchResults(results);
