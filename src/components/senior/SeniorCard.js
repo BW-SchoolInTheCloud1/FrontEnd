@@ -8,6 +8,7 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import TaskEditForm from '../admin/TaskEditForm';
 import { Image } from 'semantic-ui-react';
 import image from '../../images/ph.bmp';
+import checkmark from '../../images/checkmark.png'
 
 const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	const tasks = useSelector(state => state.tasks)
@@ -111,6 +112,13 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 												<div className='task-nav'>
 													<li className='li'>
 														<p>{userTask.title}</p>
+														<div>
+															{userTask.is_completed === true ? (
+																<img src={checkmark} alt='checkmark' />
+															) : (
+																null
+															)}
+														</div>
 													</li>
 
 													<div className='task-btns'>

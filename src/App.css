@@ -193,7 +193,7 @@ a:hover {
 
 
 .li {
-	
+	display: flex;
 	padding-top: 5%;
 }
 
@@ -218,5 +218,9 @@ a:hover {
         border-bottom: 5px groove steelblue;
         border-right: 1px solid steelblue;
         border-left: 1px solid steelblue;
+}
+
+.completed {
+    display: none;
 }
 
