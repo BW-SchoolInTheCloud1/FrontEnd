@@ -9,6 +9,8 @@ export const POST_NEW_ADMIN = 'POST_NEW_ADMIN'
 export const ASSIGN_NEW_TASK = 'POST_NEW_TASK'
 export const SET_ERROR = 'SET_ERROR'
 export const GET_TASK_DATA = 'GET_TASK_DATA'
+export const TOGGLE_TASK_COMPLETED = 'TOGGLE_TASK_COMPLETED'
+export const EDIT_TASK = 'EDIT_TASK'
 
 
 export const login = (credentials, props) => dispatch => {
@@ -107,4 +109,18 @@ export const assignNewTask = taskToAssign => dispatch => {
          console.log('NOOOOO!!!!', err)
          dispatch({ type: SET_ERROR, payload: 'error assigning task'})
       })
+}
+
+export const editTask = (taskToEdit) => dispatch => {
+   axiosWithAuth()
+      .put(`/admin/${taskToEdit.admin_id}/todos`, taskToEdit)
+      .then(res => {
+         console.log('PUT response:', res.data)
+         dispatch({ type: EDIT_TASK, payload: res.data})
+      })
+      .catch(err => console.log(err));
+}
+
+export const toggleTaskCompleted = taskToComplete => dispatch => {
+   dispatch({ type: TOGGLE_TASK_COMPLETED, payload: taskToComplete })
 }

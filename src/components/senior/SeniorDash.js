@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DashNavBar from '../navs/DashNavBar';
-import { getTasks } from '../../redux/actions';
+import { getTasks, toggleTaskCompleted  } from '../../redux/actions';
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -16,28 +16,27 @@ import {
 	CardText,
 	CardFooter
 } from 'reactstrap';
-//import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import checked from '../../images/checkmark.png'
-const SeniorDash = () => {
 
+const SeniorDash = () => {
 	const tasks = useSelector(state => state.tasks);
-	const [myTasks, setMyTasks] = useState([]);
-	const [isCompleted, setIsCompleted] = useState(false);
-	const [taskToComplete, setTaskToComplete] = useState({});
 	const dispatch = useDispatch();
 	const { id } = useParams();
+	
+	const [myTasks, setMyTasks] = useState([]);
+	const [isCompleted, setIsCompleted] = useState({});
+	const [taskToComplete, setTaskToComplete] = useState({});
 	const [modal, setModal] = useState(false);
-	const toggle = () => setModal(!modal);
-
-
-	const toggleCompleted = (index) => {
-		setIsCompleted({[index]: !isCompleted[index]});
-	}
 
 	useEffect(() => {
 		dispatch(getTasks());
-		console.log('isCompleted from useEffect:', isCompleted)
-	}, [dispatch, isCompleted]);
+	}, [dispatch, isCompleted, taskToComplete]);
+
+	const toggle = () => setModal(!modal);
+
+	const toggleCompleted = (index) => {
+		setIsCompleted({...isCompleted, [index]: !isCompleted[index]});
+	}
 
 	const handleClick = () => {
 		dispatch(getTasks());
@@ -48,21 +47,11 @@ const SeniorDash = () => {
 	const handleToggleCompletedClick = (myTask, index) => {
 		const arrayWithTaskToComplete = myTasks.filter(task => task.id === myTask.id)
 		const [extractedTaskObject] = arrayWithTaskToComplete
-		setTaskToComplete(extractedTaskObject);	
+		setTaskToComplete(extractedTaskObject)
+		dispatch(toggleTaskCompleted(extractedTaskObject))	
 		toggleCompleted(index)
-		console.log('isCompleted:', isCompleted)
+		dispatch(getTasks())
 	}; 
-
-	/* const deleteTask = task => {
-		console.log(task);
-		axiosWithAuth()
-			.delete(`/todos/${task.id}`)
-			.then(res => {
-				console.log('response =', res);
-				setMyTasks(myTasks.filter(mytask => parseInt(mytask.id) !== parseInt(task.id)));
-			})
-			.catch(err => console.log(err));
-	}; */
 
 	return (
 		<div>
@@ -87,8 +76,8 @@ const SeniorDash = () => {
 					) : (
 						myTasks.map((myTask, index) => {
 							return (
-								<Col lg='3'>
-									<div key={index} className='col'>
+								<Col lg='3' key={index}>
+									<div className='col'>
 										<Card className='cards'>
 											<CardHeader style={{ display: 'flex', justifyContent: 'space-between' }}>
 												<h3>{myTask.title}</h3>
