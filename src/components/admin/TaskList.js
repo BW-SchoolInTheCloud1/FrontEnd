@@ -19,6 +19,7 @@ const TaskList = () => {
 			);
 		});
 		setSearch(results);
+		//eslint-disable-next-line
 	}, [searchTerm, dispatch]);
 
 	const handleChange = e => {

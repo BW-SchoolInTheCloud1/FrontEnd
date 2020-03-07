@@ -5,7 +5,7 @@ import {
    GET_SENIORS_LIST,  
    ASSIGN_NEW_TASK, 
    SET_ERROR,
-   TOGGLE_TASK_COMPLETED, 
+   // TOGGLE_TASK_COMPLETED, 
    EDIT_TASK } from './actions'
 
 const initialState = {
@@ -41,13 +41,13 @@ const reducer = (state = initialState, action) => {
                action.payload
             ],
          }
-      case TOGGLE_TASK_COMPLETED:
-         return state.tasks.map(task => {
-            if (task.id === action.payload.id) {
-               task.is_completed = !task.is_completed;
-            }
-            return task
-         })
+      // case TOGGLE_TASK_COMPLETED:
+      //    return state.tasks.map(task => {
+      //       if (task.id === action.payload.id) {
+      //          task.is_completed = !task.is_completed;
+      //       }
+      //       return task
+      //    })
       case EDIT_TASK:
          const newTasksArray = state.tasks.filter(task => task.id !== action.payload.id)
          return {
