@@ -1,10 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {  getTasks, editTask } from '../../redux/actions';
 import {  Button } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { AvForm, AvField, AvInput } from 'availity-reactstrap-validation';
 
 const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 	const dispatch = useDispatch()
@@ -61,6 +59,19 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 						id='volunteer_id'
 						placeholder='Please enter a valid Volunteer ID'
 						value={taskToEdit.volunteer_id}
+						onChange={e => setTaskToEdit({ ...taskToEdit, volunteer_id: e.target.value })}
+						validate={{
+							required: {
+								value: true,
+								errorMessage: 'A valid Volunteer ID is required to assign a new task',
+							},
+						}}
+					/>
+				)}
+				{url.match(/adminVolunteer/gi) ? null : (
+					<AvInput
+						type='checkbox'
+						name='isCompleted'
 						onChange={e => setTaskToEdit({ ...taskToEdit, volunteer_id: e.target.value })}
 						validate={{
 							required: {
