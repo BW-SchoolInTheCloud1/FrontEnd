@@ -90,6 +90,7 @@ export const getTasks = () => dispatch => {
    axiosWithAuth()
       .get('/todos')
       .then(res => {
+         console.log('get all tasks:', res.data)
          dispatch({ type: GET_TASKS, payload: res.data })
       })
       .catch(err => {
@@ -121,6 +122,6 @@ export const editTask = (taskToEdit) => dispatch => {
       .catch(err => console.log(err));
 }
 
-export const toggleTaskCompleted = taskToComplete => dispatch => {
-   dispatch({ type: TOGGLE_TASK_COMPLETED, payload: taskToComplete })
-}
+// export const toggleTaskCompleted = taskToComplete => dispatch => {
+//    dispatch({ type: TOGGLE_TASK_COMPLETED, payload: taskToComplete })
+// }
