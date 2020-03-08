@@ -1,82 +1,74 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getTasks } from '../../redux/actions'
-import { Button, ButtonGroup, Card, CardBody, CardHeader, CardFooter, CardTitle, CardText, Collapse} from 'reactstrap'
-import AddTask from '../admin/AddTask'
-import Appointments from './Appointments'
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTasks } from '../../redux/actions';
+import { Button, ButtonGroup, Card, CardBody, CardHeader, CardFooter, CardTitle, CardText, Collapse } from 'reactstrap';
+import AddTask from '../admin/AddTask';
+import Appointments from './Appointments';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import TaskEditForm from '../admin/TaskEditForm';
 import { Image, Icon } from 'semantic-ui-react';
 import image from '../../images/ph.bmp';
 
-
 const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
-	const tasks = useSelector(state => state.tasks)
-	const dispatch = useDispatch()
+	const tasks = useSelector(state => state.tasks);
+	const dispatch = useDispatch();
 
 	const [taskListIsOpen, setTaskListIsOpen] = useState(false);
 	const [addTaskIsOpen, setAddTaskIsOpen] = useState(false);
 	const [toggleCalender, setToggleCalender] = useState(false);
 	const [editFormIsOpen, setEditFormIsOpen] = useState({});
 	const [taskToEdit, setTaskToEdit] = useState({});
-	const [userTasks, setUserTasks] = useState([])
-	
-	
+	const [userTasks, setUserTasks] = useState([]);
+
 	const toggleLeft = () => setTaskListIsOpen(!taskListIsOpen);
 	const toggleRight = () => setAddTaskIsOpen(!addTaskIsOpen);
 	const toggleApptBook = () => setToggleCalender(!toggleCalender);
-	const toggleEditForm = (index) => {
-		setEditFormIsOpen({[index]: !editFormIsOpen[index]});
-	}
+	const toggleEditForm = index => {
+		setEditFormIsOpen({ [index]: !editFormIsOpen[index] });
+	};
 
 	const url = window.location.href;
-	
+
 	useEffect(() => {
-		dispatch(getTasks())
-	}, [dispatch]) 
-	
+		dispatch(getTasks());
+	}, [dispatch]);
 
 	const deleteTask = task => {
-      console.log('from deleteTask on SeniorCard', task)
+		console.log('from deleteTask on SeniorCard', task);
 		axiosWithAuth()
 			.delete(`/todos/${task.id}`)
 			.then(res => {
-            console.log('response =', res);
+				console.log('response =', res);
 				setUserTasks(userTasks.filter(userTask => parseInt(userTask.id) !== parseInt(task.id)));
-				dispatch(getTasks())
-         })
+				dispatch(getTasks());
+			})
 			.catch(err => console.log(err));
 	};
 
 	const handleTaskListClick = e => {
-		setUserTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(volunteer_id)))
-		console.log(userTasks)
-		toggleLeft()
-		setAddTaskIsOpen(false)
-	}
+		setUserTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(volunteer_id)));
+		console.log(userTasks);
+		toggleLeft();
+		setAddTaskIsOpen(false);
+	};
 
 	const handleAddTaskClick = e => {
-		setTaskListIsOpen(false)
-		toggleRight()
-	}
+		setTaskListIsOpen(false);
+		toggleRight();
+	};
 
-             
 	const handleDetailsClick = (userTask, index) => {
-		const arrayWithTaskToEdit = userTasks.filter(task => task.id === userTask.id)
-		const [extractedTaskObject] = arrayWithTaskToEdit
-		setTaskToEdit(extractedTaskObject);	
-		console.log('extractedObject (taskToEdit) from detailClick-->:', extractedTaskObject)
-		console.log('taskToEdit from detailClick-->:', taskToEdit)
-		toggleEditForm(index)
-	}; 
-
+		const arrayWithTaskToEdit = userTasks.filter(task => task.id === userTask.id);
+		const [extractedTaskObject] = arrayWithTaskToEdit;
+		setTaskToEdit(extractedTaskObject);
+		console.log('extractedObject (taskToEdit) from detailClick-->:', extractedTaskObject);
+		console.log('taskToEdit from detailClick-->:', taskToEdit);
+		toggleEditForm(index);
+	};
 
 	return (
 		<div className='col'>
-			<Card
-				key={volunteer_id}
-				className='cards'
-			>
+			<Card key={volunteer_id} className='cards'>
 				<CardHeader className='imgDiv'>
 					<div>
 						<Image src={image} alt='avatar' avatar className='img' />
@@ -105,17 +97,18 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 					<Collapse isOpen={taskListIsOpen}>
 						<Card>
 							<CardBody>
-								<ol >
+								<ol>
 									{userTasks.map((userTask, index) => {
 										return (
-
 											<div className='editFormCollapse' key={index}>
 												<div className='task-nav'>
-													
 													<li className='li'>
 														<div>
-														{userTask.is_completed === true ? (
-														<p>{userTask.title}<Icon name='checkmark' color='green' /></p>
+															{userTask.is_completed === true ? (
+																<span className='title-complete'>
+																<span className='text-span'>{userTask.title}</span><span className='icon-span'><Icon name='checkmark' color='green' /></span>
+																
+																</span>
 															) : (
 																<p>{userTask.title}</p>
 															)}
@@ -180,10 +173,9 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 						</span>
 					)}
 				</CardFooter>
-
 			</Card>
 		</div>
 	);
-}
+};
 
-export default SeniorCard
+export default SeniorCard;

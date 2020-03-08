@@ -1,23 +1,23 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import {  getTasks, editTask } from '../../redux/actions';
-import {  Button } from 'reactstrap';
+import { getTasks, editTask } from '../../redux/actions';
+import { Button } from 'reactstrap';
 import { AvForm, AvField, AvInput } from 'availity-reactstrap-validation';
 
 const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
 	const url = window.location.href;
 
 	const handleSubmit = e => {
-		console.log('taskToEdit from TaskEditForm submit-->:', taskToEdit)
-		e.persist()
-		dispatch(editTask(taskToEdit))
-		toggle()
-		dispatch(getTasks())
-		closeTaskView()
-	}
-   
+		console.log('taskToEdit from TaskEditForm submit-->:', taskToEdit);
+		e.persist();
+		dispatch(editTask(taskToEdit));
+		toggle();
+		dispatch(getTasks());
+		closeTaskView();
+	};
+
 	return (
 		<div className='adminForms'>
 			<AvForm onSubmit={handleSubmit}>
@@ -87,6 +87,6 @@ const TaskEditForm = ({ taskToEdit, setTaskToEdit, toggle, closeTaskView }) => {
 			</AvForm>
 		</div>
 	);
-}
+};
 
-export default TaskEditForm
+export default TaskEditForm;
