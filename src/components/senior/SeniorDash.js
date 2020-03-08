@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DashNavBar from '../navs/DashNavBar';
-import { getTasks, editTask  } from '../../redux/actions';
+import { getTasks, editTask } from '../../redux/actions';
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -15,14 +15,14 @@ import {
 	CardBody,
 	CardText,
 	CardFooter,
-	Collapse
+	Collapse,
 } from 'reactstrap';
 
 const SeniorDash = () => {
 	const tasks = useSelector(state => state.tasks);
 	const dispatch = useDispatch();
 	const { id } = useParams();
-	
+
 	const [myTasks, setMyTasks] = useState([]);
 	const [taskToComplete, setTaskToComplete] = useState({});
 	const [modal, setModal] = useState(false);
@@ -38,51 +38,44 @@ const SeniorDash = () => {
 	const handleShowTasksClick = () => {
 		setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)));
 		toggle();
-		setTaskListIsOpen(true)
-		console.log('primary clicked')
+		setTaskListIsOpen(true);
+		console.log('primary clicked');
 	};
 
 	const toggledTaskToPut = t => {
 		if (t.is_completed === false) {
 			return {
 				...t,
-				is_completed: true
-			}
+				is_completed: true,
+			};
 		} else if (t.is_completed === true) {
 			return {
 				...t,
-				is_completed: false
-			}
+				is_completed: false,
+			};
 		}
-	}
+	};
 
 	const toggleCard = (myTask, index) => {
-		// console.log('myTasks from toggleCard:', myTasks)
-		setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)))
-		const arrayWithTaskToComplete = myTasks.filter(task => task.id === myTask.id)
-		const [extractedTaskObject] = arrayWithTaskToComplete
-		console.log('extractedObject:', extractedTaskObject)
-		console.log('modifiedExtractedObject:', toggledTaskToPut(extractedTaskObject))
-		setTaskToComplete(toggledTaskToPut(extractedTaskObject))
-		setCardBodyIsOpen({...cardBodyIsOpen, [index]: !cardBodyIsOpen[index]});
-		handleShowTasksClick()
-	}
-	
-	const handleToggleCompletedClick = (myTask, index) => {
-		// console.log('myTasks from handleToggleCompletedClick:', myTasks)
-		// console.log('taskToComplete', taskToComplete)
-		dispatch(editTask(taskToComplete))
-		setCardBodyIsOpen(!cardBodyIsOpen)
-		setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)))
-		// console.log('myTasks from handleToggleCompletedClick:', myTasks)
-		// document.querySelector('.col').classList.toggle('completed')
-		const primary = document.getElementById('primary')
-		setTimeout(() => {
-			primary.click()
-		}, 500)
-	}; 
+		setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)));
+		const arrayWithTaskToComplete = myTasks.filter(task => task.id === myTask.id);
+		const [extractedTaskObject] = arrayWithTaskToComplete;
+		console.log('extractedObject:', extractedTaskObject);
+		console.log('modifiedExtractedObject:', toggledTaskToPut(extractedTaskObject));
+		setTaskToComplete(toggledTaskToPut(extractedTaskObject));
+		setCardBodyIsOpen({ ...cardBodyIsOpen, [index]: !cardBodyIsOpen[index] });
+		handleShowTasksClick();
+	};
 
-	// console.log('myTasks outside the PUT function:', myTasks)
+	const handleToggleCompletedClick = (myTask, index) => {
+		dispatch(editTask(taskToComplete));
+		setCardBodyIsOpen(!cardBodyIsOpen);
+		setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)));
+		const primary = document.getElementById('primary');
+		setTimeout(() => {
+			primary.click();
+		}, 500);
+	};
 
 	return (
 		<div>
@@ -90,7 +83,13 @@ const SeniorDash = () => {
 			<div>
 				<h1 className='nonForm'>To Do</h1>
 			</div>
-			<Button id='primary' style={{ marginTop: '50px' }} className='formButton' outline color='primary' onClick={handleShowTasksClick}>
+			<Button
+				id='primary'
+				style={{ marginTop: '50px' }}
+				className='formButton'
+				outline
+				color='primary'
+				onClick={handleShowTasksClick}>
 				Show My Tasks
 			</Button>
 			<Collapse isOpen={taskListIsOpen}>
@@ -110,10 +109,7 @@ const SeniorDash = () => {
 								return (
 									<>
 										{myTask.is_completed === true ? (
-											<div 
-												key={index}
-												style={{ display: 'none' }}>
-											</div>
+											<div key={index} style={{ display: 'none' }}></div>
 										) : (
 											<Col lg='3' key={index}>
 												<div className='col'>
@@ -125,18 +121,18 @@ const SeniorDash = () => {
 														<Collapse isOpen={cardBodyIsOpen[index] ? true : false}>
 															<CardBody>
 																<CardText>
-																	{myTask.description} Completed: {JSON.stringify(myTask.is_completed)} 
+																	{myTask.description} Completed: {JSON.stringify(myTask.is_completed)}
 																</CardText>
-																	<Button
-																		id='secondary'
-																		outline
-																		color='danger'
-																		onClick={e => {
-																			e.stopPropagation()
-																			handleToggleCompletedClick(myTask, index)}}
-																	>
-																		X
-																	</Button>
+																<Button
+																	id='secondary'
+																	outline
+																	color='danger'
+																	onClick={e => {
+																		e.stopPropagation();
+																		handleToggleCompletedClick(myTask, index);
+																	}}>
+																	X
+																</Button>
 															</CardBody>
 														</Collapse>
 														<CardFooter>Task ID: {myTask.id}</CardFooter>
@@ -145,7 +141,7 @@ const SeniorDash = () => {
 											</Col>
 										)}
 									</>
-								)
+								);
 							})
 						)}
 					</Row>

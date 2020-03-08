@@ -10,9 +10,9 @@ import Register from './components/navs/Register';
 import StudentDash from './components/student/StudentDash';
 import AdminDash from './components/admin/AdminDash';
 import SeniorDash from './components/senior/SeniorDash';
-import TaskList from './components/admin/TaskList'
-import AddTask from './components/admin/AddTask'
-import SeniorList from './components/senior/SeniorList'
+import TaskList from './components/admin/TaskList';
+import AddTask from './components/admin/AddTask';
+import SeniorList from './components/senior/SeniorList';
 
 function App() {
 	return (

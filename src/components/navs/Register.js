@@ -25,14 +25,15 @@ const Register = () => {
 								style={{
 									textShadow: '1px 1px 3px navy',
 								}}>
-								In college? In high school? In school at all? Need help? You are a student. 
+								In college? In high school? In school at all? Need help? You are a student.
 							</CardText>
-							<div nav-link-wrapper style={{ paddingTop: '12%', paddingBottom: '2%' }}>Register Here!
-								<br/>
+							<div nav-link-wrapper style={{ paddingTop: '12%', paddingBottom: '2%' }}>
+								Register Here!
+								<br />
 								<NavLink to='/register/student' activeClassName='active2' className='navLink'>
 									Students
 								</NavLink>
-						 </div>
+							</div>
 						</span>
 					</div>
 				</Card>
@@ -45,11 +46,11 @@ const Register = () => {
 						<span className='register-text'>
 							<h2>Volunteer</h2>
 							<CardText style={{ textShadow: '1px 1px 3px navy' }}>
-								Want to help students from all over? Have extra time? Why not be a tutor volunteer? 
+								Want to help students from all over? Have extra time? Why not be a tutor volunteer?
 							</CardText>
 							<div nav-link-wrapper style={{ paddingTop: '5%' }}>
 								Sign up now!
-								<br/>
+								<br />
 								<NavLink to='/register/volunteer' className='navLink' activeClassName='active2'>
 									Volunteers
 								</NavLink>
@@ -59,7 +60,7 @@ const Register = () => {
 				</Card>
 
 				<Card className='register-card' inverse>
-					<div style={{height: '100%', background: 'rgba(85, 85, 85, .1)' }}>
+					<div style={{ height: '100%', background: 'rgba(85, 85, 85, .1)' }}>
 						<div className='register-img'>
 							<CardImg width='100%' src={Admin} alt='Administrator icon' />
 						</div>
@@ -70,12 +71,11 @@ const Register = () => {
 									textShadow: '1px 1px 3px navy',
 									margin: '2%',
 								}}>
-								Is your goal to help close the achievement gap by connecting students with
-								qualified available volunteer tutors. 
+								Is your goal to help close the achievement gap by connecting students with qualified available volunteer tutors.
 							</CardText>
 							<div nav-link-wrapper style={{ paddingBottom: '5%' }}>
 								This is your Role!
-								<br/>
+								<br />
 								<NavLink to='/register/admin-signup' className='navLink' activeClassName='active2'>
 									Administrator
 								</NavLink>

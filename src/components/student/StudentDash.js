@@ -18,9 +18,13 @@ const StudentDash = () => {
 
 	const handleClick = e => {
 		e.preventDefault();
-		setSearchResults(seniors.filter(character =>
+		setSearchResults(
+			seniors.filter(
+				character =>
 					character.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					character.availability.toLowerCase().includes(searchTerm.toLowerCase()) ||character.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||character.lastName.toLowerCase().includes(searchTerm.toLowerCase()),
+					character.availability.toLowerCase().includes(searchTerm.toLowerCase()) ||
+					character.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+					character.lastName.toLowerCase().includes(searchTerm.toLowerCase()),
 			),
 		);
 	};
@@ -32,36 +36,36 @@ const StudentDash = () => {
 	return (
 		<div>
 			<DashNavBar />
-				<form className='nonForm'>
-					<Input
-						className='search-bar'
-						icon={<Icon name='search' inverted circular link onClick={handleClick} />}
-						type='search'
-						name='search'
-						value={searchTerm}
-						onChange={handleChange}
-						placeholder='Search For a Volunteer by Time or Country'
-					/>
-				</form>
+			<form className='nonForm'>
+				<Input
+					className='search-bar'
+					icon={<Icon name='search' inverted circular link onClick={handleClick} />}
+					type='search'
+					name='search'
+					value={searchTerm}
+					onChange={handleChange}
+					placeholder='Search For a Volunteer by Time or Country'
+				/>
+			</form>
 
-				<div>
-					<Row>
-						{searchResults.map(person => {
-							return (
-								<Col lg='4'>
-									<SeniorCard
-										key={person.id}
-										times={person.availability}
-										location={person.country}
-										firstName={person.firstName}
-										lastName={person.lastName}
-										user_id={person.user_id}
-									/>
-								</Col>
-							);
-						})}
-					</Row>
-				</div>
+			<div>
+				<Row>
+					{searchResults.map(person => {
+						return (
+							<Col lg='4'>
+								<SeniorCard
+									key={person.id}
+									times={person.availability}
+									location={person.country}
+									firstName={person.firstName}
+									lastName={person.lastName}
+									user_id={person.user_id}
+								/>
+							</Col>
+						);
+					})}
+				</Row>
+			</div>
 		</div>
 	);
 };
