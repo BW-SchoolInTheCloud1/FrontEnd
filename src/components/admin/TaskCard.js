@@ -30,7 +30,7 @@ const Example = ({ task, title, description, assigned_to }) => {
 						</Card>
 					</Collapse>
 				</CardBody>
-				<CardFooter className='text-muted'>Assigned to: {assigned_to}</CardFooter>
+				<CardFooter className='text-muted'>Assigned to: Volunteer #{assigned_to}</CardFooter>
 			</Card>
 		</div>
 	);

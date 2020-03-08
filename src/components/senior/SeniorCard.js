@@ -19,6 +19,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	const [editFormIsOpen, setEditFormIsOpen] = useState({});
 	const [taskToEdit, setTaskToEdit] = useState({});
 	const [userTasks, setUserTasks] = useState([]);
+	
 
 	const toggleLeft = () => setTaskListIsOpen(!taskListIsOpen);
 	const toggleRight = () => setAddTaskIsOpen(!addTaskIsOpen);
@@ -32,6 +33,24 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	useEffect(() => {
 		dispatch(getTasks());
 	}, [dispatch]);
+
+	const toggledTaskToPut = t => {
+		if (t.is_completed === true) {
+			return {
+				...t,
+				is_completed: false,
+				title: t.title,
+				description: t.description, 
+			};
+		} else {
+			
+				return {
+				...t,
+					title: t.title,
+					description: t.description,
+			}
+			}
+		}
 
 	const deleteTask = task => {
 		console.log('from deleteTask on SeniorCard', task);
@@ -60,7 +79,8 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 	const handleDetailsClick = (userTask, index) => {
 		const arrayWithTaskToEdit = userTasks.filter(task => task.id === userTask.id);
 		const [extractedTaskObject] = arrayWithTaskToEdit;
-		setTaskToEdit(extractedTaskObject);
+		setTaskToEdit(toggledTaskToPut(extractedTaskObject))
+		
 		console.log('extractedObject (taskToEdit) from detailClick-->:', extractedTaskObject);
 		console.log('taskToEdit from detailClick-->:', taskToEdit);
 		toggleEditForm(index);

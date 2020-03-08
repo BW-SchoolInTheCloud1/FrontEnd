@@ -60,8 +60,6 @@ const SeniorDash = () => {
 		setMyTasks(tasks.filter(task => parseInt(task.volunteer_id) === parseInt(id)));
 		const arrayWithTaskToComplete = myTasks.filter(task => task.id === myTask.id);
 		const [extractedTaskObject] = arrayWithTaskToComplete;
-		console.log('extractedObject:', extractedTaskObject);
-		console.log('modifiedExtractedObject:', toggledTaskToPut(extractedTaskObject));
 		setTaskToComplete(toggledTaskToPut(extractedTaskObject));
 		setCardBodyIsOpen({ ...cardBodyIsOpen, [index]: !cardBodyIsOpen[index] });
 		handleShowTasksClick();
