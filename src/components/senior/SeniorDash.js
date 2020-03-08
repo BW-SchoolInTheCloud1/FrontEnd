@@ -114,28 +114,33 @@ const SeniorDash = () => {
 											<Col lg='3' key={index}>
 												<div className='col'>
 													<Card className='cards'>
-														<CardHeader style={{ display: 'flex', justifyContent: 'space-between' }}>
+														<CardHeader>
 															<h3>{myTask.title}</h3>
-															<Button onClick={() => toggleCard(myTask, index)}>Details</Button>
 														</CardHeader>
+
 														<Collapse isOpen={cardBodyIsOpen[index] ? true : false}>
-															<CardBody>
-																<CardText>
-																	{myTask.description} Completed: {JSON.stringify(myTask.is_completed)}
-																</CardText>
-																<Button
-																	id='secondary'
-																	outline
-																	color='danger'
-																	onClick={e => {
-																		e.stopPropagation();
-																		handleToggleCompletedClick(myTask, index);
-																	}}>
-																	X
-																</Button>
+															<CardBody style={{ display: 'flex', justifyContent: 'space-between' }}>
+																<span>
+																	<Button
+																		id='secondary'
+																		size='sm'
+																		color='danger'
+																		onClick={e => {
+																			e.stopPropagation();
+																			handleToggleCompletedClick(myTask, index);
+																		}}>
+																		X
+																	</Button>
+																</span>
+																<CardText style={{ paddingTop: '1.5%', width: '85%' }}>{myTask.description}</CardText>
 															</CardBody>
 														</Collapse>
-														<CardFooter>Task ID: {myTask.id}</CardFooter>
+
+														<CardFooter style={{ display: 'flex', justifyContent: 'space-between' }}>
+															<p>Task ID: {myTask.id}</p>
+
+															<Button onClick={() => toggleCard(myTask, index)}>Details</Button>
+														</CardFooter>
 													</Card>
 												</div>
 											</Col>

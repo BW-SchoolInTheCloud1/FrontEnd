@@ -85,8 +85,8 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 					<CardText>{times}</CardText>
 					{url.match(/admin-dash/gi) ? (
 						<ButtonGroup className='buttonGroup'>
-							<Button outline color='primary' onClick={handleTaskListClick}>
-								View Tasks
+							 <Button outline color='primary' onClick={handleTaskListClick}>
+									View Tasks
 							</Button>
 							<Button outline color='primary' onClick={handleAddTaskClick}>
 								Add Task
@@ -106,8 +106,10 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 														<div>
 															{userTask.is_completed === true ? (
 																<span className='title-complete'>
-																<span className='text-span'>{userTask.title}</span><span className='icon-span'><Icon name='checkmark' color='green' /></span>
-																
+																	<span className='text-span'>{userTask.title}</span>
+																	<span className='icon-span'>
+																		<Icon name='checkmark' color='green' />
+																	</span>
 																</span>
 															) : (
 																<p>{userTask.title}</p>
@@ -160,6 +162,7 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 				<CardFooter className='text-muted'>
 					{url.match(/admin-dash/gi) ? (
 						<span>Volunteer ID: {volunteer_id}</span>
+					
 					) : (
 						<span>
 							<Button outline color='primary' onClick={() => toggleApptBook()}>
