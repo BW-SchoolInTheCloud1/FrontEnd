@@ -5,6 +5,7 @@
     "book",
     "navs",
     "todos",
-    "toggle"
+    "toggle",
+    "togglecard"
   ]
 }

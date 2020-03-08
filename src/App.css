@@ -228,3 +228,14 @@ align-items: baseline;
 	margin-right: 5%;
 	width: 25%;
 }
+
+
+@media( max-width: 800px) {
+
+	.nestedNav{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		
+	}
+}
