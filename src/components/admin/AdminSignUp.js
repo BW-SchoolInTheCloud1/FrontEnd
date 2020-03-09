@@ -14,12 +14,14 @@ const AdminSignUp = props => {
 		password: '',
 		role: 'admin',
 	});
+
 	const handleChange = e => {
 		setAdminToPost({
 			...adminToPost,
 			[e.target.name]: e.target.value,
 		});
 	};
+
 	const handleSubmit = e => {
 		e.preventDefault();
 		dispatch(postNewAdmin(adminToPost, props));
@@ -31,6 +33,7 @@ const AdminSignUp = props => {
 			role: 'admin',
 		});
 	};
+	
 	return (
 		<div>
 			<Register />

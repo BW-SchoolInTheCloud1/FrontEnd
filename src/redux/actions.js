@@ -74,6 +74,7 @@ export const postNewAdmin = (adminToPost, props) => dispatch => {
 	axiosWithAuth()
 		.post('/auth/register', adminToPost)
 		.then(res => {
+			console.log('response from admin register', res)
 			localStorage.setItem('token', res.data.token);
 			props.history.push(`/admin-dash/${res.data.roleId.id}`);
 		})

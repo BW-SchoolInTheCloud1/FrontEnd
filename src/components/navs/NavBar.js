@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 const NavBar = () => {
 	const history = useHistory();
 	const url = window.location.href;
+	
 	return (
 		<div>
 			<Navbar color='dark' dark>

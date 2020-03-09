@@ -86,4 +86,5 @@ const AddTask = ({ volunteer_id, toggleRight }) => {
 		</div>
 	);
 };
+
 export default AddTask;

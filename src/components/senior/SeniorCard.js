@@ -42,15 +42,14 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 				title: t.title,
 				description: t.description, 
 			};
-		} else {
-			
+		}  else {
 				return {
-				...t,
+					...t,
 					title: t.title,
 					description: t.description,
+				}
 			}
-			}
-		}
+	}
 
 	const deleteTask = task => {
 		console.log('from deleteTask on SeniorCard', task);
@@ -80,10 +79,9 @@ const SeniorCard = ({ firstName, lastName, times, location, volunteer_id }) => {
 		const arrayWithTaskToEdit = userTasks.filter(task => task.id === userTask.id);
 		const [extractedTaskObject] = arrayWithTaskToEdit;
 		setTaskToEdit(toggledTaskToPut(extractedTaskObject))
-		
-		console.log('extractedObject (taskToEdit) from detailClick-->:', extractedTaskObject);
-		console.log('taskToEdit from detailClick-->:', taskToEdit);
 		toggleEditForm(index);
+		// console.log('extractedObject (taskToEdit) from detailClick-->:', extractedTaskObject);
+		// console.log('taskToEdit from detailClick-->:', taskToEdit);
 	};
 
 	return (
